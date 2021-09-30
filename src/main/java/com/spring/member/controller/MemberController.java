@@ -142,15 +142,15 @@ public class MemberController {
 	}
 	
 	@GetMapping("/soup")
-	public void getCount() throws IOException, ParseException, java.text.ParseException, InterruptedException {
+	public String getCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
 		String mayano = "マヤノトップガン";
-        /*String[] umamusume = {"ゴールドシチー","フジキセキ","ヒシアマゾン","セイウンスカイ","ナリタブライアン"
+        String[] umamusume = {"ゴールドシチー","フジキセキ","ヒシアマゾン","セイウンスカイ","ナリタブライアン"
         ,"スマートファルコン","ナリタタイシン","カレンチャン","ビワハヤヒデ","ミホノブルボン","テイエムオペラオー"
         ,"キングヘイロー","ナイスネイチャ","マチカネフクキタル","ハルウララ","ウイニングチケット","アグネスタキオン","メジロライアン"
-                ,"スーパークリーク","マヤノトップガン","エアグルーヴ"};*/
+                ,"スーパークリーク","マヤノトップガン","エアグルーヴ"};
 
-        String[] umamusume = {"ゴールドシチー"};
-
+        //String[] umamusume = {"ゴールドシチー"};
+        String ranking = "";
         for(String key : umamusume){
 
 
@@ -216,7 +216,11 @@ public class MemberController {
 
          }
         System.out.println("오늘 올라온 "+key+"의 픽시브짤 갯수 : "+count);
-         Thread.sleep(1000);
+        ranking += "오늘 올라온 "+key+"의 픽시브짤 갯수 : "+count+"\n";
+         Thread.sleep(500);
         }
+        
+        model.addAttribute("ranking",ranking);
+        return "main/dailyRanking";
 	}
 }
