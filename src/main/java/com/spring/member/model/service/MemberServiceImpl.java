@@ -1,39 +1,33 @@
 package com.spring.member.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.spring.common.exception.LoginFailedException;
-import com.spring.member.model.dao.MemberMapper;
-import com.spring.member.model.dto.MemberDTO;
+import com.spring.member.model.dao.UmaMapper;
+import com.spring.member.model.dto.UmaDTO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 	
-	private MemberMapper mapper;
-	private BCryptPasswordEncoder passwordEncoder;
+	private UmaMapper mapper;
 	
 	@Autowired
-	public MemberServiceImpl(MemberMapper mapper, BCryptPasswordEncoder passwordEncoder) {
+	public MemberServiceImpl(UmaMapper mapper) {
 		this.mapper = mapper;
-		this.passwordEncoder = passwordEncoder;
-	}
-	
-	@Override
-	public boolean registMember(MemberDTO member) {
-		
-		return mapper.insertMember(member) > 0? true: false;
 	}
 
 	@Override
-	public MemberDTO loginMember(MemberDTO member) throws LoginFailedException {
-		
-		if(!passwordEncoder.matches(member.getPwd(), mapper.selectEncPassword(member))){
-			throw new LoginFailedException("로그인 실패!");
-		}
-		
-		return mapper.selectMember(member);
+	public List<UmaDTO> selectUma() {
+		// TODO Auto-generated method stub
+		return mapper.selectUma();
 	}
+	
+	
+
+	
 	
 }

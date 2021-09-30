@@ -20,8 +20,22 @@
 	<div align="center">
 		일간랭킹 페이지
 		<br>
-		dd ${ requestScope.ranking }
+		<c:forEach var="uma" items="${ requestScope.umaList }">
 		
+			${ uma.uma_code }<br>
+			${ uma.uma_name }<br>
+			${ uma.height }cm<br>
+			${ uma.weight }<br>
+			${ uma.three_b }<br>
+			${ uma.three_w }<br>
+			${ uma.three_h }<br>
+			${ uma.birth_day }<br>
+			${ uma.uma_voice }<br>
+			${ uma.uma_content }<br>
+			
+			<br>
+			<br>
+		</c:forEach>
 	</div>
 </body>
 </html>

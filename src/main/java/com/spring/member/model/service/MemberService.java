@@ -1,12 +1,12 @@
 package com.spring.member.model.service;
 
+import java.util.List;
+
 import com.spring.common.exception.LoginFailedException;
-import com.spring.member.model.dto.MemberDTO;
+import com.spring.member.model.dto.UmaDTO;
 
 public interface MemberService {
 
-	boolean registMember(MemberDTO member);
-
-	MemberDTO loginMember(MemberDTO member) throws LoginFailedException;
+	List<UmaDTO> selectUma();
 
 }

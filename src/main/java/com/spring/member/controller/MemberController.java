@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +34,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.spring.common.exception.LoginFailedException;
 import com.spring.common.exception.MemberRegistException;
-import com.spring.member.model.dto.MemberDTO;
+import com.spring.member.model.dto.UmaDTO;
 import com.spring.member.model.service.MemberService;
 
 @Controller
@@ -55,101 +56,18 @@ public class MemberController {
 	@GetMapping("/regist")
 	public void registForm() {}
 	
-	@PostMapping("/regist")
-	public String registMember(@ModelAttribute MemberDTO member, 
-			HttpServletRequest request, 
-			@RequestParam(name="photo", required=false) MultipartFile photo,
-			RedirectAttributes rttr) 
-					throws MemberRegistException {
-		
-		System.out.println(member);
-		System.out.println(photo);
-		
-		String root = request.getSession().getServletContext().getRealPath("resources");
-		
-		String filePath = root + "\\uploadFiles";
-		
-		File mkdir = new File(filePath);
-		if(!mkdir.exists()) {
-			mkdir.mkdirs();
-		}
-		
-		String originFileName = "";
-		String ext = "";
-		String changeName = "";
-		
-		if(photo.getSize() > 0) {
-			originFileName = photo.getOriginalFilename();
-			ext = originFileName.substring(originFileName.lastIndexOf("."));
-			changeName = UUID.randomUUID().toString().replace("-",  "");
-			
-			try {
-				photo.transferTo(new File(filePath + "\\" + changeName + ext));
-			} catch (IOException e) {
-				e.printStackTrace();
-				
-				new File(filePath + "\\" + changeName + ext).delete();
-				throw new MemberRegistException("사진 업로드 때문에 회원 가입 실패함!");
-			}
-		}
-			
-		member.setPwd(passwordEncoder.encode(member.getPwd()));
-		if(member.getGender().equals("1") || member.getGender().equals("3")) {
-			member.setGender("M");
-		}else {
-			member.setGender("F");
-		}
-		
-		/* Exception 핸들러 동작 확인 */
-//		boolean test = true;
-//		if(test) {
-//			throw new MemberRegistException("당신은 우리와 함께 할 수 없습니다.");
-//		}
-		
-		if(!memberService.registMember(member)) {
-			
-			new File(filePath + "\\" + changeName + ext).delete();
-			throw new MemberRegistException("당신은 우리와 함께 할 수 없습니다.");
-		}
-		
-		rttr.addFlashAttribute("message", "회원 가입에 성공하셨습니다.");
-		
-		return "redirect:/";
-	}
-	
-	
-	
-	@PostMapping("/login")
-	public String login(@ModelAttribute MemberDTO member, Model model) throws LoginFailedException {
-			
-		model.addAttribute("loginMember", memberService.loginMember(member));
-				
-		return "redirect:/";
-	}
-	
-	@GetMapping("/logout")
-	public String logout(SessionStatus status) {
-		
-		status.setComplete();
-		
-		return "redirect:/";
-	}
-	
-	@PostMapping("/idDupCheck")
-	public void idDupCheck(HttpServletResponse response) throws IOException {
-		
-		response.getWriter().write("false");
-	}
 	
 	@GetMapping("/soup")
 	public String getCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
 		String mayano = "マヤノトップガン";
-        String[] umamusume = {"ゴールドシチー","フジキセキ","ヒシアマゾン","セイウンスカイ","ナリタブライアン"
-        ,"スマートファルコン","ナリタタイシン","カレンチャン","ビワハヤヒデ","ミホノブルボン","テイエムオペラオー"
-        ,"キングヘイロー","ナイスネイチャ","マチカネフクキタル","ハルウララ","ウイニングチケット","アグネスタキオン","メジロライアン"
-                ,"スーパークリーク","マヤノトップガン","エアグルーヴ"};
+		/*
+		 * String[] umamusume = {"ゴールドシチー","フジキセキ","ヒシアマゾン","セイウンスカイ","ナリタブライアン"
+		 * ,"スマートファルコン","ナリタタイシン","カレンチャン","ビワハヤヒデ","ミホノブルボン","テイエムオペラオー"
+		 * ,"キングヘイロー","ナイスネイチャ","マチカネフクキタル","ハルウララ","ウイニングチケット","アグネスタキオン","メジロライアン"
+		 * ,"スーパークリーク","マヤノトップガン","エアグルーヴ"};
+		 */
 
-        //String[] umamusume = {"ゴールドシチー"};
+        String[] umamusume = {"ゴールドシチー"};
         String ranking = "";
         for(String key : umamusume){
 
@@ -219,8 +137,9 @@ public class MemberController {
         ranking += "오늘 올라온 "+key+"의 픽시브짤 갯수 : "+count+"\n";
          Thread.sleep(500);
         }
-        
-        model.addAttribute("ranking",ranking);
+        List<UmaDTO> umaList = memberService.selectUma();
+        model.addAttribute("umaList",umaList);
+
         return "main/dailyRanking";
 	}
 }

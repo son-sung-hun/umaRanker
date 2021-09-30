@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
  <configuration>
  	<typeAliases>
- 		<typeAlias alias="MemberDTO" type="com.spring.member.model.dto.MemberDTO"/>
+ 		<typeAlias alias="UmaDTO" type="com.spring.member.model.dto.UmaDTO"/>
  	</typeAliases>
  	
  </configuration>

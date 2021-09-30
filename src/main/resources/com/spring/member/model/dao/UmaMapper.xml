@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.member.model.dao.UmaMapper">
+
+	<resultMap id="umaResultSet" type="UmaDTO">
+		<id column="UMA_CODE" property="uma_code" />
+		<result column="UMA_NAME" property="uma_name" />
+		<result column="UMA_HEIGHT" property="height" />
+		<result column="UMA_WEIGHT" property="weight" />
+		<result column="THREE_B" property="three_b" />
+		<result column="THREE_W" property="three_w" />
+		<result column="THREE_H" property="three_h" />
+		<result column="BIRTH_DAY" property="birth_day" />
+		<result column="UMA_VOICE" property="uma_voice" />
+		<result column="UMA_CONTENT" property="uma_content" />
+	</resultMap>
+	
+
+	<select id="selectUma" resultMap="umaResultSet" parameterType="UmaDTO">
+        SELECT 
+		    UMA_CODE,
+		    UMA_NAME,
+		    UMA_HEIGHT,
+		    UMA_WEIGHT,
+		    THREE_B,
+		    THREE_W,
+		    THREE_H,
+		    BIRTH_DAY,
+		    UMA_VOICE,
+		    UMA_CONTENT
+			FROM UMA_DATA
+	</select>
+	
+</mapper>
