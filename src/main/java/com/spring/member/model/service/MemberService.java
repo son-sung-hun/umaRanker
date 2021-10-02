@@ -8,5 +8,7 @@ import com.spring.member.model.dto.UmaDTO;
 public interface MemberService {
 
 	List<UmaDTO> selectUma();
+	String[] selectUmaTag();
+
 
 }

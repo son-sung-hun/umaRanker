@@ -36,6 +36,16 @@
 			<br>
 			<br>
 		</c:forEach>
+		<br>
+		<br>
+		<c:forEach var="result" items="${ requestScope.result }">
+		
+			${ result }<br>
+			
+			
+			<br>
+			<br>
+		</c:forEach>
 	</div>
 </body>
 </html>

@@ -25,6 +25,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.selectUma();
 	}
+
+	@Override
+	public String[] selectUmaTag() {
+		// TODO Auto-generated method stub
+		return mapper.selectUmaTag();
+	}
 	
 	
 

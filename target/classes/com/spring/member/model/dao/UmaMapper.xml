@@ -15,6 +15,7 @@
 		<result column="BIRTH_DAY" property="birth_day" />
 		<result column="UMA_VOICE" property="uma_voice" />
 		<result column="UMA_CONTENT" property="uma_content" />
+		<result column="UMA_TAG" property="uma_tag" />
 	</resultMap>
 	
 
@@ -33,4 +34,9 @@
 			FROM UMA_DATA
 	</select>
 	
+	<select id="selectUmaTag" resultType="String">
+        SELECT 
+		    UMA_TAG
+			FROM UMA_DATA
+	</select>
 </mapper>

@@ -3,6 +3,7 @@ package com.spring.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -59,7 +60,6 @@ public class MemberController {
 	
 	@GetMapping("/soup")
 	public String getCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
-		String mayano = "マヤノトップガン";
 		/*
 		 * String[] umamusume = {"ゴールドシチー","フジキセキ","ヒシアマゾン","セイウンスカイ","ナリタブライアン"
 		 * ,"スマートファルコン","ナリタタイシン","カレンチャン","ビワハヤヒデ","ミホノブルボン","テイエムオペラオー"
@@ -67,8 +67,10 @@ public class MemberController {
 		 * ,"スーパークリーク","マヤノトップガン","エアグルーヴ"};
 		 */
 
-        String[] umamusume = {"ゴールドシチー"};
-        String ranking = "";
+		String[] umamusume = memberService.selectUmaTag();
+        //String[] umamusume = {"ゴールドシチー"};
+
+        List<String> result = new ArrayList<String>();
         for(String key : umamusume){
 
 
@@ -87,6 +89,7 @@ public class MemberController {
         url = "https://"+uriCom.toString();
         //System.out.println("주소 : "+uriCom.toString());
         //System.out.println("Jsoup를 쓴 값");
+        Thread.sleep(5000);
 
         Document doc = Jsoup.connect(url).ignoreContentType(true).get();
 
@@ -124,8 +127,8 @@ public class MemberController {
              String id = (String) personObject.get("id");
              String title = (String) personObject.get("title");
              String userName = (String) personObject.get("userName");
-            // System.out.println("id :"+id+" 제목 : "+title+" 작가명 : "+userName+" 업로드일자 : "+createDate);
-
+            System.out.println("id :"+id+" 제목 : "+title+" 작가명 : "+userName+" 업로드일자 : "+createDate);
+            
 
              if(((String) personObject.get("createDate")).substring(0,10).equals(time)){
                  count++;
@@ -134,12 +137,12 @@ public class MemberController {
 
          }
         System.out.println("오늘 올라온 "+key+"의 픽시브짤 갯수 : "+count);
-        ranking += "오늘 올라온 "+key+"의 픽시브짤 갯수 : "+count+"\n";
+        result.add("오늘 올라온 "+key+"의 픽시브짤 갯수 : "+count);
          Thread.sleep(500);
         }
         List<UmaDTO> umaList = memberService.selectUma();
         model.addAttribute("umaList",umaList);
-
+        model.addAttribute("result",result);
         return "main/dailyRanking";
 	}
 }
