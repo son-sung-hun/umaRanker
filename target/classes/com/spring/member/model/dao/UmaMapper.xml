@@ -17,7 +17,8 @@
 		<result column="UMA_CONTENT" property="uma_content" />
 		<result column="UMA_TAG" property="uma_tag" />
 	</resultMap>
-	
+
+
 
 	<select id="selectUma" resultMap="umaResultSet" parameterType="UmaDTO">
         SELECT 
@@ -30,13 +31,26 @@
 		    THREE_H,
 		    BIRTH_DAY,
 		    UMA_VOICE,
-		    UMA_CONTENT
-			FROM UMA_DATA
-	</select>
-	
-	<select id="selectUmaTag" resultType="String">
-        SELECT 
+		    UMA_CONTENT,
 		    UMA_TAG
 			FROM UMA_DATA
 	</select>
+	
+	<insert id="insertPixiv" parameterType="PixivDTO">
+	INSERT 
+	  INTO PIXIV_DATA
+	    (UMA_CODE
+	    ,PIXIV_CODE
+	    ,UPLOAD_DATE
+	    ,PIXIV_AUTHOR
+	    ,PIC_ID
+	    )
+    VALUES
+	    (#{uma_code}
+	    ,SEQ_PIXIV_CODE.nextval
+	    ,#{upload_date} <!-- date는 알아서 변환해서 넣어준다  -->
+	    ,#{author}
+	    ,#{pic_id})
+    
+	  </insert>	
 </mapper>

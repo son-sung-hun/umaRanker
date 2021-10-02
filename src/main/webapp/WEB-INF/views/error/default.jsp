@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 align="center">뭔가 에러가 발생했음</h1>
+	<h1 align="center">${ requestScope.exception.message }</h1>
 </body>
 </html>

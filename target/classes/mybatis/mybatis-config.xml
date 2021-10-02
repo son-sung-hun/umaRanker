@@ -5,6 +5,7 @@
  <configuration>
  	<typeAliases>
  		<typeAlias alias="UmaDTO" type="com.spring.member.model.dto.UmaDTO"/>
+ 		<typeAlias alias="PixivDTO" type="com.spring.member.model.dto.PixivDTO"/>
  	</typeAliases>
  	
  </configuration>

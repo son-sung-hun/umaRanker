@@ -35,6 +35,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.spring.common.exception.LoginFailedException;
 import com.spring.common.exception.MemberRegistException;
+import com.spring.member.model.dto.PixivDTO;
 import com.spring.member.model.dto.UmaDTO;
 import com.spring.member.model.service.MemberService;
 
@@ -66,17 +67,17 @@ public class MemberController {
 		 * ,"キングヘイロー","ナイスネイチャ","マチカネフクキタル","ハルウララ","ウイニングチケット","アグネスタキオン","メジロライアン"
 		 * ,"スーパークリーク","マヤノトップガン","エアグルーヴ"};
 		 */
-
-		String[] umamusume = memberService.selectUmaTag();
+        List<UmaDTO> umaList = memberService.selectUma();
+        System.out.println(umaList);
         //String[] umamusume = {"ゴールドシチー"};
-
+        List<Object> resultTag = new ArrayList<>();
         List<String> result = new ArrayList<String>();
-        for(String key : umamusume){
+        for(UmaDTO key : umaList){
 
-
+        	System.out.println("태그 : "+key.getUma_tag());
         UriComponents uriCom = UriComponentsBuilder.newInstance()
-            .path("www.pixiv.net/ajax/search/artworks/"+key)
-                .queryParam("word",key)
+            .path("www.pixiv.net/ajax/search/artworks/"+key.getUma_tag())
+                .queryParam("word",key.getUma_tag())
                 .queryParam("order","date_d")
                 .queryParam("mode","all")
                 .queryParam("p",1)
@@ -122,12 +123,16 @@ public class MemberController {
              SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
              SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
              Date createDate = simpleDateFormat.parse((String) personObject.get("createDate"));
+             
              Date sysdate = new Date();
              String time = format1.format(sysdate).substring(0,10);
-             String id = (String) personObject.get("id");
+             int id = Integer.parseInt((String) personObject.get("id")) ;
              String title = (String) personObject.get("title");
              String userName = (String) personObject.get("userName");
-            System.out.println("id :"+id+" 제목 : "+title+" 작가명 : "+userName+" 업로드일자 : "+createDate);
+             PixivDTO pixiv = new PixivDTO(key.getUma_code(),createDate,userName,id);
+             System.out.println(pixiv);
+             System.out.println(memberService.insertPixiv(pixiv));
+            System.out.println("id :"+id+" 제목 : "+title+" 작가명 : "+userName+" 업로드일자 : "+simpleDateFormat.format(createDate));
             
 
              if(((String) personObject.get("createDate")).substring(0,10).equals(time)){
@@ -136,11 +141,10 @@ public class MemberController {
              }
 
          }
-        System.out.println("오늘 올라온 "+key+"의 픽시브짤 갯수 : "+count);
-        result.add("오늘 올라온 "+key+"의 픽시브짤 갯수 : "+count);
+        System.out.println("오늘 올라온 "+key.getUma_tag()+"의 픽시브짤 갯수 : "+count);
+        result.add("오늘 올라온 "+key.getUma_tag()+"의 픽시브짤 갯수 : "+count);
          Thread.sleep(500);
         }
-        List<UmaDTO> umaList = memberService.selectUma();
         model.addAttribute("umaList",umaList);
         model.addAttribute("result",result);
         return "main/dailyRanking";

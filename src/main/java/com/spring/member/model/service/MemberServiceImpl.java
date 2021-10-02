@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.common.exception.LoginFailedException;
 import com.spring.member.model.dao.UmaMapper;
+import com.spring.member.model.dto.PixivDTO;
 import com.spring.member.model.dto.UmaDTO;
 
 @Service
@@ -27,11 +28,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String[] selectUmaTag() {
+	public boolean insertPixiv(PixivDTO dto) {
 		// TODO Auto-generated method stub
-		return mapper.selectUmaTag();
+		return mapper.insertPixiv(dto) > 0 ? true : false;
 	}
-	
+
 	
 
 	
