@@ -46,8 +46,8 @@
 	<div class="menubar">
 		<div class="nav">
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/soup'">일간랭킹</div>
-			<div class="menu">주간랭킹</div>
-			<div class="menu">월간랭킹</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/week'">주간랭킹</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/month'">월간랭킹</div>
 			<div class="menu">데이터베이스</div>
 		</div>
 		

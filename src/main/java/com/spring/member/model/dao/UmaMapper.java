@@ -12,4 +12,6 @@ public interface UmaMapper {
 	String[] selectUmaTag();
 	int insertPixiv(PixivDTO dto);
 	List<PixivDTO> selectPixivRank();
+	List<PixivDTO> selectPixivWeekRank(int date);
+	List<PixivDTO> selectPixivMonthRank();
 }

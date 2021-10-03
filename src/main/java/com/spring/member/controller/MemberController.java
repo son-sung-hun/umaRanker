@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -156,5 +157,34 @@ public class MemberController {
         model.addAttribute("pixivRanking",pixivRanking);
 
         return "main/dailyRanking";
+	}
+	
+	
+	
+	@GetMapping("/week")
+	public String getWeekCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
+	
+		Calendar cal = Calendar.getInstance();
+		int date = cal.get(Calendar.DAY_OF_WEEK)-1;
+		
+        List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(date);
+
+        model.addAttribute("pixivRanking",pixivRanking);
+
+
+        return "main/weeklyRanking";
+	}
+	
+	@GetMapping("/month")
+	public String getMonthCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
+	
+		
+		
+        List<PixivDTO> pixivRanking = memberService.selectPixivMonthRank();
+
+        model.addAttribute("pixivRanking",pixivRanking);
+
+
+        return "main/monthlyRanking";
 	}
 }

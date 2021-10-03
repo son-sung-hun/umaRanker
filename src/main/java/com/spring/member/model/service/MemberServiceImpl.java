@@ -39,6 +39,18 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectPixivRank();
 	}
 
+	@Override
+	public List<PixivDTO> selectPixivWeekRank(int date) {
+		// TODO Auto-generated method stub
+		return mapper.selectPixivWeekRank(date);
+	}
+
+	@Override
+	public List<PixivDTO> selectPixivMonthRank() {
+		// TODO Auto-generated method stub
+		return mapper.selectPixivMonthRank();
+	}
+
 	
 
 	
