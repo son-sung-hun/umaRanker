@@ -10,5 +10,6 @@ public interface MemberService {
 
 	List<UmaDTO> selectUma();
 	boolean insertPixiv(PixivDTO dto);
+	List<PixivDTO> selectPixivRank();
 
 }

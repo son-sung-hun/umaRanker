@@ -149,8 +149,12 @@ public class MemberController {
         result.add("오늘 올라온 "+key.getUma_tag()+"의 픽시브짤 갯수 : "+count);
          Thread.sleep(500);
         }
+        
+        List<PixivDTO> pixivRanking = memberService.selectPixivRank();
         model.addAttribute("umaList",umaList);
         model.addAttribute("result",result);
+        model.addAttribute("pixivRanking",pixivRanking);
+
         return "main/dailyRanking";
 	}
 }

@@ -20,32 +20,17 @@
 	<div align="center">
 		일간랭킹 페이지
 		<br>
-		<c:forEach var="uma" items="${ requestScope.umaList }">
+		오늘의 인기 우마무스메는 ?
+		<br> 
+		<c:forEach var="rank" items="${ requestScope.pixivRanking }">
 		
-			${ uma.uma_code }<br>
-			${ uma.uma_name }<br>
-			${ uma.height }cm<br>
-			${ uma.weight }<br>
-			${ uma.three_b }<br>
-			${ uma.three_w }<br>
-			${ uma.three_h }<br>
-			${ uma.birth_day }<br>
-			${ uma.uma_voice }<br>
-			${ uma.uma_content }<br>
-			
+			${ rank.pixiv_rank }위 : ${ rank.uma_name } (총 ${ rank.pixiv_count } 개)
 			<br>
 			<br>
 		</c:forEach>
 		<br>
 		<br>
-		<c:forEach var="result" items="${ requestScope.result }">
 		
-			${ result }<br>
-			
-			
-			<br>
-			<br>
-		</c:forEach>
 	</div>
 </body>
 </html>

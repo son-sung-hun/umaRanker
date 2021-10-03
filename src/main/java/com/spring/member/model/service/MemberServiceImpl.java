@@ -33,6 +33,12 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.insertPixiv(dto) > 0 ? true : false;
 	}
 
+	@Override
+	public List<PixivDTO> selectPixivRank() {
+		// TODO Auto-generated method stub
+		return mapper.selectPixivRank();
+	}
+
 	
 
 	

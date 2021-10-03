@@ -18,7 +18,16 @@
 		<result column="UMA_TAG" property="uma_tag" />
 	</resultMap>
 
-
+	<resultMap id="pixivResultSet" type="PixivDTO">
+		<id column="UMA_CODE" property="uma_code" />
+		<result column="UMA_NAME" property="uma_name" />
+		<result column="UPLOAD_DATE" property="upload_date" />
+		<result column="PIXIV_AUTHOR" property="author" />
+		<result column="PIC_ID" property="pic_id" />
+		<result column="RANKING" property="pixiv_rank" />
+		<result column="COUNT" property="pixiv_count" />
+		
+	</resultMap>
 
 	<select id="selectUma" resultMap="umaResultSet" parameterType="UmaDTO">
         SELECT 
@@ -68,4 +77,17 @@
 	 
     
 	  </insert>	
+	  
+	  
+	<select id="selectPixivRank" resultMap="pixivResultSet" parameterType="PixivDTO">
+        SELECT
+    
+	    B.UMA_NAME  ,
+	    RANK() OVER(ORDER BY COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') = TO_CHAR(SYSDATE,'YY/MM/DD') THEN 1 END) DESC) AS RANKING,
+	    COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') = TO_CHAR(SYSDATE,'YY/MM/DD') THEN 1 END) AS COUNT
+	    FROM PIXIV_DATA A
+	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
+	    GROUP by B.UMA_NAME
+	</select>  
+
 </mapper>

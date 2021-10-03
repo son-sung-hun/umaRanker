@@ -11,5 +11,5 @@ public interface UmaMapper {
 	List<UmaDTO> selectUma();
 	String[] selectUmaTag();
 	int insertPixiv(PixivDTO dto);
-
+	List<PixivDTO> selectPixivRank();
 }
