@@ -131,9 +131,13 @@ public class MemberController {
              String userName = (String) personObject.get("userName");
              PixivDTO pixiv = new PixivDTO(key.getUma_code(),createDate,userName,id);
              System.out.println(pixiv);
-             System.out.println(memberService.insertPixiv(pixiv));
+             
             System.out.println("id :"+id+" 제목 : "+title+" 작가명 : "+userName+" 업로드일자 : "+simpleDateFormat.format(createDate));
-            
+            if(memberService.insertPixiv(pixiv) == true) {
+           	 System.out.println("업로드 성공");
+            }else {
+           	 System.out.println("업로드 실패");
+            }
 
              if(((String) personObject.get("createDate")).substring(0,10).equals(time)){
                  count++;

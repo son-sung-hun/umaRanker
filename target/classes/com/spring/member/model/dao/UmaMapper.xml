@@ -37,20 +37,35 @@
 	</select>
 	
 	<insert id="insertPixiv" parameterType="PixivDTO">
-	INSERT 
+		INSERT 
 	  INTO PIXIV_DATA
 	    (UMA_CODE
-	    ,PIXIV_CODE
 	    ,UPLOAD_DATE
 	    ,PIXIV_AUTHOR
 	    ,PIC_ID
 	    )
-    VALUES
-	    (#{uma_code}
-	    ,SEQ_PIXIV_CODE.nextval
+    SELECT
+	    #{uma_code}
 	    ,#{upload_date} <!-- date는 알아서 변환해서 넣어준다  -->
 	    ,#{author}
-	    ,#{pic_id})
+	    ,#{pic_id}
+    FROM DUAL
+    
+    WHERE NOT EXISTS
+    (
+    SELECT
+    UMA_CODE,
+    PIC_ID
+    FROM
+    PIXIV_DATA
+    WHERE
+    UMA_CODE = #{uma_code}
+    AND
+    PIC_ID = #{pic_id}
+    
+    )
+	    
+	 
     
 	  </insert>	
 </mapper>
