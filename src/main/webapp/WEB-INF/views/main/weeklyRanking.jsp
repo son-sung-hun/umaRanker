@@ -18,9 +18,12 @@
 	<jsp:include page="../common/menubar.jsp"/>
 	<br>
 	<div align="center">
-		일간랭킹 페이지
+		주간랭킹 페이지
 		<br>
 		이번 주의 인기 우마무스메는 ?
+		<br> 
+		기준 날짜 : ${ updateDate }
+		<br> 
 		<br> 
 		<c:forEach var="rank" items="${ requestScope.pixivRanking }">
 		

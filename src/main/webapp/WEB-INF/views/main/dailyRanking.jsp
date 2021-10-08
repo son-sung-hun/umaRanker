@@ -22,6 +22,10 @@
 		<br>
 		오늘의 인기 우마무스메는 ?
 		<br> 
+		기준 날짜 : ${ updateDate }
+		<br>
+		<br> 
+		 
 		<c:forEach var="rank" items="${ requestScope.pixivRanking }">
 		
 			${ rank.pixiv_rank }위 : ${ rank.uma_name } (총 ${ rank.pixiv_count } 개)

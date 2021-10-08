@@ -44,7 +44,7 @@ import com.spring.member.model.service.MemberService;
 @RequestMapping("/member/*")
 @SessionAttributes("loginMember")
 public class MemberController {
-	
+	Date updateDate;
 	private final MemberService memberService;
 	private static String url = "";
 	private final BCryptPasswordEncoder passwordEncoder;
@@ -65,7 +65,10 @@ public class MemberController {
 	public String getCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
 	
         List<PixivDTO> pixivRanking = memberService.selectPixivRank();
+        updateDate = memberService.updateDate();
+        model.addAttribute("updateDate",updateDate);
         model.addAttribute("pixivRanking",pixivRanking);
+        
 
         return "main/dailyRanking";
 	}
@@ -79,7 +82,8 @@ public class MemberController {
 		int date = cal.get(Calendar.DAY_OF_WEEK)-1;
 		
         List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(date);
-
+        updateDate = memberService.updateDate();
+        model.addAttribute("updateDate",updateDate);
         model.addAttribute("pixivRanking",pixivRanking);
 
 
@@ -92,7 +96,8 @@ public class MemberController {
 		
 		
         List<PixivDTO> pixivRanking = memberService.selectPixivMonthRank();
-
+        updateDate = memberService.updateDate();
+        model.addAttribute("updateDate",updateDate);
         model.addAttribute("pixivRanking",pixivRanking);
 
 

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -25,7 +26,7 @@ import com.spring.member.model.dto.UmaDTO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-	
+	public Date date;
 	private UmaMapper mapper;
 	private static String url = "";
 	@Autowired
@@ -67,7 +68,7 @@ public class MemberServiceImpl implements MemberService {
 	@Scheduled(fixedRate = 600000)
 	public void sampleScheduler2() throws IOException, ParseException, java.text.ParseException, InterruptedException {
 		// TODO Auto-generated method stub
-        Date date = new Date();
+        date = new Date();
 
 		System.out.println("크롤링 시작" + date);
         List<UmaDTO> umaList = selectUma(); //말 리스트 DB에서 불러옴
@@ -149,7 +150,12 @@ public class MemberServiceImpl implements MemberService {
          Thread.sleep(500);
         }
 		System.out.println("크롤링 종료");
+	}
 
+	@Override
+	public Date updateDate() {
+		// TODO Auto-generated method stub
+		return date;
 	}
 
 	
