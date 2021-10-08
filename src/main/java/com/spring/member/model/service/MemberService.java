@@ -1,6 +1,9 @@
 package com.spring.member.model.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.json.simple.parser.ParseException;
 
 import com.spring.common.exception.LoginFailedException;
 import com.spring.member.model.dto.PixivDTO;
@@ -13,6 +16,6 @@ public interface MemberService {
 	List<PixivDTO> selectPixivRank();
 	List<PixivDTO> selectPixivWeekRank(int date);
 	List<PixivDTO> selectPixivMonthRank();
-
+	void sampleScheduler2() throws IOException, ParseException, java.text.ParseException, InterruptedException;
 
 }
