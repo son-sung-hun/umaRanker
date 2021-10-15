@@ -14,6 +14,7 @@ import com.spring.member.model.dto.UmaDTO;
 public interface MemberService {
 
 	List<UmaDTO> selectUma();
+	UmaDTO selectUmaDetail(int uma_code);
 	boolean insertPixiv(PixivDTO dto);
 	List<PixivDTO> selectPixivRank();
 	List<PixivDTO> selectPixivWeekRank(int date);

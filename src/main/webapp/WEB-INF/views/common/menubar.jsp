@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/common.css">
 </head>
 <body>
-	<h1 align="center">Finally, Spring Web MVC Project!!!</h1>
+	<h1 align="center">우마랭커</h1>
 	
 	<br>
 	
@@ -48,7 +48,7 @@
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/soup'">일간랭킹</div>
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/week'">주간랭킹</div>
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/month'">월간랭킹</div>
-			<div class="menu">데이터베이스</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/database'">데이터베이스</div>
 		</div>
 		
 	</div>

@@ -174,6 +174,12 @@ public class MemberServiceImpl implements MemberService {
 		return date;
 	}
 
+	@Override
+	public UmaDTO selectUmaDetail(int uma_code) {
+		// TODO Auto-generated method stub
+		return mapper.selectUmaDetail(uma_code);
+	}
+
 	
 
 	

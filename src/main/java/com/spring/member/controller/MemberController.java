@@ -103,4 +103,29 @@ public class MemberController {
 
         return "main/monthlyRanking";
 	}
+	
+	@GetMapping("/database")
+	public String getDatabase(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
+	
+		
+		
+        List<UmaDTO> umaData = memberService.selectUma();
+        model.addAttribute("umaData",umaData);
+
+
+        return "main/databaseMain";
+	}
+	
+	@GetMapping("/detail")
+	public String getDatabaseDetail(Model model
+			,@RequestParam(value="uma_code", required=false) int uma_code) throws IOException, ParseException, java.text.ParseException, InterruptedException {
+	
+		
+		
+        UmaDTO umaDetail = memberService.selectUmaDetail(uma_code);
+        model.addAttribute("umaDetail",umaDetail);
+
+
+        return "main/databaseDetail";
+	}
 }

@@ -45,6 +45,23 @@
 			FROM UMA_DATA
 	</select>
 	
+	<select id="selectUmaDetail" resultMap="umaResultSet" parameterType="UmaDTO">
+        SELECT 
+		    UMA_CODE,
+		    UMA_NAME,
+		    UMA_HEIGHT,
+		    UMA_WEIGHT,
+		    THREE_B,
+		    THREE_W,
+		    THREE_H,
+		    BIRTH_DAY,
+		    UMA_VOICE,
+		    UMA_CONTENT,
+		    UMA_TAG
+			FROM UMA_DATA
+			WHERE UMA_CODE = #{uma_code}
+	</select>
+	
 	<insert id="insertPixiv" parameterType="PixivDTO">
 		INSERT 
 	  INTO PIXIV_DATA
