@@ -105,6 +105,26 @@
 	    FROM PIXIV_DATA A
 	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
 	    GROUP by B.UMA_NAME, B.UMA_CODE
+	</select>
+	
+	<select id="selectDailyBest" resultMap="pixivResultSet" parameterType="PixivDTO">
+        SELECT
+	    UMA_CODE
+	    ,UMA_NAME
+	    ,COUNT
+	    ,RANKING
+	    FROM (
+	    SELECT
+	    B.UMA_NAME,
+	    B.UMA_CODE
+	    , RANK() OVER(ORDER BY COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') = TO_CHAR(SYSDATE,'YY/MM/DD') THEN 1 END) DESC) AS RANKING
+	    , COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') = TO_CHAR(SYSDATE,'YY/MM/DD') THEN 1 END) AS COUNT
+	    FROM pixiv_data a
+	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
+	    group by b.UMA_CODE, B.UMA_NAME
+	    
+	    )
+	    WHERE RANKING=1
 	</select>  
 	
 	

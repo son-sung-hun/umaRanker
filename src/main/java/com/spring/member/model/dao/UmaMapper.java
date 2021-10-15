@@ -10,6 +10,7 @@ public interface UmaMapper {
 
 
 	List<UmaDTO> selectUma();
+	PixivDTO selectDailyBest();
 	String[] selectUmaTag();
 	int insertPixiv(PixivDTO dto);
 	List<PixivDTO> selectPixivRank();

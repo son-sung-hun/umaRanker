@@ -41,8 +41,7 @@ import com.spring.member.model.dto.UmaDTO;
 import com.spring.member.model.service.MemberService;
 
 @Controller
-@RequestMapping("/member/*")
-@SessionAttributes("loginMember")
+@RequestMapping("/*")
 public class MemberController {
 	Date updateDate;
 	private final MemberService memberService;
@@ -57,11 +56,15 @@ public class MemberController {
 		this.passwordEncoder = passwordEncoder;
 	}
 	
-	@GetMapping("/regist")
-	public void registForm() {}
+	@GetMapping(value={"/", "main"})
+	public String main(Model model) {
+		PixivDTO daily = memberService.selectDailyBest();
+        model.addAttribute("daily",daily);
+
+		return "main/main";
+	}
 	
-	
-	@GetMapping("/soup")
+	@GetMapping("/member/soup")
 	public String getCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
 	
         List<PixivDTO> pixivRanking = memberService.selectPixivRank();
@@ -75,7 +78,7 @@ public class MemberController {
 	
 	
 	
-	@GetMapping("/week")
+	@GetMapping("/member/week")
 	public String getWeekCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
 	
 		Calendar cal = Calendar.getInstance();
@@ -90,7 +93,7 @@ public class MemberController {
         return "main/weeklyRanking";
 	}
 	
-	@GetMapping("/month")
+	@GetMapping("/member/month")
 	public String getMonthCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
 	
 		
@@ -104,7 +107,7 @@ public class MemberController {
         return "main/monthlyRanking";
 	}
 	
-	@GetMapping("/database")
+	@GetMapping("/member/database")
 	public String getDatabase(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
 	
 		
@@ -116,7 +119,7 @@ public class MemberController {
         return "main/databaseMain";
 	}
 	
-	@GetMapping("/detail")
+	@GetMapping("/member/detail")
 	public String getDatabaseDetail(Model model
 			,@RequestParam(value="uma_code", required=false) int uma_code) throws IOException, ParseException, java.text.ParseException, InterruptedException {
 	

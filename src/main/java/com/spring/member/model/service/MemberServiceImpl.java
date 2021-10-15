@@ -180,6 +180,12 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectUmaDetail(uma_code);
 	}
 
+	@Override
+	public PixivDTO selectDailyBest() {
+		// TODO Auto-generated method stub
+		return mapper.selectDailyBest();
+	}
+
 	
 
 	
