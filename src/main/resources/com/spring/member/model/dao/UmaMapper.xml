@@ -98,35 +98,35 @@
 	  
 	<select id="selectPixivRank" resultMap="pixivResultSet" parameterType="PixivDTO">
         SELECT
-    
+    	B.UMA_CODE  ,
 	    B.UMA_NAME  ,
 	    RANK() OVER(ORDER BY COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') = TO_CHAR(SYSDATE,'YY/MM/DD') THEN 1 END) DESC) AS RANKING,
 	    COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') = TO_CHAR(SYSDATE,'YY/MM/DD') THEN 1 END) AS COUNT
 	    FROM PIXIV_DATA A
 	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
-	    GROUP by B.UMA_NAME
+	    GROUP by B.UMA_NAME, B.UMA_CODE
 	</select>  
 	
 	
 	<select id="selectPixivWeekRank" resultMap="pixivResultSet" parameterType="PixivDTO">
         SELECT
-    
+    	B.UMA_CODE  ,
 	    B.UMA_NAME  ,
 	    RANK() OVER(ORDER BY COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') BETWEEN TO_CHAR(SYSDATE-#{date},'YY/MM/DD') AND TO_CHAR(SYSDATE,'YY/MM/DD') THEN 1 END) DESC) AS RANKING,
 	    COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') BETWEEN TO_CHAR(SYSDATE-#{date},'YY/MM/DD') AND TO_CHAR(SYSDATE,'YY/MM/DD') THEN 1 END) AS COUNT
 	    FROM PIXIV_DATA A
 	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
-	    group by B.UMA_NAME
+	    GROUP by B.UMA_NAME, B.UMA_CODE
 	</select>  
 
 	<select id="selectPixivMonthRank" resultMap="pixivResultSet" parameterType="PixivDTO">
         SELECT
-    
+    	B.UMA_CODE  ,
 	    B.UMA_NAME  ,
 	    RANK() OVER(ORDER BY COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM') = TO_CHAR(SYSDATE,'YY/MM') THEN 1 END) DESC) AS RANKING,
 	    COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM') = TO_CHAR(SYSDATE,'YY/MM') THEN 1 END) AS COUNT
 	    FROM PIXIV_DATA A
 	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
-	    GROUP by B.UMA_NAME
+	    GROUP by B.UMA_NAME, B.UMA_CODE
 	</select>
 </mapper>
