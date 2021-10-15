@@ -65,89 +65,105 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	@Scheduled(fixedRate = 600000)
+	@Scheduled(fixedRate = 4800000)
 	public void sampleScheduler2() throws IOException, ParseException, java.text.ParseException, InterruptedException {
 		// TODO Auto-generated method stub
         date = new Date();
-
+        int pageCount = 1;
 		System.out.println("크롤링 시작" + date);
         List<UmaDTO> umaList = selectUma(); //말 리스트 DB에서 불러옴
         for(UmaDTO key : umaList){
 
         	System.out.println("태그 : "+key.getUma_tag());
-        UriComponents uriCom = UriComponentsBuilder.newInstance()
-            .path("www.pixiv.net/ajax/search/artworks/"+key.getUma_tag())
-                .queryParam("word",key.getUma_tag())
-                .queryParam("order","date_d")
-                .queryParam("mode","all")
-                .queryParam("p",1)
-                .queryParam("s_mode","s_tag")
-                .queryParam("type","all")
-                .queryParam("lang","ko")
+        	for(int cnt=1; cnt<11; cnt++) {
+        		System.out.println("==============="+key.getUma_name()+" "+cnt+" 페이지===================");
+        		
+                UriComponents uriCom = UriComponentsBuilder.newInstance()
+                        .path("www.pixiv.net/ajax/search/illustrations/"+key.getUma_tag())
+                            .queryParam("word",key.getUma_tag())
+                            .queryParam("order","date_d")
+                            .queryParam("mode","all")
+                            .queryParam("p",cnt)
+                            .queryParam("s_mode","s_tag")
+                            .queryParam("type","illust_and_ugoira")
+                            .queryParam("lang","ko")
 
-            .build();
+                        .build();
 
-        url = "https://"+uriCom.toString();
-        //System.out.println("주소 : "+uriCom.toString());
-        //System.out.println("Jsoup를 쓴 값");
-        Thread.sleep(5000);
-
-        Document doc = Jsoup.connect(url).ignoreContentType(true).get();
-
-
-
-        String json = doc.text();
-        JSONParser jsonParse = new JSONParser();
-        JSONObject jsonObject = (JSONObject) jsonParse.parse(json);
-
-      //  String data = jsonObject.get("userId").toString();
-
-        Boolean error = (Boolean) jsonObject.get("error");
-        JSONObject array = (JSONObject) jsonObject.get("body");
-        JSONObject illustManga = (JSONObject) array.get("illustManga");
-        JSONArray data = (JSONArray) illustManga.get("data");
+                    url = "https://"+uriCom.toString();
+                    //System.out.println("주소 : "+uriCom.toString());
+                    //System.out.println("Jsoup를 쓴 값");
+                    Thread.sleep(5000);
+                    System.out.println("===url = "+url);	
+                    Document doc = Jsoup.connect(url).ignoreContentType(true).get();
 
 
-        //System.out.println(doc);
-        //System.out.println(jsonObject);
 
-        //System.out.println(error);
-        //System.out.println(array);
-        //System.out.println(illustManga);
-        int count = 0;
-         for(int i=0; i < data.size(); i++) {
-            // System.out.println("======== " + (i+1) + "번 ========");
-             JSONObject personObject = (JSONObject) data.get(i);
+                    String json = doc.text();
+                    JSONParser jsonParse = new JSONParser();
+                    JSONObject jsonObject = (JSONObject) jsonParse.parse(json);
+
+                  //  String data = jsonObject.get("userId").toString();
+
+                    Boolean error = (Boolean) jsonObject.get("error");
+                    JSONObject array = (JSONObject) jsonObject.get("body");
+                    JSONObject illustManga = (JSONObject) array.get("illust");
+                    JSONArray data = (JSONArray) illustManga.get("data");
 
 
-             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
-             SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-             Date createDate = simpleDateFormat.parse((String) personObject.get("createDate"));
-             
-             Date sysdate = new Date();
-             String time = format1.format(sysdate).substring(0,10);
+                    //System.out.println(doc);
+                    //System.out.println(jsonObject);
 
-             int id = Integer.parseInt((String) personObject.get("id")) ;
-             String title = (String) personObject.get("title");
-             String userName = (String) personObject.get("userName");
-             PixivDTO pixiv = new PixivDTO(key.getUma_code(),createDate,userName,id);
-             System.out.println(pixiv);
-             
-            System.out.println("id :"+id+" 제목 : "+title+" 작가명 : "+userName+" 업로드일자 : "+simpleDateFormat.format(createDate));
-            if(insertPixiv(pixiv) == true) {
-           	 System.out.println("업로드 성공");
-            }else {
-           	 System.out.println("업로드 실패");
-            }
+                    //System.out.println(error);
+                    //System.out.println(array);
+                    //System.out.println(illustManga);
+                    int count = 0;
+                    System.out.println("==============데이터 사이즈 = "+data.size()+"================");
+                     for(int i=0; i < data.size(); i++) {
+                        // System.out.println("======== " + (i+1) + "번 ========");
+                         JSONObject personObject = (JSONObject) data.get(i);
 
-             if(((String) personObject.get("createDate")).substring(0,10).equals(time)){
-                 count++;
 
-             }
+                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
+                         SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+                         Date createDate = simpleDateFormat.parse((String) personObject.get("createDate"));
+                         
+                         Date sysdate = new Date();
+                         String time = format1.format(sysdate).substring(0,10);
 
-         }
-        System.out.println("오늘 올라온 "+key.getUma_tag()+"의 픽시브짤 갯수 : "+count);
-         Thread.sleep(500);
+                         int id = Integer.parseInt((String) personObject.get("id")) ;
+                         String title = (String) personObject.get("title");
+                         String userName = (String) personObject.get("userName");
+                         PixivDTO pixiv = new PixivDTO(key.getUma_code(),createDate,userName,id);
+                         System.out.println(pixiv);
+                         
+                        System.out.println("id :"+id+" 제목 : "+title+" 작가명 : "+userName+" 업로드일자 : "+simpleDateFormat.format(createDate));
+                        if(insertPixiv(pixiv) == true) {
+                       	 System.out.println("업로드 성공");
+                        }else {
+                       	 System.out.println("업로드 실패");
+                        }
+
+                         if(((String) personObject.get("createDate")).substring(0,10).equals(time)){
+                             count++;
+
+                         }
+
+                     }
+                    
+                     Thread.sleep(500);
+                     if(data.size()!=60) {
+                    	 
+                    	 cnt=11;
+                    	 
+                    	 
+
+                     }
+                     if(cnt == 10) {
+                    	 System.out.println("오늘 올라온 "+key.getUma_tag()+"의 픽시브짤 갯수 : "+count);
+                     }
+                     
+        	}
         }
 		System.out.println("크롤링 종료");
 	}
