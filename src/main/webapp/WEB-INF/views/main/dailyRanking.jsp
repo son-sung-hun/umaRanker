@@ -28,7 +28,7 @@
 		 
 		<c:forEach var="rank" items="${ requestScope.pixivRanking }">
 		
-			${ rank.pixiv_rank }위 : <a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ rank.uma_code }" >${ rank.uma_name }</a> (총 ${ rank.pixiv_count } 개)
+			${ rank.pixiv_rank }위 : <a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ rank.uma_code }" style="text-decoration:none; color:green;">${ rank.uma_name }</a> (총 ${ rank.pixiv_count } 개)
 			<br>
 			<br>
 		</c:forEach>

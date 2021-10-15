@@ -10,7 +10,8 @@
 </head>
 <body>
 		<div class="nav">
-			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/soup'">일간랭킹</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/main'" style="margin-left:20px; margin-right:100px;">로고(임시)</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/soup'" style="margin-left:160px; margin-right:20px;">일간랭킹</div>
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/week'">주간랭킹</div>
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/month'">월간랭킹</div>
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/database'">데이터베이스</div>
