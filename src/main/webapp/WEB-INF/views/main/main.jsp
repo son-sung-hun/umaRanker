@@ -82,6 +82,26 @@ section::after {
 				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px">
 				</nav>
 				<article>
+				<c:choose>
+					<c:when test="${ empty requestScope.count }">
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; color:green;">◁</a>
+						기준 날짜 : ${ updateDate }
+					</c:when>
+					
+					<c:when test="${ requestScope.count eq 0 }">
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; color:green;">◁</a>
+						기준 날짜 : ${ updateDate }
+					</c:when>
+					
+					<c:otherwise>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; color:green;">◁</a>
+						기준 날짜 : ${ updateDate }
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; color:green;">▷</a>
+					</c:otherwise>
+				</c:choose>
+				<br>	
+				
+				<br>
 				오늘의 인기 우마무스메는??
 				<h1><a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:green;">${ daily.uma_name }</a>
 					<c:if test="${s.index ne '0'}">

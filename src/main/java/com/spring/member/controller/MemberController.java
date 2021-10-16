@@ -2,6 +2,7 @@ package com.spring.member.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,6 +45,7 @@ import com.spring.member.model.service.MemberService;
 @RequestMapping("/*")
 public class MemberController {
 	Date updateDate;
+	Calendar cal;
 	private final MemberService memberService;
 	private static String url = "";
 	private final BCryptPasswordEncoder passwordEncoder;
@@ -57,9 +59,32 @@ public class MemberController {
 	}
 	
 	@GetMapping(value={"/", "main"})
-	public String main(Model model) {
-		List<PixivDTO> daily = memberService.selectDailyBest();
+	public String main(Model model ,@RequestParam(value="day_count", required=false) String day_count) {
+		int count = 0;
+		updateDate = memberService.updateDate();
+		cal = Calendar.getInstance();
+		cal.setTime(updateDate);
+		
+		if(day_count != null) {
+			count = Integer.parseInt(day_count);
+		}
+		
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		
+		if(count==0) {
+			df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		}
+		
+		
+		
+		
+		List<PixivDTO> daily = memberService.selectDailyBest(count);
+		cal.add(Calendar.DATE, -(count));
+		
+        model.addAttribute("updateDate",df.format(cal.getTime()));
         model.addAttribute("daily",daily);
+        model.addAttribute("count",count);
 
 		return "main/main";
 	}
@@ -69,7 +94,10 @@ public class MemberController {
 	
         List<PixivDTO> pixivRanking = memberService.selectPixivRank();
         updateDate = memberService.updateDate();
-        model.addAttribute("updateDate",updateDate);
+		cal = Calendar.getInstance();
+		cal.setTime(updateDate);
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        model.addAttribute("updateDate",df.format(cal.getTime()));
         model.addAttribute("pixivRanking",pixivRanking);
         
 
@@ -86,6 +114,9 @@ public class MemberController {
 		
         List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(date);
         updateDate = memberService.updateDate();
+		cal = Calendar.getInstance();
+		cal.setTime(updateDate);
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         model.addAttribute("updateDate",updateDate);
         model.addAttribute("pixivRanking",pixivRanking);
 
@@ -100,6 +131,9 @@ public class MemberController {
 		
         List<PixivDTO> pixivRanking = memberService.selectPixivMonthRank();
         updateDate = memberService.updateDate();
+		cal = Calendar.getInstance();
+		cal.setTime(updateDate);
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         model.addAttribute("updateDate",updateDate);
         model.addAttribute("pixivRanking",pixivRanking);
 
