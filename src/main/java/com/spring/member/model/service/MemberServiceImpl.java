@@ -181,7 +181,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public PixivDTO selectDailyBest() {
+	public List<PixivDTO> selectDailyBest() {
 		// TODO Auto-generated method stub
 		return mapper.selectDailyBest();
 	}

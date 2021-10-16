@@ -43,6 +43,9 @@ nav ul {
 nav img {
 	width:auto;
 	height:auto;
+	border-width: 3px;
+	border-color: gray;
+  	border-style: solid;
 }
 
 article {
@@ -70,17 +73,35 @@ section::after {
 	<jsp:include page="../common/menubar.jsp"/>
 	<br>
 	<div align="center">
+		<c:forEach var="daily" items="${ requestScope.daily }" varStatus="s">
 		
-		<section>
-		<nav>
-		<img src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.daily.uma_name }.png" width="700px">
-		</nav>
-		<article>
-		오늘의 인기 우마무스메는??
-		<h1><a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:green;">${ daily.uma_name }</a></h1>
-		<h1>오늘의 언급횟수(픽시브) : ${ requestScope.daily.pixiv_count } 회</h1>
-		</article>
-		</section>
+		
+			<c:if test="${s.last }">
+				<section>
+				<nav>
+				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px">
+				</nav>
+				<article>
+				오늘의 인기 우마무스메는??
+				<h1><a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:green;">${ daily.uma_name }</a>
+					<c:if test="${s.index ne '0'}">
+					외 
+						${s.index }
+					명
+					</c:if>
+				</h1>
+				<h1>오늘의 언급횟수(픽시브) : ${ daily.pixiv_count } 회</h1>
+				</article>
+				</section>
+			</c:if>
+			
+			
+				
+		
+		
+		
+
+		</c:forEach>
 	</div>
 </body>
 </html>

@@ -28,7 +28,11 @@ nav {
 }
 
 ul{
-	padding:0px;
+	padding:10px;
+	
+	border-width: 3px;
+	border-color: gray;
+  	border-style: solid;
 }
 li {
 	list-style: none;
@@ -44,18 +48,21 @@ nav ul {
 nav img {
 	width:auto;
 	height:auto;
+	border-width: 3px;
+	border-color: gray;
+  	border-style: solid;
 }
 
 article {
 	width: 500px;
   margin-top : 200px;
   float: left;
+  
 }
 
 section {
 	width: 1200px;
 	text-align:left;
-	background-color:white;
 }
 /* Clear floats after the columns */
 section::after {

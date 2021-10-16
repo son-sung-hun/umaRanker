@@ -23,7 +23,7 @@
 		<br>
 		<br> 
 		 
-		<c:forEach var="uma" items="${ requestScope.umaData }">
+		<c:forEach var="uma" items="${ requestScope.umaData }" >
 			
 			
 			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }" style="text-decoration:none; color:green;">${ uma.uma_name }</a>

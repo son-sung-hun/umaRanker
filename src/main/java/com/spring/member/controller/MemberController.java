@@ -58,7 +58,7 @@ public class MemberController {
 	
 	@GetMapping(value={"/", "main"})
 	public String main(Model model) {
-		PixivDTO daily = memberService.selectDailyBest();
+		List<PixivDTO> daily = memberService.selectDailyBest();
         model.addAttribute("daily",daily);
 
 		return "main/main";
