@@ -20,7 +20,7 @@ body {
 }
 
 /* Create two columns/boxes that floats next to each other */
-nav {
+aside {
   float: left;
   width: 600px;
   padding: 20px;
@@ -40,7 +40,7 @@ nav ul {
   padding: 0;
 }
 
-nav img {
+aside img {
 	width:auto;
 	height:auto;
 	border-width: 3px;
@@ -78,9 +78,9 @@ section::after {
 		
 			<c:if test="${s.last }">
 				<section>
-				<nav>
+				<aside>
 				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px">
-				</nav>
+				</aside>
 				<article>
 				<c:choose>
 					<c:when test="${ empty requestScope.count }">
