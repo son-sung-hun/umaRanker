@@ -1,26 +1,32 @@
 .nav {
+	left:0;
+	top:0;
+	right:0;
+	position: fixed;
 	width:1920px;
 	margin-left:auto;
 	margin-right:auto;
-	background:#444343;
+	background:#905F00;
 	color:white;
 	margin:0px;
 }
 .menu {
 	display:inline-block;
-	background:#444343;
+	background:#905F00;
 	text-align:center;
 	line-height:50px;
 	width:150px;
 	height:50px;
 	margin-left:20px;
 	margin-right:20px;
+	
 }
 body { 
-	margin:0px;
+	margin: 0 auto;
 }
+body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 .menu:hover {
-	background:#979797;
+	background:#563900;
 	color:white;
 	cursor:pointer;
 }

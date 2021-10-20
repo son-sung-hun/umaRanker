@@ -23,6 +23,8 @@ body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
 	<br>
+	<br>
+	<br>
 	<div align="center">
 		데이터베이스
 		<br>

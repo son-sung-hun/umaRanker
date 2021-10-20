@@ -18,8 +18,10 @@
 <style>
 body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 body {
+  background-color:#F0F0F0;
   margin-right: 200px;
   margin-left: 200px;
+  height:980px;
 }
 
 /* Create two columns/boxes that floats next to each other */
@@ -61,6 +63,7 @@ section {
 	width: 1200px;
 	text-align:left;
 	background-color:white;
+	height:970px;
 }
 /* Clear floats after the columns */
 section::after {
@@ -73,7 +76,9 @@ section::after {
 </style>
 </head>
 <body>
+
 	<jsp:include page="../common/menubar.jsp"/>
+	<br>
 	<br>
 	<div align="center">
 		<c:forEach var="daily" items="${ requestScope.daily }" varStatus="s">

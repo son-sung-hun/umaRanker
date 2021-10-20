@@ -18,8 +18,8 @@
 	}
 	
 	var list1 = new Array();
-	var count = 5;
-	var count1 = 10;
+	var count = 10;
+	var count1 = 15;
 	<c:forEach var="rank" items="${ requestScope.pixivRanking }">
 	list1.push({
 		code:"${rank.uma_code}",
@@ -33,7 +33,7 @@
 	</c:forEach>
 	
     $(function() {
-        $("button").on("click", function() {
+        $("#show").on("click", function() {
         	
         	for(var i = count; i<count1; i++){
         		switch(list1[i].rank){
@@ -105,7 +105,8 @@
         	if(count>list1.length){
         		$("#show").hide();
         	}
-        	
+        	$('html, body').scrollTop(document.body.scrollHeight);
+
         	
         	
         });
@@ -125,14 +126,26 @@ body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 .txt{width:500px; font-size:30px; text-align:left; font-weight: bold;}
 
 .txt1{width:500px; font-size:30px; text-align:left; font-weight: bold; padding-left:110px;}
+html {
+	background-color:#F0F0F0;
+}
+
+body {
+width: 1200px;
+  background-color:white;
+  height:100%;
+}
 
 </style>
 
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
+	
+	<br>
 	<br>
 	<div align="center">
+	<br>
 		<br>
 		<p style="font-size: 30px; margin:0px; font-weight: bold;">이번주의 인기 우마무스메는 ?</p>
 		<p style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ updateDate }</p>
@@ -143,8 +156,24 @@ body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 		
 		
 		</div>
-		<button id="show">더 보기</button>
-
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		<br>
+		<br>
+		<br>
+		<img src='${ pageContext.servletContext.contextPath }/resources/images/arrow.png' id="show" style='width:50px; height:50px;'>
+		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
 		<br>
 		<br>
 		

@@ -4,6 +4,7 @@
     
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +16,29 @@
 	if(message != null && message !== '') {
 		alert(message);
 	}
+	
+	var files = new Image;
+	files.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }2.png";
+	
+	
+	files.onload=function(){
+		$("#side").append("<a href='#' id='img2'>[승부복]</a>");
+		$(function() {
+			$("#img2").on("click", function(){
+				$("#img").attr("src",files.src);
+			});
+			});
+		
+	};
+	
 </script>
 <style>
 body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 body {
+  background-color:#F0F0F0;
   margin-right: 200px;
   margin-left: 200px;
+  height:980px;
 }
 
 /* Create two columns/boxes that floats next to each other */
@@ -64,8 +82,10 @@ article {
 }
 
 section {
+	background-color:white;
 	width: 1200px;
 	text-align:left;
+	height:970px;
 }
 /* Clear floats after the columns */
 section::after {
@@ -80,13 +100,14 @@ section::after {
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
 	<div align="center">
-	
 	<br>
-	
-		<br>
+	<br>
 		<section>
-		<aside>
-		<img src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px">
+		<aside id="side">
+		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px" >
+		<br>
+		<a href='#' id='img3'>[교복]</a>
+		
 		</aside>
 		 <article>
 		 <ul>
