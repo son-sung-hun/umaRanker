@@ -50,7 +50,7 @@ public class MemberController {
 	private static String url = "";
 	private final BCryptPasswordEncoder passwordEncoder;
 	
-    private static String TEST_URL = "https://www.pixiv.net/ajax/search/artworks/%E3%83%9E%E3%83%A4%E3%83%8E%E3%83%88%E3%83%83%E3%83%97%E3%82%AC%E3%83%B3?word=%E3%83%9E%E3%83%A4%E3%83%8E%E3%83%88%E3%83%83%E3%83%97%E3%82%AC%E3%83%B3&order=date_d&mode=all&p=1&s_mode=s_tag&type=all&lang=ko";
+    private static String URL = "https://www.pixiv.net/tags/";
     
 	@Autowired
 	public MemberController(MemberService memberService, BCryptPasswordEncoder passwordEncoder) {
@@ -85,7 +85,7 @@ public class MemberController {
         model.addAttribute("updateDate",df.format(cal.getTime()));
         model.addAttribute("daily",daily);
         model.addAttribute("count",count);
-
+        
 		return "main/main";
 	}
 	

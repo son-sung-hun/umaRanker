@@ -18,10 +18,14 @@
 <style>
 body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 body {
-  background-color:#F0F0F0;
+  
   margin-right: 200px;
   margin-left: 200px;
   height:980px;
+}
+
+html{
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");
 }
 
 /* Create two columns/boxes that floats next to each other */
@@ -49,8 +53,8 @@ aside img {
 	width:auto;
 	height:auto;
 	border-width: 3px;
-	border-color: gray;
-  	border-style: solid;
+	border-color: #8EFFA0;
+  	border-style: dotted;
 }
 
 article {
@@ -62,7 +66,7 @@ article {
 section {
 	width: 1200px;
 	text-align:left;
-	background-color:white;
+	background-color: rgba(255, 255, 255, 0.60);
 	height:970px;
 }
 /* Clear floats after the columns */
@@ -92,25 +96,25 @@ section::after {
 				<article>
 				<c:choose>
 					<c:when test="${ empty requestScope.count }">
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; color:green;">◁</a>
-						기준 날짜 : ${ updateDate }
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+						<span style="font-size: 20px; font-weight: bold;">기준 날짜 : ${ updateDate }</span>
 					</c:when>
 					
 					<c:when test="${ requestScope.count eq 0 }">
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; color:green;">◁</a>
-						기준 날짜 : ${ updateDate }
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+						<span style="font-size: 20px; font-weight: bold;">기준 날짜 : ${ updateDate }</span>
 					</c:when>
 					
 					<c:otherwise>
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; color:green;">◁</a>
-						기준 날짜 : ${ updateDate }
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; color:green;">▷</a>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+						<span style="font-size: 20px; font-weight: bold;">기준 날짜 : ${ updateDate }</span>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 20px; color:green;">▶</a>
 					</c:otherwise>
 				</c:choose>
 				<br>	
 				
 				<br>
-				오늘의 인기 우마무스메는??
+				<p style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
 				<h1><a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:green;">${ daily.uma_name }</a>
 					<c:if test="${s.index ne '0'}">
 					외 
@@ -118,7 +122,9 @@ section::after {
 					명
 					</c:if>
 				</h1>
-				<h1>오늘의 언급횟수(픽시브) : ${ daily.pixiv_count } 회</h1>
+				<h1>오늘의 언급횟수 (
+				<a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'>픽시브</a>
+				) : ${ daily.pixiv_count } 회</h1>
 				</article>
 				</section>
 			</c:if>

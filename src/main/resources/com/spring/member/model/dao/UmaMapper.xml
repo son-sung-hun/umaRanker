@@ -26,7 +26,7 @@
 		<result column="PIC_ID" property="pic_id" />
 		<result column="RANKING" property="pixiv_rank" />
 		<result column="COUNT" property="pixiv_count" />
-		
+		<result column="UMA_TAG" property="uma_tag" />
 	</resultMap>
 
 	<select id="selectUma" resultMap="umaResultSet" parameterType="UmaDTO">
@@ -111,17 +111,19 @@
         SELECT
 	    UMA_CODE
 	    ,UMA_NAME
+	    ,UMA_TAG
 	    ,COUNT
 	    ,RANKING
 	    FROM (
 	    SELECT
 	    B.UMA_NAME,
-	    B.UMA_CODE
+	    B.UMA_CODE,
+	    B.UMA_TAG
 	    , RANK() OVER(ORDER BY COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') = TO_CHAR(SYSDATE-#{day_count},'YY/MM/DD') THEN 1 END) DESC) AS RANKING
 	    , COUNT(CASE WHEN TO_CHAR(UPLOAD_DATE,'YY/MM/DD') = TO_CHAR(SYSDATE-#{day_count},'YY/MM/DD') THEN 1 END) AS COUNT
 	    FROM pixiv_data a
 	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
-	    group by b.UMA_CODE, B.UMA_NAME
+	    group by b.UMA_CODE, B.UMA_NAME, B.UMA_TAG
 	    
 	    )
 	    WHERE RANKING=1

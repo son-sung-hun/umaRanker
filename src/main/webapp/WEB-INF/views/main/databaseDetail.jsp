@@ -35,12 +35,14 @@
 <style>
 body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 body {
-  background-color:#F0F0F0;
   margin-right: 200px;
   margin-left: 200px;
   height:980px;
 }
 
+html{
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");
+}
 /* Create two columns/boxes that floats next to each other */
 aside {
   float: left;
@@ -52,8 +54,8 @@ ul{
 	padding:10px;
 	
 	border-width: 3px;
-	border-color: gray;
-  	border-style: solid;
+	border-color: #8EFFA0;
+  	border-style: dotted;
 }
 li {
 	list-style: none;
@@ -70,8 +72,8 @@ aside img {
 	width:auto;
 	height:auto;
 	border-width: 3px;
-	border-color: gray;
-  	border-style: solid;
+	border-color: #8EFFA0;
+  	border-style: dotted;
 }
 
 article {
@@ -82,9 +84,9 @@ article {
 }
 
 section {
-	background-color:white;
 	width: 1200px;
 	text-align:left;
+	background-color: rgba(255, 255, 255, 0.60);
 	height:970px;
 }
 /* Clear floats after the columns */

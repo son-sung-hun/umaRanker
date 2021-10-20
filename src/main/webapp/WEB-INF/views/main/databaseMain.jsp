@@ -18,6 +18,17 @@
 </script>
 <style type="text/css">
 body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
+
+html{
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");
+}
+body {
+width: 1200px;
+  background-color: rgba(255, 255, 255, 0.60);
+  height:100%;
+}
+
+
 </style>
 </head>
 <body>

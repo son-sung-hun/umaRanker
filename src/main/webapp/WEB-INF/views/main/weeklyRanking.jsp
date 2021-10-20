@@ -126,13 +126,12 @@ body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 .txt{width:500px; font-size:30px; text-align:left; font-weight: bold;}
 
 .txt1{width:500px; font-size:30px; text-align:left; font-weight: bold; padding-left:110px;}
-html {
-	background-color:#F0F0F0;
+html{
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");
 }
-
 body {
 width: 1200px;
-  background-color:white;
+  background-color: rgba(255, 255, 255, 0.60);
   height:100%;
 }
 
