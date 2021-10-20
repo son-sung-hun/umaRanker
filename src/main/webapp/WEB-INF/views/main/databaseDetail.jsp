@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
@@ -14,14 +17,14 @@
 	}
 </script>
 <style>
+body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 body {
-  font-family: Arial, Helvetica, sans-serif;
   margin-right: 200px;
   margin-left: 200px;
 }
 
 /* Create two columns/boxes that floats next to each other */
-nav {
+aside {
   float: left;
   width: 600px;
   padding: 20px;
@@ -40,12 +43,12 @@ li {
 	margin-top : 10px;
 }
 /* Style the list inside the menu */
-nav ul {
+aside ul {
   list-style-type: none;
   padding: 0;
 }
 
-nav img {
+aside img {
 	width:auto;
 	height:auto;
 	border-width: 3px;
@@ -75,15 +78,16 @@ section::after {
 </style>
 </head>
 <body>
-	<div align="center">
 	<jsp:include page="../common/menubar.jsp"/>
+	<div align="center">
+	
 	<br>
 	
 		<br>
 		<section>
-		<nav>
+		<aside>
 		<img src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px">
-		</nav>
+		</aside>
 		 <article>
 		 <ul>
 		 	<li style="font-size: 30px;">${ requestScope.umaDetail.uma_name }</li>

@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
@@ -13,8 +16,8 @@
 	}
 </script>
 <style>
+body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 body {
-  font-family: Arial, Helvetica, sans-serif;
   margin-right: 200px;
   margin-left: 200px;
 }

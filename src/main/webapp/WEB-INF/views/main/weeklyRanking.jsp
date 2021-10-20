@@ -6,6 +6,9 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -112,6 +115,7 @@
 
 </script>
 <style type="text/css">
+body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 .test_box{display:table;width:800px;background:#c9eafa;padding:10px;}
 
 .tr{display:table-row;height:80px;width:900px;}
@@ -120,7 +124,7 @@
 
 .txt{width:500px; font-size:30px; text-align:left; font-weight: bold;}
 
-.txt1{width:500px; font-size:30px; text-align:left; padding-left:130px;}
+.txt1{width:500px; font-size:30px; text-align:left; font-weight: bold; padding-left:110px;}
 
 </style>
 
@@ -129,11 +133,9 @@
 	<jsp:include page="../common/menubar.jsp"/>
 	<br>
 	<div align="center">
-		주간랭킹 페이지
 		<br>
-		이번주의 인기 우마무스메는 ?
-		<br> 
-		기준 날짜 : ${ updateDate }
+		<p style="font-size: 30px; margin:0px; font-weight: bold;">이번주의 인기 우마무스메는 ?</p>
+		<p style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ updateDate }</p>
 		<br>
 		<br> 
 		<div id="list">

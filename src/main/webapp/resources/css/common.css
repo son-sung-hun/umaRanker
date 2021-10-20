@@ -1,12 +1,14 @@
 .nav {
-	width:1200px;
+	width:1920px;
 	margin-left:auto;
 	margin-right:auto;
-	background:#DBDBDB;
+	background:#444343;
+	color:white;
+	margin:0px;
 }
 .menu {
 	display:inline-block;
-	background:#B2B2B2;
+	background:#444343;
 	text-align:center;
 	line-height:50px;
 	width:150px;
@@ -14,11 +16,11 @@
 	margin-left:20px;
 	margin-right:20px;
 }
+body { 
+	margin:0px;
+}
 .menu:hover {
-	background:orangered;
+	background:#979797;
 	color:white;
 	cursor:pointer;
-}
-.btn-login {
-	height:50px;
 }

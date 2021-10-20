@@ -117,7 +117,7 @@ public class MemberController {
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        model.addAttribute("updateDate",updateDate);
+        model.addAttribute("updateDate",df.format(cal.getTime()));
         model.addAttribute("pixivRanking",pixivRanking);
 
 
@@ -134,7 +134,7 @@ public class MemberController {
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        model.addAttribute("updateDate",updateDate);
+        model.addAttribute("updateDate",df.format(cal.getTime()));
         model.addAttribute("pixivRanking",pixivRanking);
 
 

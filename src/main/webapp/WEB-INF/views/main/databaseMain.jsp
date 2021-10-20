@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
@@ -13,6 +16,9 @@
 		alert(message);
 	}
 </script>
+<style type="text/css">
+body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
+</style>
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
