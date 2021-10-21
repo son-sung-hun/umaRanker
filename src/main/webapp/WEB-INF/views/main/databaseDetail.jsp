@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
     
 <!DOCTYPE html>
 <html>
@@ -133,7 +135,11 @@ section::after {
 		</aside>
 		 <article>
 		 <ul>
-		 	<li style="font-size: 30px;">${ requestScope.umaDetail.uma_name }</li>
+		 
+		 	<c:set var="name" value="${ requestScope.umaDetail.uma_tag }"/>
+		 	<c:set var="value" value="${fn:length(name)-5 }"/>
+		 	<li style="font-size: 30px;">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:top; margin-top : 5px;"></a></li>
+			<li style="font-size: 15px; margin-top : 0px;">${fn:substring(name,0,value) }</li>
 			<li>성우 : ${ requestScope.umaDetail.uma_voice }</li>
 			<li>신장 : ${ requestScope.umaDetail.height }</li>
 			<li>체중 : ${ requestScope.umaDetail.weight }</li>
