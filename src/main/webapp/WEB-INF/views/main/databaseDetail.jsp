@@ -76,13 +76,14 @@ ul{
 	padding:10px;
 	
 	border-width: 3px;
-	border-color: #8EFFA0;
+	
   	border-style: dotted;
 }
 li {
 	list-style: none;
 	font-size: 20px;
 	margin-top : 10px;
+	 font-weight: bold;
 }
 /* Style the list inside the menu */
 aside ul {
@@ -94,7 +95,6 @@ aside img {
 	width:auto;
 	height:auto;
 	border-width: 3px;
-	border-color: #8EFFA0;
   	border-style: dotted;
 }
 
@@ -128,17 +128,17 @@ section::after {
 	<br>
 		<section>
 		<aside id="side" align="center">
-		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px" >
+		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px" style="border-color: ${ requestScope.umaDetail.color_tag };">
 		<br>
 		<a href='#' id='img1' style='font-size: 18px; text-decoration:none; color:green;'>[ 교복 ]</a>
 		
 		</aside>
 		 <article>
-		 <ul>
+		 <ul style="border-color: ${ requestScope.umaDetail.color_tag };">
 		 
 		 	<c:set var="name" value="${ requestScope.umaDetail.uma_tag }"/>
 		 	<c:set var="value" value="${fn:length(name)-5 }"/>
-		 	<li style="font-size: 30px;">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:top; margin-top : 5px;"></a></li>
+		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:top; margin-top : 5px;"></a></li>
 			<li style="font-size: 15px; margin-top : 0px;">${fn:substring(name,0,value) }</li>
 			<li>성우 : ${ requestScope.umaDetail.uma_voice }</li>
 			<li>신장 : ${ requestScope.umaDetail.height }</li>

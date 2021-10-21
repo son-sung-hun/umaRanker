@@ -25,8 +25,8 @@
 		code:"${rank.uma_code}",
 		name:"${rank.uma_name}",
 		rank:"${ rank.pixiv_rank }",
-		count:"${ rank.pixiv_count }"
-		
+		count:"${ rank.pixiv_count }",
+		color:"${ rank.color_tag }"
 	});
 	
 	
@@ -45,7 +45,9 @@
         			    	+list1[i].rank
         			    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
         			    	+list1[i].code
-        			    	+"' style='text-decoration:none; color:green;'>"
+        			    	+"' style='text-decoration:none; color:"
+        			    	+list1[i].color
+        			    	+";'>"
         			    	+list1[i].name
         			    	+"</a> (총 "
         			    	+list1[i].count
@@ -59,7 +61,9 @@
         			    	+list1[i].rank
         			    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
         			    	+list1[i].code
-        			    	+"' style='text-decoration:none; color:green;'>"
+        			    	+"' style='text-decoration:none; color:"
+        			    	+list1[i].color
+        			    	+";'>"
         			    	+list1[i].name
         			    	+"</a> (총 "
         			    	+list1[i].count
@@ -73,7 +77,9 @@
         			    	+list1[i].rank
         			    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
         			    	+list1[i].code
-        			    	+"' style='text-decoration:none; color:green;'>"
+        			    	+"' style='text-decoration:none; color:"
+        			    	+list1[i].color
+        			    	+";'>"
         			    	+list1[i].name
         			    	+"</a> (총 "
         			    	+list1[i].count
@@ -85,7 +91,9 @@
         			    	+list1[i].rank
         			    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
         			    	+list1[i].code
-        			    	+"' style='text-decoration:none; color:green;'>"
+        			    	+"' style='text-decoration:none; color:"
+        			    	+list1[i].color
+        			    	+";'>"
         			    	+list1[i].name
         			    	+"</a> (총 "
         			    	+list1[i].count
@@ -105,13 +113,13 @@
         	if(count>list1.length){
         		$("#show").hide();
         	}
-        	
-
         	$('.scroll').animate({
         		scrollTop: $('#list').height()
         	},500);
+
+        	
+        	
         });
-        
     });
 	
 
@@ -128,6 +136,7 @@ body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 .txt{width:500px; font-size:30px; text-align:left; font-weight: bold;}
 
 .txt1{width:500px; font-size:28px; text-align:left; font-weight: bold; padding-left:110px;}
+
 html{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");
 }
@@ -150,7 +159,6 @@ width: 1200px;
   .scroll::-webkit-scrollbar-track {
     background-color: #EFEFEF;
   }
-
 </style>
 
 </head>
@@ -178,6 +186,7 @@ width: 1200px;
 		<br>
 		<img src='${ pageContext.servletContext.contextPath }/resources/images/arrow.png' id="show" style='width:50px; height:50px;'>
 		
+		<br>
 		
 	</div>
 </body>
@@ -193,7 +202,9 @@ for(var i=0; i<count; i++){
 		    	+list1[i].rank
 		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
 		    	+list1[i].code
-		    	+"' style='text-decoration:none; color:green;'>"
+		    	+"' style='text-decoration:none; color:"
+		    	+list1[i].color
+		    	+";'>"
 		    	+list1[i].name
 		    	+"</a> (총 "
 		    	+list1[i].count
@@ -207,7 +218,9 @@ for(var i=0; i<count; i++){
 		    	+list1[i].rank
 		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
 		    	+list1[i].code
-		    	+"' style='text-decoration:none; color:green;'>"
+		    	+"' style='text-decoration:none; color:"
+		    	+list1[i].color
+		    	+";'>"
 		    	+list1[i].name
 		    	+"</a> (총 "
 		    	+list1[i].count
@@ -221,7 +234,9 @@ for(var i=0; i<count; i++){
 		    	+list1[i].rank
 		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
 		    	+list1[i].code
-		    	+"' style='text-decoration:none; color:green;'>"
+		    	+"' style='text-decoration:none; color:"
+		    	+list1[i].color
+		    	+";'>"
 		    	+list1[i].name
 		    	+"</a> (총 "
 		    	+list1[i].count
@@ -233,7 +248,9 @@ for(var i=0; i<count; i++){
 		    	+list1[i].rank
 		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
 		    	+list1[i].code
-		    	+"' style='text-decoration:none; color:green;'>"
+		    	+"' style='text-decoration:none; color:"
+		    	+list1[i].color
+		    	+";'>"
 		    	+list1[i].name
 		    	+"</a> (총 "
 		    	+list1[i].count

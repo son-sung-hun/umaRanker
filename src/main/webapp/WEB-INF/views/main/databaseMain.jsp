@@ -37,19 +37,20 @@ li {
 	font-size: 20px;
 	margin-top:15px;
 }
-      .sa {
-        opacity: 0;
+.sa {
+		opacity: 0;
         transition: all .5s ease;
-      }
+    }
 
-      /* 아래에서 위로 페이드 인 */
-      .sa-up {
+
+.sa-up {
         transform: translate(0, 100px);
-      }
-      .sa.show {
+       }
+.sa.show {
         opacity: 1;
         transform: none;
       }
+
 </style>
 </head>
 <body>
@@ -59,6 +60,7 @@ li {
 	<br>
 	<div align="center">
 	<br>
+	<h1>우마무스메 목록</h1>
 		<ul>
 		<c:forEach var="uma" items="${ requestScope.umaData }" varStatus="s">
 		<c:choose>
@@ -66,14 +68,14 @@ li {
 			<li class="sa sa-up">
 			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
 			<br>
-			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:green; font-weight: bold;">${ uma.uma_name }</a>
+			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a>
 			</li>
 		</c:when>
 		<c:otherwise>
 			<li>
 			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
 			<br>
-			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:green; font-weight: bold;">${ uma.uma_name }</a>
+			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a>
 			</li>
 		</c:otherwise>
 		</c:choose>

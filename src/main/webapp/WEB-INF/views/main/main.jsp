@@ -53,7 +53,6 @@ aside img {
 	width:auto;
 	height:auto;
 	border-width: 3px;
-	border-color: #8EFFA0;
   	border-style: dotted;
 }
 
@@ -91,7 +90,7 @@ section::after {
 			<c:if test="${s.last }">
 				<section>
 				<aside align="center">
-				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px">
+				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px" style="border-color: ${ daily.color_tag };">
 				</aside>
 				<article>
 				<c:choose>
@@ -115,7 +114,7 @@ section::after {
 				
 				<br>
 				<p style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
-				<h1><a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:green;">${ daily.uma_name }</a>
+				<h1><a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }</a>
 					<c:if test="${s.index ne '0'}">
 					외 
 						${s.index }

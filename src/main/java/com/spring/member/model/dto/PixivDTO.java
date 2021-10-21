@@ -11,18 +11,17 @@ public class PixivDTO {
 	private int pixiv_rank;
 	private int pixiv_count;
 	private String uma_tag;
+	private String color_tag;
 	public PixivDTO() {
 		
 	}
 
-	
-	
-	
+
 
 
 
 	public PixivDTO(int uma_code, String uma_name, Date upload_date, String author, int pic_id, int pixiv_rank,
-			int pixiv_count, String uma_tag) {
+			int pixiv_count, String uma_tag, String color_tag) {
 		super();
 		this.uma_code = uma_code;
 		this.uma_name = uma_name;
@@ -32,6 +31,7 @@ public class PixivDTO {
 		this.pixiv_rank = pixiv_rank;
 		this.pixiv_count = pixiv_count;
 		this.uma_tag = uma_tag;
+		this.color_tag = color_tag;
 	}
 
 
@@ -52,13 +52,9 @@ public class PixivDTO {
 
 
 
-
-
 	public int getUma_code() {
 		return uma_code;
 	}
-
-
 
 
 
@@ -72,13 +68,9 @@ public class PixivDTO {
 
 
 
-
-
 	public String getUma_name() {
 		return uma_name;
 	}
-
-
 
 
 
@@ -92,13 +84,9 @@ public class PixivDTO {
 
 
 
-
-
 	public Date getUpload_date() {
 		return upload_date;
 	}
-
-
 
 
 
@@ -112,13 +100,9 @@ public class PixivDTO {
 
 
 
-
-
 	public String getAuthor() {
 		return author;
 	}
-
-
 
 
 
@@ -132,13 +116,9 @@ public class PixivDTO {
 
 
 
-
-
 	public int getPic_id() {
 		return pic_id;
 	}
-
-
 
 
 
@@ -152,13 +132,9 @@ public class PixivDTO {
 
 
 
-
-
 	public int getPixiv_rank() {
 		return pixiv_rank;
 	}
-
-
 
 
 
@@ -172,13 +148,9 @@ public class PixivDTO {
 
 
 
-
-
 	public int getPixiv_count() {
 		return pixiv_count;
 	}
-
-
 
 
 
@@ -192,13 +164,9 @@ public class PixivDTO {
 
 
 
-
-
 	public String getUma_tag() {
 		return uma_tag;
 	}
-
-
 
 
 
@@ -212,15 +180,21 @@ public class PixivDTO {
 
 
 
-
-
-	@Override
-	public String toString() {
-		return "PixivDTO [uma_code=" + uma_code + ", uma_name=" + uma_name + ", upload_date=" + upload_date
-				+ ", author=" + author + ", pic_id=" + pic_id + ", pixiv_rank=" + pixiv_rank + ", pixiv_count="
-				+ pixiv_count + ", uma_tag=" + uma_tag + "]";
+	public String getColor_tag() {
+		return color_tag;
 	}
 
+
+
+
+
+	public void setColor_tag(String color_tag) {
+		this.color_tag = color_tag;
+	}
+
+
+
+	
 
 
 	
