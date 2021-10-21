@@ -105,11 +105,13 @@
         	if(count>list1.length){
         		$("#show").hide();
         	}
-        	$('html, body').scrollTop(document.body.scrollHeight);
+        	
 
-        	
-        	
+        	$('.scroll').animate({
+        		scrollTop: $('#list').height()
+        	},500);
         });
+        
     });
 	
 
@@ -125,7 +127,7 @@ body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 
 .txt{width:500px; font-size:30px; text-align:left; font-weight: bold;}
 
-.txt1{width:500px; font-size:30px; text-align:left; font-weight: bold; padding-left:110px;}
+.txt1{width:500px; font-size:28px; text-align:left; font-weight: bold; padding-left:110px;}
 html{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");
 }
@@ -134,6 +136,20 @@ width: 1200px;
   background-color: rgba(255, 255, 255, 0.60);
   height:100%;
 }
+  .scroll {
+    width: 250px;
+    height: 140px;
+    overflow: auto;
+  }
+  .scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: #8EFFA0;
+  }
+  .scroll::-webkit-scrollbar-track {
+    background-color: #EFEFEF;
+  }
 
 </style>
 
@@ -143,7 +159,7 @@ width: 1200px;
 	
 	<br>
 	<br>
-	<div align="center">
+	<div class="scroll" align="center" style="overflow:auto; width:1200px; height:970px;">
 	<br>
 		<br>
 		<p style="font-size: 30px; margin:0px; font-weight: bold;">이번달의 인기 우마무스메는 ?</p>
@@ -157,24 +173,11 @@ width: 1200px;
 		</div>
 		<br>
 		<br>
-		<br>
-		<br>
-		<br>
 		
-		<br>
 		<br>
 		<br>
 		<img src='${ pageContext.servletContext.contextPath }/resources/images/arrow.png' id="show" style='width:50px; height:50px;'>
 		
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		
-		<br>
-		<br>
 		
 	</div>
 </body>
