@@ -17,20 +17,40 @@
 		alert(message);
 	}
 	
-	var files = new Image;
-	files.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }2.png";
+	var mainUniform = new Image;
+	var gameUniform = new Image;
+	var defaultArt = new Image;
 	
+	mainUniform.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png";
+	gameUniform.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }_승부복.png";
+	defaultArt.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }_원안.png";
+
 	
-	files.onload=function(){
-		$("#side").append("<a href='#' id='img2'>[승부복]</a>");
+	gameUniform.onload=function(){
+		$("#side").append("<a href='#' id='img2' style='font-size: 18px; text-decoration:none; color:green;'>[ 승부복 ]</a>");
 		$(function() {
 			$("#img2").on("click", function(){
-				$("#img").attr("src",files.src);
+				$("#img").attr("src",gameUniform.src);
 			});
 			});
 		
 	};
 	
+	defaultArt.onload=function(){
+		$("#side").append("<a href='#' id='img3' style='font-size: 18px; text-decoration:none; color:green;'>[ 원안 ]</a>");
+		$(function() {
+			$("#img3").on("click", function(){
+				$("#img").attr("src",defaultArt.src);
+			});
+			});
+		
+	};
+	
+	$(function() {
+		$("#img1").on("click", function(){
+			$("#img").attr("src",mainUniform.src);
+		});
+	});
 </script>
 <style>
 body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
@@ -105,10 +125,10 @@ section::after {
 	<br>
 	<br>
 		<section>
-		<aside id="side">
+		<aside id="side" align="center">
 		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px" >
 		<br>
-		<a href='#' id='img3'>[교복]</a>
+		<a href='#' id='img1' style='font-size: 18px; text-decoration:none; color:green;'>[ 교복 ]</a>
 		
 		</aside>
 		 <article>
@@ -123,10 +143,8 @@ section::after {
 		 </ul>
 			
 
-			<br>
-			<br>
 			
-			<a href="${ pageContext.servletContext.contextPath }/member/database" >뒤로가기</a>
+			<a href="${ pageContext.servletContext.contextPath }/member/database"  style='font-size:18px; font-weight: bold; text-decoration:none; color:#00B11C;'>목록으로 돌아가기</a>
 		</article>
 		<br>
 		<br>

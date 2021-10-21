@@ -90,7 +90,7 @@ section::after {
 		
 			<c:if test="${s.last }">
 				<section>
-				<aside>
+				<aside align="center">
 				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px">
 				</aside>
 				<article>
