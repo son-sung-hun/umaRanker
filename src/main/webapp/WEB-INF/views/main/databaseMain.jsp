@@ -27,8 +27,29 @@ width: 1200px;
   background-color: rgba(255, 255, 255, 0.60);
   height:100%;
 }
+ul{
+	width:1100px;
+	display:flex;
+	flex-wrap : wrap;
+}
+li {
+	list-style: none;
+	font-size: 20px;
+	margin-top:15px;
+}
+      .sa {
+        opacity: 0;
+        transition: all .5s ease;
+      }
 
-
+      /* 아래에서 위로 페이드 인 */
+      .sa-up {
+        transform: translate(0, 100px);
+      }
+      .sa.show {
+        opacity: 1;
+        transform: none;
+      }
 </style>
 </head>
 <body>
@@ -37,21 +58,54 @@ width: 1200px;
 	<br>
 	<br>
 	<div align="center">
-		데이터베이스
-		<br>
-		<br>
-		<br> 
-		 
-		<c:forEach var="uma" items="${ requestScope.umaData }" >
-			
-			
-			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }" style="text-decoration:none; color:green;">${ uma.uma_name }</a>
+	<br>
+		<ul>
+		<c:forEach var="uma" items="${ requestScope.umaData }" varStatus="s">
+		<c:choose>
+		<c:when test="${s.count >12 }">
+			<li class="sa sa-up">
+			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
 			<br>
+			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:green; font-weight: bold;">${ uma.uma_name }</a>
+			</li>
+		</c:when>
+		<c:otherwise>
+			<li>
+			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
 			<br>
+			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:green; font-weight: bold;">${ uma.uma_name }</a>
+			</li>
+		</c:otherwise>
+		</c:choose>
+			
 		</c:forEach>
+		</ul>
 		<br>
 		<br>
-		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 	</div>
+	<script type="text/javascript">
+    const saTriggerMargin = 300;
+    const saElementList = document.querySelectorAll('.sa');
+
+    const saFunc = function() {
+      for (const element of saElementList) {
+        if (!element.classList.contains('show')) {
+          if (window.innerHeight > element.getBoundingClientRect().top + saTriggerMargin) {
+            element.classList.add('show');
+          }
+        }
+      }
+    }
+
+    window.addEventListener('load', saFunc);
+    window.addEventListener('scroll', saFunc);
+	
+	</script>
 </body>
 </html>
