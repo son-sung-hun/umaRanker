@@ -83,7 +83,7 @@ li {
 	list-style: none;
 	font-size: 20px;
 	margin-top : 10px;
-	 font-weight: bold;
+	 
 }
 /* Style the list inside the menu */
 aside ul {
@@ -135,17 +135,30 @@ section::after {
 		</aside>
 		 <article>
 		 <ul style="border-color: ${ requestScope.umaDetail.color_tag };">
-		 
+		 		<c:choose>
+					<c:when test="${ requestScope.umaDetail.uma_code eq 1 }">
+						<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+					</c:when>
+					
+					<c:when test="${ requestScope.umaDetail.uma_code eq 72 }">
+						<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }"  style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+					</c:when>
+					
+					<c:otherwise>
+						<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+					</c:otherwise>
+				</c:choose>
 		 	<c:set var="name" value="${ requestScope.umaDetail.uma_tag }"/>
 		 	<c:set var="value" value="${fn:length(name)-5 }"/>
-		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:top; margin-top : 5px;"></a></li>
+		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };  font-weight: bold;">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:top; margin-top : 5px;"></a></li>
 			<li style="font-size: 15px; margin-top : 0px;">${fn:substring(name,0,value) }</li>
-			<li>성우 : ${ requestScope.umaDetail.uma_voice }</li>
-			<li>신장 : ${ requestScope.umaDetail.height }</li>
-			<li>체중 : ${ requestScope.umaDetail.weight }</li>
-			<li>쓰리사이즈 : B${ requestScope.umaDetail.three_b } W${ requestScope.umaDetail.three_w } H${ requestScope.umaDetail.three_h }</li>
-			<li>생일 : ${ requestScope.umaDetail.birth_day }</li>
-			<li style="font-size: 15px;">${ requestScope.umaDetail.uma_content }</li>
+			<li style="font-weight: bold;">성우 : ${ requestScope.umaDetail.uma_voice }</li>
+			<li style="font-weight: bold;">신장 : ${ requestScope.umaDetail.height }</li>
+			<li style="font-weight: bold;">체중 : ${ requestScope.umaDetail.weight }</li>
+			<li style="font-weight: bold;">쓰리사이즈 : B${ requestScope.umaDetail.three_b } W${ requestScope.umaDetail.three_w } H${ requestScope.umaDetail.three_h }</li>
+			<li style="font-weight: bold;">생일 : ${ requestScope.umaDetail.birth_day }</li>
+			<li style="font-size: 15px; font-weight: bold;">${ requestScope.umaDetail.uma_content }</li>
 		 </ul>
 			
 
