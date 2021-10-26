@@ -70,10 +70,11 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
         date = new Date();
         int pageCount = 1;
+        boolean uploadFail = false;
 		System.out.println("크롤링 시작" + date);
         List<UmaDTO> umaList = selectUma(); //말 리스트 DB에서 불러옴
         for(UmaDTO key : umaList){
-
+        	uploadFail = false;
         	System.out.println("태그 : "+key.getUma_tag());
         	for(int cnt=1; cnt<11; cnt++) {
         		System.out.println("==============="+key.getUma_name()+" "+cnt+" 페이지===================");
@@ -142,6 +143,7 @@ public class MemberServiceImpl implements MemberService {
                        	 System.out.println("업로드 성공");
                         }else {
                        	 System.out.println("업로드 실패");
+                       	uploadFail= true;
                         }
 
                          if(((String) personObject.get("createDate")).substring(0,10).equals(time)){
@@ -158,6 +160,10 @@ public class MemberServiceImpl implements MemberService {
                     	 
                     	 
 
+                     }
+                     if(uploadFail==true) {
+                    	 System.out.println("========스킵========");
+                    	 cnt=10;
                      }
                      if(cnt == 10) {
                     	 System.out.println("오늘 올라온 "+key.getUma_tag()+"의 픽시브짤 갯수 : "+count);
