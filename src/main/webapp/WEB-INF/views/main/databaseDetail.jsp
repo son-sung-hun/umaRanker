@@ -153,11 +153,13 @@ section::after {
 		 	<c:set var="value" value="${fn:length(name)-5 }"/>
 		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };  font-weight: bold;">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:top; margin-top : 5px;"></a></li>
 			<li style="font-size: 15px; margin-top : 0px;">${fn:substring(name,0,value) }</li>
+			<li><hr align="left" size="1"  width="50%" color = "${ requestScope.umaDetail.color_tag }"></li>
 			<li style="font-weight: bold;">성우 : ${ requestScope.umaDetail.uma_voice }</li>
 			<li style="font-weight: bold;">신장 : ${ requestScope.umaDetail.height }</li>
 			<li style="font-weight: bold;">체중 : ${ requestScope.umaDetail.weight }</li>
 			<li style="font-weight: bold;">쓰리사이즈 : B${ requestScope.umaDetail.three_b } W${ requestScope.umaDetail.three_w } H${ requestScope.umaDetail.three_h }</li>
 			<li style="font-weight: bold;">생일 : ${ requestScope.umaDetail.birth_day }</li>
+			<li><hr align="left" size="1" width="50%" color = "${ requestScope.umaDetail.color_tag }"></li>
 			<li style="font-size: 15px; font-weight: bold;">${ requestScope.umaDetail.uma_content }</li>
 		 </ul>
 			
