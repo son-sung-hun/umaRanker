@@ -73,7 +73,7 @@ public class MemberController {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		if(count==0) {
-			df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 		}
 		
 		
