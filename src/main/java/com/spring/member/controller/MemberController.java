@@ -107,7 +107,10 @@ public class MemberController {
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
 		Calendar cal = Calendar.getInstance();
-		int date = cal.get(Calendar.DAY_OF_WEEK) - 1;
+		int date = cal.get(Calendar.DAY_OF_WEEK) - 2;
+		if(date==-1) {
+			date=6;
+		}
 
 		List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(date);
 		updateDate = memberService.updateDate();

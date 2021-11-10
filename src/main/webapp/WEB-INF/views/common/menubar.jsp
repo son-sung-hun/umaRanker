@@ -13,7 +13,9 @@
 </head>
 <body>
 		<div class="nav">
-			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/main'" style="margin-left:20px; margin-right:50px;">로고(임시)</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/main'" style="margin-left:20px; margin-right:50px;">
+			<span style="color:#ffdd00;">우마</span><span style="color:#ffd0b0;">랭커</span>
+			</div>
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/soup'" style="margin-left:10px; margin-right:20px;">🥕일간랭킹</div>
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/week'">🥕주간랭킹</div>
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/month'">🥕월간랭킹</div>
