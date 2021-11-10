@@ -99,21 +99,7 @@
     
 	  </insert>	
 	  
-	  
-	<select id="selectPixivRank" resultMap="pixivResultSet" parameterType="PixivDTO">
-        SELECT
-    	B.UMA_CODE  ,
-	    B.UMA_NAME  ,
-	    B.UMA_COLOR ,
-	    RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(NOW(),'%y/%m/%d') THEN 1 END) DESC) AS RANKING,
-	    COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(NOW(),'%y/%m/%d') THEN 1 END) AS COUNT
-	    FROM PIXIV_DATA A
-	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
-	    GROUP by B.UMA_NAME, B.UMA_CODE, B.UMA_COLOR
-	    order by RANKING
-	</select>
-	
-	<select id="selectDailyBest" resultMap="pixivResultSet" parameterType="PixivDTO">
+	  	<select id="selectDailyBest" resultMap="pixivResultSet" parameterType="PixivDTO">
         SELECT
 	    A.UMA_CODE
 	    ,A.UMA_NAME
@@ -127,7 +113,8 @@
 			    B.UMA_CODE,
 			    B.UMA_TAG,
 			    B.UMA_COLOR
-			    , RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL #{day_count} DAY),'%y/%m/%d') THEN 1 END) DESC) AS RANKING
+			    , RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') 
+			    			  = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL #{day_count} DAY),'%y/%m/%d') THEN 1 END) DESC) AS RANKING
 			    , COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL #{day_count} DAY),'%y/%m/%d') THEN 1 END) AS COUNT
 			    FROM PIXIV_DATA A
 			    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
@@ -135,19 +122,33 @@
 			 )A
 	    WHERE A.RANKING=1
 	</select>  
-	
+	  
+	<select id="selectPixivRank" resultMap="pixivResultSet" parameterType="PixivDTO">
+        SELECT
+    	B.UMA_CODE  ,
+	    B.UMA_NAME  ,
+	    B.UMA_COLOR ,
+	    RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') 
+	    						   = DATE_FORMAT(NOW(),'%y/%m/%d') THEN 1 END) DESC) AS RANKING,
+	    COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(NOW(),'%y/%m/%d') THEN 1 END) AS COUNT
+	    FROM PIXIV_DATA A
+	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
+	    GROUP by B.UMA_NAME, B.UMA_CODE, B.UMA_COLOR
+	    ORDER by RANKING
+	</select>
 	
 	<select id="selectPixivWeekRank" resultMap="pixivResultSet" parameterType="PixivDTO">
         SELECT
     	B.UMA_CODE  ,
 	    B.UMA_NAME  ,
 	    B.UMA_COLOR ,
-	    RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL #{date} DAY),'%y/%m/%d') THEN 1 END) DESC) AS RANKING,
+	    RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') 
+	    						   = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL #{date} DAY),'%y/%m/%d') THEN 1 END) DESC) AS RANKING,
 	    COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL #{date} DAY),'%y/%m/%d') THEN 1 END) AS COUNT
 	    FROM PIXIV_DATA A
 	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
 	    GROUP by B.UMA_NAME, B.UMA_CODE, B.UMA_COLOR
-	    order by RANKING
+	    ORDER by RANKING
 	</select>  
 
 	<select id="selectPixivMonthRank" resultMap="pixivResultSet" parameterType="PixivDTO">
@@ -155,11 +156,12 @@
     	B.UMA_CODE  ,
 	    B.UMA_NAME  ,
 	    B.UMA_COLOR ,
-	    RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m') = DATE_FORMAT(NOW(),'%y/%m') THEN 1 END) DESC) AS RANKING,
+	    RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m') 	
+	    						   = DATE_FORMAT(NOW(),'%y/%m') THEN 1 END) DESC) AS RANKING,
 	    COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m') = DATE_FORMAT(NOW(),'%y/%m') THEN 1 END) AS COUNT
 	    FROM PIXIV_DATA A
 	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
 	    GROUP by B.UMA_NAME, B.UMA_CODE, B.UMA_COLOR
-	    order by RANKING
+	    ORDER by RANKING
 	</select>
 </mapper>

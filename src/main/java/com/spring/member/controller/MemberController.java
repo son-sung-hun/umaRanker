@@ -49,120 +49,109 @@ public class MemberController {
 	private final MemberService memberService;
 	private static String url = "";
 	private final BCryptPasswordEncoder passwordEncoder;
-	
-    private static String URL = "https://www.pixiv.net/tags/";
-    
+
+	private static String URL = "https://www.pixiv.net/tags/";
+
 	@Autowired
 	public MemberController(MemberService memberService, BCryptPasswordEncoder passwordEncoder) {
 		this.memberService = memberService;
 		this.passwordEncoder = passwordEncoder;
 	}
-	
-	@GetMapping(value={"/", "main"})
-	public String main(Model model ,@RequestParam(value="day_count", required=false) String day_count) {
+
+	@GetMapping(value = { "/", "main" })
+	public String main(Model model, @RequestParam(value = "day_count", required = false) String day_count) {
 		int count = 0;
+		//제일 최근에 크롤링 한 날짜를 가져옴
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
-		
-		if(day_count != null) {
+
+		if (day_count != null) {
 			count = Integer.parseInt(day_count);
 		}
-		
-		
+
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		
-		if(count==0) {
+
+		if (count == 0) {
+			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
 			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 		}
-		
-		
-		
-		
+
 		List<PixivDTO> daily = memberService.selectDailyBest(count);
 		cal.add(Calendar.DATE, -(count));
-		
-        model.addAttribute("updateDate",df.format(cal.getTime()));
-        model.addAttribute("daily",daily);
-        model.addAttribute("count",count);
-        
+
+		model.addAttribute("updateDate", df.format(cal.getTime()));
+		model.addAttribute("daily", daily);
+		model.addAttribute("count", count);
+
 		return "main/main";
 	}
-	
+
 	@GetMapping("/member/soup")
-	public String getCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
-	
-        List<PixivDTO> pixivRanking = memberService.selectPixivRank();
-        updateDate = memberService.updateDate();
+	public String getCount(Model model)
+			throws IOException, ParseException, java.text.ParseException, InterruptedException {
+
+		List<PixivDTO> pixivRanking = memberService.selectPixivRank();
+		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        model.addAttribute("updateDate",df.format(cal.getTime()));
-        model.addAttribute("pixivRanking",pixivRanking);
-        
+		model.addAttribute("updateDate", df.format(cal.getTime()));
+		model.addAttribute("pixivRanking", pixivRanking);
 
-        return "main/dailyRanking";
+		return "main/dailyRanking";
 	}
-	
-	
-	
+
 	@GetMapping("/member/week")
-	public String getWeekCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
-	
+	public String getWeekCount(Model model)
+			throws IOException, ParseException, java.text.ParseException, InterruptedException {
+
 		Calendar cal = Calendar.getInstance();
-		int date = cal.get(Calendar.DAY_OF_WEEK)-1;
-		
-        List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(date);
-        updateDate = memberService.updateDate();
+		int date = cal.get(Calendar.DAY_OF_WEEK) - 1;
+
+		List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(date);
+		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        model.addAttribute("updateDate",df.format(cal.getTime()));
-        model.addAttribute("pixivRanking",pixivRanking);
+		model.addAttribute("updateDate", df.format(cal.getTime()));
+		model.addAttribute("pixivRanking", pixivRanking);
 
-
-        return "main/weeklyRanking";
+		return "main/weeklyRanking";
 	}
-	
+
 	@GetMapping("/member/month")
-	public String getMonthCount(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
-	
-		
-		
-        List<PixivDTO> pixivRanking = memberService.selectPixivMonthRank();
-        updateDate = memberService.updateDate();
+	public String getMonthCount(Model model)
+			throws IOException, ParseException, java.text.ParseException, InterruptedException {
+
+		List<PixivDTO> pixivRanking = memberService.selectPixivMonthRank();
+		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        model.addAttribute("updateDate",df.format(cal.getTime()));
-        model.addAttribute("pixivRanking",pixivRanking);
+		model.addAttribute("updateDate", df.format(cal.getTime()));
+		model.addAttribute("pixivRanking", pixivRanking);
 
-
-        return "main/monthlyRanking";
+		return "main/monthlyRanking";
 	}
-	
+
 	@GetMapping("/member/database")
-	public String getDatabase(Model model) throws IOException, ParseException, java.text.ParseException, InterruptedException {
-	
-		
-		
-        List<UmaDTO> umaData = memberService.selectUma();
-        model.addAttribute("umaData",umaData);
+	public String getDatabase(Model model)
+			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
+		List<UmaDTO> umaData = memberService.selectUma();
+		model.addAttribute("umaData", umaData);
 
-        return "main/databaseMain";
+		return "main/databaseMain";
 	}
-	
+
 	@GetMapping("/member/detail")
-	public String getDatabaseDetail(Model model
-			,@RequestParam(value="uma_code", required=false) int uma_code) throws IOException, ParseException, java.text.ParseException, InterruptedException {
-	
-		
-		
-        UmaDTO umaDetail = memberService.selectUmaDetail(uma_code);
-        model.addAttribute("umaDetail",umaDetail);
+	public String getDatabaseDetail(Model model, @RequestParam(value = "uma_code", required = false) int uma_code)
+			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
+		UmaDTO umaDetail = memberService.selectUmaDetail(uma_code);
+		model.addAttribute("umaDetail", umaDetail);
 
-        return "main/databaseDetail";
+		return "main/databaseDetail";
 	}
 }
