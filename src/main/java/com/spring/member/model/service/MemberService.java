@@ -19,7 +19,7 @@ public interface MemberService {
 	boolean insertPixiv(PixivDTO dto);
 	List<PixivDTO> selectPixivRank();
 	List<PixivDTO> selectPixivWeekRank(int date);
-	List<PixivDTO> selectPixivMonthRank();
+	List<PixivDTO> selectPixivMonthRank(int day_count);
 	Date updateDate();
 	void sampleScheduler2() throws IOException, ParseException, java.text.ParseException, InterruptedException;
 

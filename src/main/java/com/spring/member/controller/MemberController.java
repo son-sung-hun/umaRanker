@@ -61,14 +61,18 @@ public class MemberController {
 	@GetMapping(value = { "/", "main" })
 	public String main(Model model, @RequestParam(value = "day_count", required = false) String day_count) {
 		int count = 0;
+		
+		if (day_count != null) {
+			count = Integer.parseInt(day_count);
+		}
+		
+		
 		//제일 최근에 크롤링 한 날짜를 가져옴
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
 
-		if (day_count != null) {
-			count = Integer.parseInt(day_count);
-		}
+		
 
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -88,24 +92,42 @@ public class MemberController {
 	}
 
 	@GetMapping("/member/soup")
-	public String getCount(Model model)
+	public String getCount(Model model, @RequestParam(value = "day_count", required = false) String day_count)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
-
+		
+		int count = 0;
+		
+		if (day_count != null) {
+			count = Integer.parseInt(day_count);
+		}
+		
 		List<PixivDTO> pixivRanking = memberService.selectPixivRank();
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+		if (count == 0) {
+			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
+			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+		}
+		
+		cal.add(Calendar.DATE, -(count));
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
+		model.addAttribute("count", count);
 
 		return "main/dailyRanking";
 	}
 
 	@GetMapping("/member/week")
-	public String getWeekCount(Model model)
+	public String getWeekCount(Model model, @RequestParam(value = "day_count", required = false) String day_count)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
-
+		int count = 0;
+		
+		if (day_count != null) {
+			count = Integer.parseInt(day_count);
+		}
 		Calendar cal = Calendar.getInstance();
 		int date = cal.get(Calendar.DAY_OF_WEEK) - 2;
 		if(date==-1) {
@@ -116,24 +138,45 @@ public class MemberController {
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+		if (count == 0) {
+			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
+			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+		}
+		
+		cal.add(Calendar.DATE, -(count));
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
+		model.addAttribute("count", count);
 
 		return "main/weeklyRanking";
 	}
 
 	@GetMapping("/member/month")
-	public String getMonthCount(Model model)
+	public String getMonthCount(Model model, @RequestParam(value = "day_count", required = false) String day_count)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
-
-		List<PixivDTO> pixivRanking = memberService.selectPixivMonthRank();
+		
+		int count = 0;
+		
+		if (day_count != null) {
+			count = Integer.parseInt(day_count);
+		}
+		List<PixivDTO> pixivRanking = memberService.selectPixivMonthRank(count);
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		DateFormat df = new SimpleDateFormat("yyyy-MM");
+
+		if (count == 0) {
+			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
+			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+		}
+		
+		cal.add(Calendar.MONTH, -(count));
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
+		model.addAttribute("count", count);
 
 		return "main/monthlyRanking";
 	}
