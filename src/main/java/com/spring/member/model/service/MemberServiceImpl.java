@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -54,9 +55,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<PixivDTO> selectPixivWeekRank(int date) {
+	public List<PixivDTO> selectPixivWeekRank(Map param) {
 		// TODO Auto-generated method stub
-		return mapper.selectPixivWeekRank(date);
+		return mapper.selectPixivWeekRank(param);
 	}
 
 	@Override

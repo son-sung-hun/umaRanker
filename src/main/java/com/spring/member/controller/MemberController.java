@@ -7,7 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -133,8 +135,11 @@ public class MemberController {
 		if(date==-1) {
 			date=6;
 		}
+		Map param = new HashMap();
+		param.put("date", date);
+		param.put("day_count", count);
 
-		List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(date);
+		List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(param);
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
@@ -145,8 +150,17 @@ public class MemberController {
 			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 		}
 		
-		cal.add(Calendar.DATE, -(count));
+		cal.add(Calendar.DATE, -(count*7));
+		if(count!=0) {
+			cal.add(Calendar.DATE, date);
+		}
 		model.addAttribute("updateDate", df.format(cal.getTime()));
+		cal.add(Calendar.DATE, -(date));
+		if(count!=0) {
+			cal.add(Calendar.DATE, -(date));
+		}
+		df = new SimpleDateFormat("yyyy-MM-dd");
+		model.addAttribute("beforeDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
 		model.addAttribute("count", count);
 

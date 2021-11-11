@@ -171,7 +171,24 @@ width: 1200px;
 	<br>
 		<br>
 		<p style="font-size: 30px; margin:0px; font-weight: bold;">이번주의 인기 우마무스메는 ?</p>
-		<p style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ updateDate }</p>
+		
+		<c:choose>
+			<c:when test="${ empty requestScope.count }">
+				<a href="${ pageContext.servletContext.contextPath }/member/week?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
+			</c:when>
+					
+			<c:when test="${ requestScope.count eq 0 }">
+				<a href="${ pageContext.servletContext.contextPath }/member/week?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
+			</c:when>
+					
+			<c:otherwise>
+				<a href="${ pageContext.servletContext.contextPath }/member/week?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
+				<a href="${ pageContext.servletContext.contextPath }/member/week?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+			</c:otherwise>
+		</c:choose>
 		<br>
 		<br> 
 		<div id="list">

@@ -138,17 +138,32 @@
 	</select>
 	
 	<select id="selectPixivWeekRank" resultMap="pixivResultSet" parameterType="PixivDTO">
-        SELECT
+		<choose>
+		<when test="day_count == 0">
+		SELECT
     	B.UMA_CODE  ,
 	    B.UMA_NAME  ,
 	    B.UMA_COLOR ,
-	    RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') 
-	    						   = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL #{date} DAY),'%y/%m/%d') THEN 1 END) DESC) AS RANKING,
-	    COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL #{date} DAY),'%y/%m/%d') THEN 1 END) AS COUNT
+	    RANK() OVER(ORDER BY COUNT(CASE WHEN UPLOAD_DATE  BETWEEN DATE_SUB(NOW(), INTERVAL ${date} DAY) AND NOW()  THEN 1 END) DESC) AS RANKING,
+	    COUNT(CASE WHEN UPLOAD_DATE BETWEEN DATE_SUB(NOW(), INTERVAL ${date} DAY) AND NOW() THEN 1 END) AS COUNT
 	    FROM PIXIV_DATA A
 	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
 	    GROUP by B.UMA_NAME, B.UMA_CODE, B.UMA_COLOR
 	    ORDER by RANKING
+		</when>
+		<otherwise>
+		SELECT
+    	B.UMA_CODE  ,
+	    B.UMA_NAME  ,
+	    B.UMA_COLOR ,
+	    RANK() OVER(ORDER BY COUNT(CASE WHEN UPLOAD_DATE  BETWEEN DATE_SUB(NOW(), INTERVAL ${date+day_count*7} DAY) AND DATE_SUB(NOW(), INTERVAL ${date+(day_count-1)*7} DAY)  THEN 1 END) DESC) AS RANKING,
+	    COUNT(CASE WHEN UPLOAD_DATE BETWEEN DATE_SUB(NOW(), INTERVAL ${date+day_count*7} DAY) AND DATE_SUB(NOW(), INTERVAL ${date+(day_count-1)*7} DAY) THEN 1 END) AS COUNT
+	    FROM PIXIV_DATA A
+	    JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
+	    GROUP by B.UMA_NAME, B.UMA_CODE, B.UMA_COLOR
+	    ORDER by RANKING
+		</otherwise>
+		</choose>
 	</select>  
 
 	<select id="selectPixivMonthRank" resultMap="pixivResultSet" parameterType="PixivDTO">

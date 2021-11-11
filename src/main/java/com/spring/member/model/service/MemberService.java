@@ -3,6 +3,7 @@ package com.spring.member.model.service;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ public interface MemberService {
 	UmaDTO selectUmaDetail(int uma_code);
 	boolean insertPixiv(PixivDTO dto);
 	List<PixivDTO> selectPixivRank();
-	List<PixivDTO> selectPixivWeekRank(int date);
+	List<PixivDTO> selectPixivWeekRank(Map param);
 	List<PixivDTO> selectPixivMonthRank(int day_count);
 	Date updateDate();
 	void sampleScheduler2() throws IOException, ParseException, java.text.ParseException, InterruptedException;
