@@ -103,7 +103,7 @@ public class MemberController {
 			count = Integer.parseInt(day_count);
 		}
 		
-		List<PixivDTO> pixivRanking = memberService.selectPixivRank();
+		List<PixivDTO> pixivRanking = memberService.selectPixivRank(count);
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);

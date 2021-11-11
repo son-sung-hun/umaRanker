@@ -14,7 +14,7 @@ public interface UmaMapper {
 	List<PixivDTO> selectDailyBest(int day_count);
 	String[] selectUmaTag();
 	int insertPixiv(PixivDTO dto);
-	List<PixivDTO> selectPixivRank();
+	List<PixivDTO> selectPixivRank(int day_count);
 	List<PixivDTO> selectPixivWeekRank(Map param);
 	List<PixivDTO> selectPixivMonthRank(int day_count);
 	UmaDTO selectUmaDetail(int uma_code);

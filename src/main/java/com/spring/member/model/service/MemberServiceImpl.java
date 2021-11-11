@@ -49,9 +49,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<PixivDTO> selectPixivRank() {
+	public List<PixivDTO> selectPixivRank(int day_count) {
 		// TODO Auto-generated method stub
-		return mapper.selectPixivRank();
+		return mapper.selectPixivRank(day_count);
 	}
 
 	@Override
