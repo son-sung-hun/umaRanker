@@ -3,16 +3,15 @@ name: CI
 # 어떤 브랜치를 체크할 지 설정
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - master # deploy branche가 push 됬을때 
     
 
 
 # Workflow 설정
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
 	
     # 1. 기본 체크아웃
     steps:
