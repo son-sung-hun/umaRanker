@@ -18,22 +18,18 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '11'
-        
+        cache: maven
     
 
-    - name: Grand execute permission for gradlew
-      run: chmod +x ./gradlew
-      shell: bash
-      
+    - name: Cache Maven packages
+      uses: actions/cache@v2
+      with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
-    - name: Build with Gradle
-      run: ./gradlew build
-      shell: bash
-
-
-    - name: move build files
-      run: mv ./build/libs/ROOT.war ./
-      shell: bash
+    - name: Build with Maven
+      run: mvn -Dmaven.test.skip=true -B package --file pom.xml
 
 
     - name: zip build files
