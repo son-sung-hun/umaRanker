@@ -32,7 +32,7 @@ jobs:
       run: mvn -Dmaven.test.skip=true -B package --file pom.xml
       
     - name: move build files
-      run: mv ./build/libs/ROOT.war ./
+      run: mv ./target/ROOT.war ./
 
     - name: zip build files
       run: zip -r $GITHUB_SHA.zip ./appspec.yml ./spring-1.0.0-BUILD-SNAPSHOT.war ./scripts
