@@ -18,7 +18,15 @@ jobs:
       with:
         java-version: 1.8
         cache: maven
-    
+    - name: add Application.properties
+      run:
+        touch ./src/main/webapp/config/config.properties
+      shell: bash
+      
+    - name: copy config.properties
+      run:
+        echo "${{ secrets.PROPERTIES }}" > ./src/main/webapp/config/config.properties
+      shell: bash
 
     - name: Cache Maven packages
       uses: actions/cache@v2
