@@ -6,14 +6,11 @@ on:
     branches:
       - master # deploy branche가 push 됬을때 
     
-
-
 # Workflow 설정
 jobs:
   build:
     runs-on: ubuntu-latest 
-	
-    # 1. 기본 체크아웃
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -23,26 +20,26 @@ jobs:
         java-version: '11'
         
     
-    # 3. gradle 권한 설정
+
     - name: Grand execute permission for gradlew
       run: chmod +x ./gradlew
       shell: bash
       
-    # 4. 빌드
+
     - name: Build with Gradle
       run: ./gradlew build
       shell: bash
 
-	# 5. 빌드 결과 파일(ROOT.war) 이동
+
     - name: move build files
       run: mv ./build/libs/ROOT.war ./
       shell: bash
 
-	# 6. 빌드 결과와 appspec.yml, 관련 빌드 스크립트 .zip으로 압축
+
     - name: zip build files
       run: zip -r $GITHUB_SHA.zip ./appspec.yml ./ROOT.war ./scripts
 
-	# 7. AWS 인증과정
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -50,11 +47,11 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-	# 8. AWS S3에 빌드 결과 업로드
+
     - name: Upload to S3
       run: aws s3 cp --region ${{ secrets.AWS_REGION }} ./$GITHUB_SHA.zip s3://${{ secrets.AWS_S3_BUCKET }}/$GITHUB_SHA.zip
 
-	# 9. CodeDeploy 실행
+
     - name: deploy
       run: | 
         aws deploy create-deployment \
