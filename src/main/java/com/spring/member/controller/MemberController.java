@@ -183,7 +183,6 @@ public class MemberController {
 		DateFormat df = new SimpleDateFormat("yyyy-MM");
 
 		if (count == 0) {
-			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
 			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 		}
 		
