@@ -6,11 +6,11 @@ public class UmaDTO {
 	
 	private int uma_code;
 	private String uma_name;
-	private char height;
+	private char height; //미실장 우마무스메 정보 기입을 위해 char로 변경
 	private String weight;
-	private char three_b;
-	private char three_w;
-	private char three_h;
+	private char three_b; //미실장 우마무스메 정보 기입을 위해 char로 변경
+	private char three_w; //미실장 우마무스메 정보 기입을 위해 char로 변경
+	private char three_h; //미실장 우마무스메 정보 기입을 위해 char로 변경
 	private String birth_day;
 	private String uma_voice;
 	private String uma_content;
