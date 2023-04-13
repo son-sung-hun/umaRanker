@@ -6,11 +6,11 @@ public class UmaDTO {
 	
 	private int uma_code;
 	private String uma_name;
-	private int height;
+	private char height;
 	private String weight;
-	private int three_b;
-	private int three_w;
-	private int three_h;
+	private char three_b;
+	private char three_w;
+	private char three_h;
 	private String birth_day;
 	private String uma_voice;
 	private String uma_content;
@@ -21,7 +21,7 @@ public class UmaDTO {
 	public UmaDTO() {}
 
 
-	public UmaDTO(int uma_code, String uma_name, int height, String weight, int three_b, int three_w, int three_h,
+	public UmaDTO(int uma_code, String uma_name, char height, String weight, char three_b, char three_w, char three_h,
 			String birth_day, String uma_voice, String uma_content, String uma_tag, String color_tag) {
 		super();
 		this.uma_code = uma_code;
@@ -59,12 +59,12 @@ public class UmaDTO {
 	}
 
 
-	public int getHeight() {
+	public char getHeight() {
 		return height;
 	}
 
 
-	public void setHeight(int height) {
+	public void setHeight(char height) {
 		this.height = height;
 	}
 
@@ -79,32 +79,32 @@ public class UmaDTO {
 	}
 
 
-	public int getThree_b() {
+	public char getThree_b() {
 		return three_b;
 	}
 
 
-	public void setThree_b(int three_b) {
+	public void setThree_b(char three_b) {
 		this.three_b = three_b;
 	}
 
 
-	public int getThree_w() {
+	public char getThree_w() {
 		return three_w;
 	}
 
 
-	public void setThree_w(int three_w) {
+	public void setThree_w(char three_w) {
 		this.three_w = three_w;
 	}
 
 
-	public int getThree_h() {
+	public char getThree_h() {
 		return three_h;
 	}
 
 
-	public void setThree_h(int three_h) {
+	public void setThree_h(char three_h) {
 		this.three_h = three_h;
 	}
 
