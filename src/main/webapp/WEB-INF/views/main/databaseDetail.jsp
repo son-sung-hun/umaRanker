@@ -157,7 +157,7 @@ section::after {
 			<li style="font-weight: bold;">성우 : ${ requestScope.umaDetail.uma_voice }</li>
 			<li style="font-weight: bold;">신장 : ${ requestScope.umaDetail.height }</li>
 			<li style="font-weight: bold;">체중 : ${ requestScope.umaDetail.weight }</li>
-			<li style="font-weight: bold;">쓰리사이즈 : B${ requestScope.umaDetail.three_b } W${ requestScope.umaDetail.three_w } H${ requestScope.umaDetail.three_h }</li>
+			<li style="font-weight: bold;">쓰리사이즈 : B :${ requestScope.umaDetail.three_b } W :${ requestScope.umaDetail.three_w } H :${ requestScope.umaDetail.three_h }</li>
 			<li style="font-weight: bold;">생일 : ${ requestScope.umaDetail.birth_day }</li>
 			<li><hr align="left" size="1" width="50%" color = "${ requestScope.umaDetail.color_tag }"></li>
 			<li style="font-size: 15px; font-weight: bold;">${ requestScope.umaDetail.uma_content }</li>
