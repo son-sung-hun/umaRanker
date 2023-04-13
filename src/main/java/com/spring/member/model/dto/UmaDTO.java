@@ -6,11 +6,11 @@ public class UmaDTO {
 	
 	private int uma_code;
 	private String uma_name;
-	private char height; //미실장 우마무스메 정보 기입을 위해 char로 변경
+	private String height; //미실장 우마무스메 정보 기입을 위해 String으로 변경
 	private String weight;
-	private char three_b; //미실장 우마무스메 정보 기입을 위해 char로 변경
-	private char three_w; //미실장 우마무스메 정보 기입을 위해 char로 변경
-	private char three_h; //미실장 우마무스메 정보 기입을 위해 char로 변경
+	private String three_b; //미실장 우마무스메 정보 기입을 위해 String으로 변경
+	private String three_w; //미실장 우마무스메 정보 기입을 위해 String으로 변경
+	private String three_h; //미실장 우마무스메 정보 기입을 위해 String으로 변경
 	private String birth_day;
 	private String uma_voice;
 	private String uma_content;
@@ -21,7 +21,7 @@ public class UmaDTO {
 	public UmaDTO() {}
 
 
-	public UmaDTO(int uma_code, String uma_name, char height, String weight, char three_b, char three_w, char three_h,
+	public UmaDTO(int uma_code, String uma_name, String height, String weight, String three_b, String three_w, String three_h,
 			String birth_day, String uma_voice, String uma_content, String uma_tag, String color_tag) {
 		super();
 		this.uma_code = uma_code;
@@ -59,12 +59,12 @@ public class UmaDTO {
 	}
 
 
-	public char getHeight() {
+	public String getHeight() {
 		return height;
 	}
 
 
-	public void setHeight(char height) {
+	public void setHeight(String height) {
 		this.height = height;
 	}
 
@@ -79,32 +79,32 @@ public class UmaDTO {
 	}
 
 
-	public char getThree_b() {
+	public String getThree_b() {
 		return three_b;
 	}
 
 
-	public void setThree_b(char three_b) {
+	public void setThree_b(String three_b) {
 		this.three_b = three_b;
 	}
 
 
-	public char getThree_w() {
+	public String getThree_w() {
 		return three_w;
 	}
 
 
-	public void setThree_w(char three_w) {
+	public void setThree_w(String three_w) {
 		this.three_w = three_w;
 	}
 
 
-	public char getThree_h() {
+	public String getThree_h() {
 		return three_h;
 	}
 
 
-	public void setThree_h(char three_h) {
+	public void setThree_h(String three_h) {
 		this.three_h = three_h;
 	}
 
