@@ -6,10 +6,10 @@
 	width:1920px;
 	margin-left:auto;
 	margin-right:auto;
-	background: linear-gradient(89.88deg, #21DF28 4.19%, #C1FFC4 93.35%);
+    background:#3d414d;
 	color:white;
-	font-weight: bold;
-	font-size: 24px;
+
+	font-size: 17px;
 	margin:0px;
 }
 .menu {
@@ -27,7 +27,7 @@ body {
 }
 body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 .menu:hover {
-	background:#8EFFA0;
+	background:#72798f;
 	color:white;
 	cursor:pointer;
 }
