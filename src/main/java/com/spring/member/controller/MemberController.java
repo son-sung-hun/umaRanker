@@ -61,7 +61,7 @@ public class MemberController {
 	}
 
 	@GetMapping(value = { "/", "main" })
-	public String main(Model model, @RequestParam(value = "day_count", required = false) String day_count) {
+	public String main(Model model, @RequestParam(value = "day_count", required = false) String day_count) throws java.text.ParseException {
 		int count = 0;
 		
 		if (day_count != null) {
@@ -78,6 +78,7 @@ public class MemberController {
 
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
+
 		if (count == 0) {
 			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
 			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
@@ -86,9 +87,19 @@ public class MemberController {
 		List<PixivDTO> daily = memberService.selectDailyBest(count);
 		cal.add(Calendar.DATE, -(count));
 
+		SimpleDateFormat birthFormat = new SimpleDateFormat("M월 d일");
+		UmaDTO umaDTO = memberService.selectUmaDetail(daily.get(0).getUma_code());
+//		Date birthDay = birthFormat.parse(umaDTO.getBirth_day());
+
+		boolean birth = false;
+		if(birthFormat.format(cal.getTime()).equals(umaDTO.getBirth_day())){
+			birth=true;
+		}
+
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("daily", daily);
 		model.addAttribute("count", count);
+		model.addAttribute("birth", birth);
 
 		return "main/main";
 	}
