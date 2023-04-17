@@ -215,6 +215,7 @@ public class MemberController {
 		return "main/databaseMain";
 	}
 
+
 	@GetMapping("/member/detail")
 	public String getDatabaseDetail(Model model, @RequestParam(value = "uma_code", required = false) int uma_code)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
