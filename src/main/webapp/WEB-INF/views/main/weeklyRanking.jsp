@@ -207,7 +207,7 @@ width: 1200px;
 	
 	<br>
 	<br>
-	<div class="scroll" align="center" style="overflow:auto; width:1200px; height:970px;">
+	<div class="scroll" align="center" style="overflow:auto; width:1200px; height:auto;">
 	<br>
 		<br>
 		<p style="font-size: 30px; margin:0px; font-weight: bold;">이번주의 인기 우마무스메는 ?</p>
