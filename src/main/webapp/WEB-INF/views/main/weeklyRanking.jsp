@@ -35,95 +35,41 @@
 	</c:forEach>
 	
     $(function() {
-        $("#show").on("click", function() {
-        	
-        	for(var i = count; i<count1; i++){
-        		switch(list1[i].rank){
-        		case '1':
-        			$("#list").append("<div class='tr'>"+
-        					"<p class='td'>"+
-        					"<img src='${ pageContext.servletContext.contextPath }/resources/images/1위.png' style='width:80px; height:80px;'></p>"+
-        					"<p class='td txt'>"
-        			    	+list1[i].rank
-        			    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
-        			    	+list1[i].code
-        			    	+"' style='text-decoration:none; color:"
-        			    	+list1[i].color
-        			    	+";'>"
-        			    	+list1[i].name
-        			    	+"</a> (총 "
-        			    	+list1[i].count
-        			    	+"개)</p>");	
-        			break;
-        		case '2':
-        			$("#list").append("<div class='tr'>"+
-        					"<p class='td'>"+
-        					"<img src='${ pageContext.servletContext.contextPath }/resources/images/2위.png' style='width:80px; height:80px;'></p>"+
-        					"<p class='td txt'>"
-        			    	+list1[i].rank
-        			    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
-        			    	+list1[i].code
-        			    	+"' style='text-decoration:none; color:"
-        			    	+list1[i].color
-        			    	+";'>"
-        			    	+list1[i].name
-        			    	+"</a> (총 "
-        			    	+list1[i].count
-        			    	+"개)</p>");	
-        			break;
-        		case '3':
-        			$("#list").append("<div class='tr'>"+
-        					"<p class='td'>"+
-        					"<img src='${ pageContext.servletContext.contextPath }/resources/images/3위.png' style='width:80px; height:80px;'></p>"+
-        					"<p class='td txt'>"
-        			    	+list1[i].rank
-        			    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
-        			    	+list1[i].code
-        			    	+"' style='text-decoration:none; color:"
-        			    	+list1[i].color
-        			    	+";'>"
-        			    	+list1[i].name
-        			    	+"</a> (총 "
-        			    	+list1[i].count
-        			    	+"개)</p>");	
-        			break;
-        		default:
-        			$("#list").append("<div>"+
-        					"<p class='td txt1'>"
-        			    	+list1[i].rank
-        			    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
-        			    	+list1[i].code
-        			    	+"' style='text-decoration:none; color:"
-        			    	+list1[i].color
-        			    	+";'>"
-        			    	+list1[i].name
-        			    	+"</a> (총 "
-        			    	+list1[i].count
-        			    	+"개)</p>");	
-        			break;
-        		
-        		
-        		}
-        		
-        	}
-        	count+=5;
-        	count1+=5;
-        	
-        	if(count1>list1.length){
-        		count1 = list1.length;
-        	}
-        	if(count>list1.length){
-        		$("#show").hide();
-        	}
-        	$('.scroll').animate({
-        		scrollTop: $('#list').height()
-        	},500);
+            $("#show").on("click", function() {
 
-        	
-        	
+            	for(var i = count; i<count1; i++){
+
+        			$("#list").append("<div>"+
+        			"<p class='td txt1'>"
+        			+list1[i].rank
+        			+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
+        			+list1[i].code
+        			+"' style='text-decoration:none; color:"
+        			+list1[i].color
+            		+";'>"
+            		+list1[i].name
+            		+"</a> (총 "
+            		+list1[i].count
+            		+"개)</p>");
+
+            	}
+            	count+=5;
+            	count1+=5;
+
+            	if(count1>list1.length){
+            		count1 = list1.length;
+            	}
+            	if(count>list1.length){
+            		$("#show").hide();
+            	}
+            	$('.scroll').animate({
+            		scrollTop: $('#list').height()
+            	},500);
+                window.scrollTo(0,document.body.scrollHeight);
+
+
+            });
         });
-    });
-	
 
 
 </script>
