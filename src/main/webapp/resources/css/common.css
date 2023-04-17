@@ -8,7 +8,7 @@
 	margin-right:auto;
     background:#3d414d;
 	color:white;
-
+    z-index: 1;
 	font-size: 17px;
 	margin:0px;
 }
