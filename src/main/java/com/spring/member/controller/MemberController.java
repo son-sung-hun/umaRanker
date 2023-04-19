@@ -4,13 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -88,18 +82,27 @@ public class MemberController {
 		cal.add(Calendar.DATE, -(count));
 
 		SimpleDateFormat birthFormat = new SimpleDateFormat("M월 d일");
-		UmaDTO umaDTO = memberService.selectUmaDetail(daily.get(0).getUma_code());
-//		Date birthDay = birthFormat.parse(umaDTO.getBirth_day());
+		UmaDTO umaDTO;
 
 		boolean birth = false;
-		if(birthFormat.format(cal.getTime()).equals(umaDTO.getBirth_day())){
-			birth=true;
+		for(int i=0; i<daily.size(); i++){
+			umaDTO = memberService.selectUmaDetail(daily.get(i).getUma_code());
+			if(birthFormat.format(cal.getTime()).equals(umaDTO.getBirth_day())){
+				birth=true;
+				if(i!=0){
+					Collections.swap(daily,0,i);
+				}
+			}
+
+
 		}
+
 
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("daily", daily);
 		model.addAttribute("count", count);
 		model.addAttribute("birth", birth);
+		model.addAttribute("size", daily.size());
 
 		return "main/main";
 	}

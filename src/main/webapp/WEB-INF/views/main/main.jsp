@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,7 +90,7 @@ section::after {
 		<c:forEach var="daily" items="${ requestScope.daily }" varStatus="s">
 		
 		
-			<c:if test="${s.last }">
+			<c:if test="${s.first}">
 				<section>
 				<aside align="center">
 				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px" style="border-color: ${ daily.color_tag };">
@@ -123,9 +124,9 @@ section::after {
 				<c:if test="${requestScope.birth eq true}">
                 🎂
                 </c:if>
-					<c:if test="${s.index ne '0'}">
+					<c:if test="${requestScope.size ne 1}">
 					외 
-						${s.index }
+					<c:out value="${requestScope.size-1}"/>
 					명
 					</c:if>
 				</h1>
