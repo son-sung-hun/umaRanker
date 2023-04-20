@@ -139,16 +139,16 @@ section::after {
 		 <ul style="border-color: ${ requestScope.umaDetail.color_tag };">
 		 		<c:choose>
 					<c:when test="${ requestScope.umaDetail.uma_code eq 1 }">
-						<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
 					</c:when>
 					
 					<c:when test="${ requestScope.umaDetail.uma_code eq 72 }">
-						<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }"  style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }"  style="text-decoration:none; font-size: 20px; color:green;">◀</a>
 					</c:when>
 					
 					<c:otherwise>
-						<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
-						<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
 					</c:otherwise>
 				</c:choose>
 		 	<c:set var="name" value="${ requestScope.umaDetail.uma_tag }"/>
@@ -167,7 +167,7 @@ section::after {
 			
 
 			
-			<a href="${ pageContext.servletContext.contextPath }/member/database"  style='font-size:18px; font-weight: bold; text-decoration:none; color:#00B11C;'>목록으로 돌아가기</a>
+			<a href="${ pageContext.servletContext.contextPath }/database"  style='font-size:18px; font-weight: bold; text-decoration:none; color:#00B11C;'>목록으로 돌아가기</a>
 		</article>
 		<br>
 		<br>

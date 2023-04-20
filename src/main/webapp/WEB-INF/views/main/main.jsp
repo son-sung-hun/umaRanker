@@ -120,7 +120,7 @@ section::after {
 				<h1><c:if test="${requestScope.birth eq true}">
 				🎂
 				</c:if>
-				<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }</a>
+				<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }</a>
 				<c:if test="${requestScope.birth eq true}">
                 🎂
                 </c:if>

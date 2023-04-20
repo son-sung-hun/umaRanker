@@ -42,7 +42,7 @@
         			$("#list").append("<div>"+
         			"<p class='td txt1'>"
         			+list1[i].rank
-        			+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
+        			+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
         			+list1[i].code
         			+"' style='text-decoration:none; color:"
         			+list1[i].color
@@ -160,19 +160,19 @@ width: 1200px;
 		
 		<c:choose>
 			<c:when test="${ empty requestScope.count }">
-				<a href="${ pageContext.servletContext.contextPath }/member/week?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<a href="${ pageContext.servletContext.contextPath }/week?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
 			</c:when>
 					
 			<c:when test="${ requestScope.count eq 0 }">
-				<a href="${ pageContext.servletContext.contextPath }/member/week?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<a href="${ pageContext.servletContext.contextPath }/week?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
 			</c:when>
 					
 			<c:otherwise>
-				<a href="${ pageContext.servletContext.contextPath }/member/week?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<a href="${ pageContext.servletContext.contextPath }/week?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
-				<a href="${ pageContext.servletContext.contextPath }/member/week?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+				<a href="${ pageContext.servletContext.contextPath }/week?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 20px; color:green;">▶</a>
 			</c:otherwise>
 		</c:choose>
 		<br>
@@ -203,7 +203,7 @@ for(var i=0; i<count; i++){
 				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></div><br>"+
 				"<p class='td txt sa one'>"
 		    	+list1[i].rank
-		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
+		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	+list1[i].code
 		    	+"' style='text-decoration:none; color:"
 		    	+list1[i].color
@@ -219,7 +219,7 @@ for(var i=0; i<count; i++){
 				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_은.jpg' style='width:220px; height:210px;'></p></div><br>"+
 				"<p class='td txt sa two'>"
 		    	+list1[i].rank
-		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
+		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	+list1[i].code
 		    	+"' style='text-decoration:none; color:"
 		    	+list1[i].color
@@ -235,7 +235,7 @@ for(var i=0; i<count; i++){
 				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_동.jpg' style='width:170px; height:160px;'></p></div><br>"+
 				"<p class='td txt sa three'>"
 		    	+list1[i].rank
-		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
+		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	+list1[i].code
 		    	+"' style='text-decoration:none; color:"
 		    	+list1[i].color
@@ -249,7 +249,7 @@ for(var i=0; i<count; i++){
 		$("#list").append("<div>"+
 				"<p class='td txt1 sa four'>"
 		    	+list1[i].rank
-		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/member/detail?uma_code="
+		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	+list1[i].code
 		    	+"' style='text-decoration:none; color:"
 		    	+list1[i].color

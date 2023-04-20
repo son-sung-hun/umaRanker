@@ -68,16 +68,16 @@ li {
 		<c:choose>
 		<c:when test="${s.count >12 }">
 			<li class="sa sa-up">
-			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
+			<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
 			<br>
-			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a>
+			<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a>
 			</li>
 		</c:when>
 		<c:otherwise>
 			<li>
-			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
+			<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
 			<br>
-			<a href="${ pageContext.servletContext.contextPath }/member/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a>
+			<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a>
 			</li>
 		</c:otherwise>
 		</c:choose>

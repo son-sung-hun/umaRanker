@@ -107,7 +107,7 @@ public class MemberController {
 		return "main/main";
 	}
 
-	@GetMapping("/member/soup")
+	@GetMapping("/day")
 	public String getCount(Model model, @RequestParam(value = "day_count", required = false) String day_count)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 		
@@ -136,7 +136,7 @@ public class MemberController {
 		return "main/dailyRanking";
 	}
 
-	@GetMapping("/member/week")
+	@GetMapping("/week")
 	public String getWeekCount(Model model, @RequestParam(value = "day_count", required = false) String day_count)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 		int count = 0;
@@ -181,7 +181,7 @@ public class MemberController {
 		return "main/weeklyRanking";
 	}
 
-	@GetMapping("/member/month")
+	@GetMapping("/month")
 	public String getMonthCount(Model model, @RequestParam(value = "day_count", required = false) String day_count)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 		
@@ -208,7 +208,7 @@ public class MemberController {
 		return "main/monthlyRanking";
 	}
 
-	@GetMapping("/member/database")
+	@GetMapping("/database")
 	public String getDatabase(Model model)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
@@ -219,7 +219,7 @@ public class MemberController {
 	}
 
 
-	@GetMapping("/member/detail")
+	@GetMapping("/database/detail")
 	public String getDatabaseDetail(Model model, @RequestParam(value = "uma_code", required = false) int uma_code)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 

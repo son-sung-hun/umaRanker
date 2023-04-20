@@ -16,10 +16,10 @@
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/main'" style="margin-left:20px; margin-right:50px;">
 			<span style="color:#ffdd00; font-size: 24px;">우마</span><span style="color:#ffd0b0; font-size: 24px;">랭커</span>
 			</div>
-			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/soup'" style="margin-left:10px; margin-right:20px;">🥕일간랭킹</div>
-			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/week'">🥕주간랭킹</div>
-			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/month'">🥕월간랭킹</div>
-			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/member/database'">🐎데이터베이스</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/day'" style="margin-left:10px; margin-right:20px;">🥕일간랭킹</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/week'">🥕주간랭킹</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/month'">🥕월간랭킹</div>
+			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/database'">🐎데이터베이스</div>
 		</div>
 </body>
 </html>
