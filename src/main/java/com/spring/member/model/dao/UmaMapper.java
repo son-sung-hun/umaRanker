@@ -18,4 +18,5 @@ public interface UmaMapper {
 	List<PixivDTO> selectPixivWeekRank(Map param);
 	List<PixivDTO> selectPixivMonthRank(int day_count);
 	UmaDTO selectUmaDetail(int uma_code);
+	int selectPixivMonthRankFromUmaCode(Map param);
 }

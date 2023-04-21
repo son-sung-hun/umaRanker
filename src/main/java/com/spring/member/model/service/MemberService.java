@@ -24,4 +24,6 @@ public interface MemberService {
 	Date updateDate();
 	void sampleScheduler2() throws IOException, ParseException, java.text.ParseException, InterruptedException;
 
+	int selectPixivMonthRankFromUmaCode(Map param);
+
 }

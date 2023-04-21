@@ -136,6 +136,7 @@ section::after {
 		
 		</aside>
 		 <article>
+
 		 <ul style="border-color: ${ requestScope.umaDetail.color_tag };">
 		 		<c:choose>
 					<c:when test="${ requestScope.umaDetail.uma_code eq 1 }">
@@ -151,8 +152,25 @@ section::after {
 						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
 					</c:otherwise>
 				</c:choose>
+
 		 	<c:set var="name" value="${ requestScope.umaDetail.uma_tag }"/>
 		 	<c:set var="value" value="${fn:length(name)-5 }"/>
+		 	<li style="font-size: 15px; color:#3d414d; font-weight: bold;">
+		 	월간 랭킹 ${ requestScope.monthlyRank }위
+                <c:choose>
+                     <c:when test="${ requestScope.rankResult eq 'increase' }">
+                     <img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/increase.png"/><span style="font-size: 12px; color:#139020; font-weight: bold;"> ${ requestScope.rankVariance }</span>
+                     </c:when>
+
+                     <c:when test="${ requestScope.rankResult eq 'decrease' }">
+                     <img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/decrease.png"/><span style="font-size: 12px; color:#d31a45; font-weight: bold;"> ${ requestScope.rankVariance }</span>
+                     </c:when>
+
+                     <c:otherwise>
+                     <img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/noChange.png"/>
+                     </c:otherwise>
+                </c:choose>
+		 	</li>
 		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };  font-weight: bold;">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:top; margin-top : 5px;"></a></li>
 			<li style="font-size: 15px; margin-top : 0px;">${fn:substring(name,0,value) }</li>
 			<li><hr align="left" size="1"  width="50%" color = "${ requestScope.umaDetail.color_tag }"></li>

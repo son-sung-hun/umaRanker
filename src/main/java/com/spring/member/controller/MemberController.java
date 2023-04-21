@@ -224,7 +224,37 @@ public class MemberController {
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
 		UmaDTO umaDetail = memberService.selectUmaDetail(uma_code);
+
+		Map param;
+		int[] result = new int[2];
+		String rankResult;
+		int rankVariance = 0;
+		int monthlyRank = 0;
+		for(int i=0; i<2; i++){
+			param = new HashMap();
+			param.put("day_count",i);
+			param.put("uma_code",uma_code);
+			result[i]= memberService.selectPixivMonthRankFromUmaCode(param);
+			if(i==0){
+				monthlyRank=result[i];
+			}
+		}
+
+		if(result[1]>result[0]){ //순위 상승
+			rankVariance = result[1]-result[0];
+			rankResult = "increase";
+		}else if(result[1]<result[0]){ //순위 하락
+			rankVariance = result[0]-result[1];
+			rankResult = "decrease";
+		}else{ //순위 유지
+			rankResult = "noChange";
+		}
+
+
 		model.addAttribute("umaDetail", umaDetail);
+		model.addAttribute("rankResult", rankResult);
+		model.addAttribute("rankVariance", rankVariance);
+		model.addAttribute("monthlyRank", monthlyRank);
 
 		return "main/databaseDetail";
 	}

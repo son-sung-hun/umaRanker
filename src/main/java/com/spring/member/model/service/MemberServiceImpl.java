@@ -156,6 +156,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public int selectPixivMonthRankFromUmaCode(Map param) {
+		return mapper.selectPixivMonthRankFromUmaCode(param);
+	}
+
+	@Override
 	public Date updateDate() {
 		// TODO Auto-generated method stub
 		return date;
