@@ -143,7 +143,7 @@ section::after {
 						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
 					</c:when>
 					
-					<c:when test="${ requestScope.umaDetail.uma_code eq 72 }">
+					<c:when test="${ requestScope.umaDetail.uma_code eq 94 }">
 						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }"  style="text-decoration:none; font-size: 20px; color:green;">◀</a>
 					</c:when>
 					
