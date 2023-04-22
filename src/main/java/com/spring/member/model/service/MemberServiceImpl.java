@@ -3,6 +3,7 @@ package com.spring.member.model.service;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -156,6 +157,20 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	@Scheduled(cron = "0 0 0 1 * *")
+	public void sampleScheduler3(){
+		List<PixivDTO> pixivDTO = selectPixivMonthRank(1);
+		Map param;
+		for(int i=0; i<pixivDTO.size(); i++){
+			param = new HashMap();
+			param.put("uma_code",pixivDTO.get(i).getUma_code());
+			param.put("rank",pixivDTO.get(i).getPixiv_rank());
+			updateUmaData(param);
+			System.out.println("업데이트 완료! 이름 : "+pixivDTO.get(i).getUma_name()+" 랭킹 : "+pixivDTO.get(i).getPixiv_rank());
+		}
+	}
+
+	@Override
 	public int selectPixivMonthRankFromUmaCode(Map param) {
 		return mapper.selectPixivMonthRankFromUmaCode(param);
 	}
@@ -176,6 +191,11 @@ public class MemberServiceImpl implements MemberService {
 	public List<PixivDTO> selectDailyBest(int day_count) {
 		// TODO Auto-generated method stub
 		return mapper.selectDailyBest(day_count);
+	}
+
+	@Override
+	public void updateUmaData(Map param){
+		mapper.updateUmaData(param);
 	}
 
 }
