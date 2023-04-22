@@ -25,9 +25,25 @@
 body { 
 	margin: 0 auto;
 }
-body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
+body, table, div, p{ font-family: 'Noto Sans KR', sans-serif; }
 .menu:hover {
 	background:#72798f;
 	color:white;
 	cursor:pointer;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
 }
