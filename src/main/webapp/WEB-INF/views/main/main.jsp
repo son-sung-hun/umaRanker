@@ -53,7 +53,7 @@ nav ul {
 }
 
 aside img {
-	width:auto;
+	width:500px;
 	height:auto;
 	border-width: 3px;
   	border-style: dotted;
