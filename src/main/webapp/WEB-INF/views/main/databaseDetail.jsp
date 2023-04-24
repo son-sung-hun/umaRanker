@@ -31,7 +31,7 @@
 
 	
 	gameUniform.onload=function(){
-		$("#side").append("<a href='#' id='img2' style='font-size: 18px; text-decoration:none; color:green;'>[ 승부복 ]</a>");
+		$("#side").append("<a href='#' id='img2' style='font-size: 21px; text-decoration:none; color:green;'>[ 승부복 ]</a>");
 		$(function() {
 			$("#img2").on("click", function(){
 				$("#img").attr("src",gameUniform.src);
@@ -41,7 +41,7 @@
 	};
 	
 	defaultArt.onload=function(){
-		$("#side").append("<a href='#' id='img3' style='font-size: 18px; text-decoration:none; color:green;'>[ 원안 ]</a>");
+		$("#side").append("<a href='#' id='img3' style='font-size: 21px; text-decoration:none; color:green;'>[ 원안 ]</a>");
 		$(function() {
 			$("#img3").on("click", function(){
 				$("#img").attr("src",defaultArt.src);
@@ -57,7 +57,13 @@
 	});
 </script>
 <style>
-body, table, div, p{ font-family: 'Noto Sans KR', sans-serif; }
+@font-face {
+    font-family: 'GyeonggiTitleM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+span{ font-family: 'Noto Sans KR', sans-serif; }
 body {
   margin-right: 200px;
   margin-left: 200px;
@@ -83,7 +89,7 @@ ul{
 }
 li {
 	list-style: none;
-	font-size: 20px;
+	font-size: 21px;
 	margin-top : 10px;
 	 
 }
@@ -132,7 +138,7 @@ section::after {
 		<aside id="side" align="center">
 		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px" style="border-color: ${ requestScope.umaDetail.color_tag };">
 		<br>
-		<a href='#' id='img1' style='font-size: 18px; text-decoration:none; color:green;'>[ 교복 ]</a>
+		<a href='#' id='img1' style='font-size: 21px; text-decoration:none; color:green;'>[ 교복 ]</a>
 		
 		</aside>
 		 <article>
@@ -180,12 +186,12 @@ section::after {
 			<li class="medium">쓰리사이즈 : B :${ requestScope.umaDetail.three_b } W :${ requestScope.umaDetail.three_w } H :${ requestScope.umaDetail.three_h }</li>
 			<li class="medium">생일 : ${ requestScope.umaDetail.birth_day }</li>
 			<li><hr align="left" size="1" width="50%" color = "${ requestScope.umaDetail.color_tag }"></li>
-			<li class="regular" style="font-size: 15px;">${ requestScope.umaDetail.uma_content }</li>
+			<li class="regular" style="font-size: 15px;"><span>${ requestScope.umaDetail.uma_content }</span></li>
 		 </ul>
 			
 
 			
-			<a href="${ pageContext.servletContext.contextPath }/database" class="medium" style='font-size:18px; text-decoration:none; color:#00B11C;'>목록으로 돌아가기</a>
+			<a href="${ pageContext.servletContext.contextPath }/database" class="medium" style='font-size:21px; text-decoration:none; color:#00B11C;'>목록으로 돌아가기</a>
 		</article>
 		<br>
 		<br>

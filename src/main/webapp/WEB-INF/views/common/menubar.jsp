@@ -8,13 +8,20 @@
 <title>Insert title here</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/common.css">
+<style>
+@font-face {
+    font-family: 'GyeonggiTitleM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 </head>
 <body>
 		<div class="nav">
 			<div class="menu" onclick="location.href='${ pageContext.servletContext.contextPath }/main'" style="margin-left:20px; margin-right:50px;">
-			<span style="color:#ffdd00; font-size: 24px;">우마</span><span style="color:#ffd0b0; font-size: 24px;">랭커</span>
+			<b class="light" style="color:#ffdd00; font-size: 24px;">우마</b><b class="light" style="color:#ffd0b0; font-size: 24px;">랭커</b>
 			</div>
 			<div class="menu light" onclick="location.href='${ pageContext.servletContext.contextPath }/day'" style="margin-left:10px; margin-right:20px;">🥕일간랭킹</div>
 			<div class="menu light" onclick="location.href='${ pageContext.servletContext.contextPath }/week'">🥕주간랭킹</div>

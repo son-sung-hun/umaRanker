@@ -9,7 +9,6 @@
 <link rel="icon" href="${ pageContext.servletContext.contextPath }/resources/images/favicon.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>우마랭커</title>
 <script>
@@ -19,7 +18,6 @@
 	}
 </script>
 <style type="text/css">
-body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
 
 html{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");

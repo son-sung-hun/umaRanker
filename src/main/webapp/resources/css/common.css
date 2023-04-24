@@ -9,7 +9,7 @@
     background:#3d414d;
 	color:white;
     z-index: 1;
-	font-size: 17px;
+	font-size: 21px;
 	margin:0px;
 }
 .menu {
@@ -25,7 +25,7 @@
 body { 
 	margin: 0 auto;
 }
-body, table, div, p{ font-family: 'Noto Sans KR', sans-serif; }
+body, table, div, p{ font-family: 'GyeonggiTitleM', sans-serif; }
 .menu:hover {
 	background:#72798f;
 	color:white;

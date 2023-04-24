@@ -9,7 +9,6 @@
 <link rel="icon" href="${ pageContext.servletContext.contextPath }/resources/images/favicon.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>우마랭커</title>
 <script>
@@ -19,7 +18,12 @@
 	}
 </script>
 <style>
-body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
+@font-face {
+    font-family: 'GyeonggiTitleM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
   
   margin-right: 200px;
@@ -98,19 +102,19 @@ section::after {
 				<article>
 				<c:choose>
 					<c:when test="${ empty requestScope.count }">
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
-						<span class="regular" style="font-size: 20px;">기준 날짜 : ${ updateDate }</span>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:green;">◀</a>
+						<span class="regular" style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
 					</c:when>
 					
 					<c:when test="${ requestScope.count eq 0 }">
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
-						<span class="regular"  style="font-size: 20px;">기준 날짜 : ${ updateDate }</span>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:green;">◀</a>
+						<span class="regular"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
 					</c:when>
 					
 					<c:otherwise>
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
-						<span class="regular"  style="font-size: 20px;">기준 날짜 : ${ updateDate }</span>
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 21px; color:green;">◀</a>
+						<span class="regular"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 21px; color:green;">▶</a>
 					</c:otherwise>
 				</c:choose>
 				<br>	
@@ -130,9 +134,9 @@ section::after {
 					명
 					</c:if>
 				</h2>
-				<h1 class="medium">오늘의 언급횟수 (
+				<p style="font-size: 21px;">오늘의 언급횟수 (
 				<a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'>픽시브</a>
-				) : ${ daily.pixiv_count } 회</h1>
+				) : ${ daily.pixiv_count } 회</p>
 				</article>
 				</section>
 			</c:if>

@@ -75,7 +75,13 @@
 
 </script>
 <style type="text/css">
-body, table, div, p{ font-family: 'Nanum Gothic', sans-serif; }
+@font-face {
+    font-family: 'GyeonggiTitleM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+span{ font-family: 'Noto Sans KR', sans-serif; }
 .test_box{display:table;width:800px;background:#c9eafa;padding:10px;}
 
 .tr{display:table-row;width:270px;}
@@ -157,7 +163,7 @@ width: 1200px;
 	<div class="scroll" align="center" style="overflow:auto; width:1200px; height:auto;">
 	<br>
 		<br>
-		<p style="font-size: 30px; margin:0px; font-weight: bold;">이번달의 인기 우마무스메는 ?</p>
+		<p style="font-size: 30px; margin:6px; font-weight: bold;">이번달의 인기 우마무스메는 ?</p>
 
 		<c:choose>
 			<c:when test="${ empty requestScope.count }">
