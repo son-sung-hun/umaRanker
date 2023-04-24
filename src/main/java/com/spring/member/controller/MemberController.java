@@ -159,22 +159,23 @@ public class MemberController {
 		cal.setTime(updateDate);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-		if (count == 0) {
-			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
-			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-		}
-		
+
+		cal.add(Calendar.DATE, -date);
+
 		cal.add(Calendar.DATE, -(count*7));
-		if(count!=0) {
-			cal.add(Calendar.DATE, date+6);
-		}
-		model.addAttribute("updateDate", df.format(cal.getTime()));
-		cal.add(Calendar.DATE, -(date));
-		if(count!=0) {
-			cal.add(Calendar.DATE, -(date)-6);
-		}
-		df = new SimpleDateFormat("yyyy-MM-dd");
+
 		model.addAttribute("beforeDate", df.format(cal.getTime()));
+
+
+		df = new SimpleDateFormat("yyyy-MM-dd");
+		if(count==0) {
+			cal.add(Calendar.DATE, date);
+			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+		}else{
+			cal.add(Calendar.DATE, 6);
+		}
+
+		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
 		model.addAttribute("count", count);
 
