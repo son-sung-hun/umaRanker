@@ -166,12 +166,12 @@ public class MemberController {
 		
 		cal.add(Calendar.DATE, -(count*7));
 		if(count!=0) {
-			cal.add(Calendar.DATE, date);
+			cal.add(Calendar.DATE, date+6);
 		}
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		cal.add(Calendar.DATE, -(date));
 		if(count!=0) {
-			cal.add(Calendar.DATE, -(date));
+			cal.add(Calendar.DATE, -(date)-6);
 		}
 		df = new SimpleDateFormat("yyyy-MM-dd");
 		model.addAttribute("beforeDate", df.format(cal.getTime()));
