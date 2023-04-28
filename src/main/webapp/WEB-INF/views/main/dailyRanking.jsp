@@ -34,43 +34,8 @@
 	
 	</c:forEach>
 	
-    $(function() {
-        $("#show").on("click", function() {
-        	
-        	for(var i = count; i<count1; i++){
 
-    			$("#list").append("<div>"+
-    			"<p class='td txt1'>"
-    			+list1[i].rank
-    			+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
-    			+list1[i].code
-    			+"' style='text-decoration:none; color:"
-    			+list1[i].color
-        		+";'>"
-        		+list1[i].name
-        		+"</a> (총 "
-        		+list1[i].count
-        		+"개)</p>");
 
-        	}
-        	count+=5;
-        	count1+=5;
-        	
-        	if(count1>list1.length){
-        		count1 = list1.length;
-        	}
-        	if(count>list1.length){
-        		$("#show").hide();
-        	}
-        	$('.scroll').animate({
-        		scrollTop: $('#list').height()
-        	},500);
-            window.scrollTo(0,document.body.scrollHeight);
-        	
-
-        });
-    });
-	
 
 
 </script>
@@ -102,19 +67,9 @@ width: 1200px;
   height:100%;
 }
   .scroll {
-    width: 250px;
-    height: 140px;
-    overflow: auto;
+    overflow: hidden;
   }
-  .scroll::-webkit-scrollbar {
-    width: 10px;
-  }
-  .scroll::-webkit-scrollbar-thumb {
-    background-color: #8EFFA0;
-  }
-  .scroll::-webkit-scrollbar-track {
-    background-color: #EFEFEF;
-  }
+
 .sa {
 
   opacity: 0;
@@ -153,15 +108,29 @@ width: 1200px;
     opacity: 1;
   }
 }
+
+.sa1 {
+		opacity: 0;
+        transition: all .5s ease;
+    }
+
+
+.sa1-up {
+        transform: translate(0, 100px);
+       }
+.sa1.show {
+        opacity: 1;
+        transform: none;
+      }
 </style>
 
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
-	
+
 	<br>
 	<br>
-	<div class="scroll" align="center" style="overflow:auto; width:1200px; height:auto;">
+	<div  align="center" style="overflow:hidden; width:1200px; height:auto;">
 	<br>
 		<br>
 		<p style="font-size: 30px; margin:6px; font-weight: bold;">오늘의 인기 우마무스메는 ?</p>
@@ -170,12 +139,12 @@ width: 1200px;
 				<a href="${ pageContext.servletContext.contextPath }/day?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ updateDate }</span>
 			</c:when>
-					
+
 			<c:when test="${ requestScope.count eq 0 }">
 				<a href="${ pageContext.servletContext.contextPath }/day?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ updateDate }</span>
 			</c:when>
-					
+
 			<c:otherwise>
 				<a href="${ pageContext.servletContext.contextPath }/day?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ updateDate }</span>
@@ -183,21 +152,45 @@ width: 1200px;
 			</c:otherwise>
 		</c:choose>
 		<br>
-		<br> 
+		<br>
 		<div id="list">
-		
-		
-		
+
+
+
 		</div>
-		<br>
-		<br>
-		
-		<br>
-		<br>
-		<img src='${ pageContext.servletContext.contextPath }/resources/images/arrow.png' id="show" style='width:50px; height:50px;'>
-		
-		<br>
-		
+
+		<c:forEach var="uma" items="${ requestScope.pixivRanking }" varStatus="s">
+        <c:choose>
+        <c:when test="${uma.pixiv_rank >3 }">
+        <p class='sa1 sa1-up txt1 four'>
+        ${ uma.pixiv_rank }위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }' style='text-decoration:none; color:${ uma.color_tag };'>${ uma.uma_name }</a> (총 : ${ uma.pixiv_count }개)</p>
+        </c:when>
+        </c:choose>
+        </c:forEach>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
 	</div>
 </body>
 <script type="text/javascript">
@@ -255,25 +248,28 @@ for(var i=0; i<count; i++){
 		    	+list1[i].count
 		    	+"개)</p><br><br><br>");
 		break;
-	default:
-		$("#list").append("<div>"+
-				"<p class='td txt1 sa four'>"
-		    	+list1[i].rank
-		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
-		    	+list1[i].code
-		    	+"' style='text-decoration:none; color:"
-		    	+list1[i].color
-		    	+";'>"
-		    	+list1[i].name
-		    	+"</a> (총 "
-		    	+list1[i].count
-		    	+"개)</p>");
-		break;
+
 
 
 	}
 
 }
+
+    const saTriggerMargin = 300;
+    const saElementList = document.querySelectorAll('.sa1');
+
+    const saFunc = function() {
+      for (const element of saElementList) {
+        if (!element.classList.contains('show')) {
+          if (window.innerHeight > element.getBoundingClientRect().top + saTriggerMargin) {
+            element.classList.add('show');
+          }
+        }
+      }
+    }
+
+
+    window.addEventListener('scroll', saFunc);
 
 </script>
 </html>
