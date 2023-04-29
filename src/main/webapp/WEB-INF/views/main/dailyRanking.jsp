@@ -176,7 +176,7 @@ width: 1200px;
         <br>
         <br>
         <br>
-        <br>
+        <a href="#" class="moveTop" style="font-family: 'Noto Sans KR', sans-serif; text-decoration:none; font-size: 16px; margin:0px; color: #3d414d; font-weight: bold;">🔼이 페이지의 맨 위로🔼</a>
         <br>
         <br>
         <br>
@@ -191,9 +191,16 @@ width: 1200px;
         <br>
         <br>
 
+
 	</div>
 </body>
 <script type="text/javascript">
+const $topBtn = document.querySelector(".moveTop");
+
+$topBtn.onclick = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 for(var i=0; i<count; i++){
 
 	switch(list1[i].rank){
