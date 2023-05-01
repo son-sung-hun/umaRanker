@@ -132,19 +132,19 @@ width: 1200px;
 		
 		<c:choose>
 			<c:when test="${ empty requestScope.count }">
-				<a href="${ pageContext.servletContext.contextPath }/week?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<a href="${ pageContext.servletContext.contextPath }/week?day_count=1" style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
 			</c:when>
 					
 			<c:when test="${ requestScope.count eq 0 }">
-				<a href="${ pageContext.servletContext.contextPath }/week?day_count=1" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<a href="${ pageContext.servletContext.contextPath }/week?day_count=1" style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
 			</c:when>
 					
 			<c:otherwise>
-				<a href="${ pageContext.servletContext.contextPath }/week?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+				<a href="${ pageContext.servletContext.contextPath }/week?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
 				<span style="font-size: 14px; margin:0px; color: #A6A6A6;">기준 날짜 : ${ beforeDate } ~ ${ updateDate }</span>
-				<a href="${ pageContext.servletContext.contextPath }/week?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+				<a href="${ pageContext.servletContext.contextPath }/week?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
 			</c:otherwise>
 		</c:choose>
 		<br>

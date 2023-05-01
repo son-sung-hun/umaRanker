@@ -60,7 +60,7 @@ aside img {
 	width:500px;
 	height:auto;
 	border-width: 3px;
-  	border-style: dotted;
+  	border-style: solid;
 }
 
 article {
@@ -97,24 +97,24 @@ section::after {
 			<c:if test="${s.first}">
 				<section>
 				<aside align="center">
-				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px" style="border-color: ${ daily.color_tag };">
+				<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px" style="border-color: #3d414d;">
 				</aside>
 				<article>
 				<c:choose>
 					<c:when test="${ empty requestScope.count }">
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:green;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
 						<span class="regular" style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
 					</c:when>
 					
 					<c:when test="${ requestScope.count eq 0 }">
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:green;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
 						<span class="regular"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
 					</c:when>
 					
 					<c:otherwise>
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 21px; color:green;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
 						<span class="regular"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 21px; color:green;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">▶</a>
 					</c:otherwise>
 				</c:choose>
 				<br>	

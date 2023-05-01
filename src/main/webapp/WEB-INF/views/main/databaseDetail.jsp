@@ -31,7 +31,7 @@
 
 	
 	gameUniform.onload=function(){
-		$("#side").append("<a href='#' id='img2' style='font-size: 21px; text-decoration:none; color:green;'>[ 승부복 ]</a>");
+		$("#side").append("<a href='#' id='img2' style='font-size: 21px; text-decoration:none; color:#3d414d;'>[ 승부복 ]</a>");
 		$(function() {
 			$("#img2").on("click", function(){
 				$("#img").attr("src",gameUniform.src);
@@ -41,7 +41,7 @@
 	};
 	
 	defaultArt.onload=function(){
-		$("#side").append("<a href='#' id='img3' style='font-size: 21px; text-decoration:none; color:green;'>[ 원안 ]</a>");
+		$("#side").append("<a href='#' id='img3' style='font-size: 21px; text-decoration:none; color:#3d414d;'>[ 원안 ]</a>");
 		$(function() {
 			$("#img3").on("click", function(){
 				$("#img").attr("src",defaultArt.src);
@@ -85,7 +85,7 @@ ul{
 	
 	border-width: 3px;
 	
-  	border-style: dotted;
+  	border-style: solid;
 }
 li {
 	list-style: none;
@@ -103,7 +103,7 @@ aside img {
 	width:500px;
 	height:auto;
 	border-width: 3px;
-  	border-style: dotted;
+  	border-style: solid;
 }
 
 article {
@@ -136,26 +136,26 @@ section::after {
 	<br>
 		<section>
 		<aside id="side" align="center">
-		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px" style="border-color: ${ requestScope.umaDetail.color_tag };">
+		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px" style="border-color: #3d414d;">
 		<br>
-		<a href='#' id='img1' style='font-size: 21px; text-decoration:none; color:green;'>[ 교복 ]</a>
+		<a href='#' id='img1' style='font-size: 21px; text-decoration:none; color:#3d414d;'>[ 교복 ]</a>
 		
 		</aside>
 		 <article>
 
-		 <ul style="border-color: ${ requestScope.umaDetail.color_tag };">
+		 <ul style="border-color: #3d414d;">
 		 		<c:choose>
 					<c:when test="${ requestScope.umaDetail.uma_code eq 1 }">
-						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
 					</c:when>
 					
 					<c:when test="${ requestScope.umaDetail.uma_code eq 94 }">
-						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }"  style="text-decoration:none; font-size: 20px; color:green;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
 					</c:when>
 					
 					<c:otherwise>
-						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }" style="text-decoration:none; font-size: 20px; color:green;">◀</a>
-						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:green;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }" style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
 					</c:otherwise>
 				</c:choose>
 
@@ -179,19 +179,19 @@ section::after {
 		 	</li>
 		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };  font-weight: bold;">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 5px;"></a></li>
 			<li style="font-size: 15px; margin-top : 0px;">${fn:substring(name,0,value) }</li>
-			<li><hr align="left" size="1"  width="50%" color = "${ requestScope.umaDetail.color_tag }"></li>
+			<li><hr align="left" size="1"  width="50%" color = "#3d414d"></li>
 			<li class="medium">성우 : ${ requestScope.umaDetail.uma_voice }</li>
 			<li class="medium">신장 : ${ requestScope.umaDetail.height }</li>
 			<li class="medium">체중 : ${ requestScope.umaDetail.weight }</li>
 			<li class="medium">쓰리사이즈 : B :${ requestScope.umaDetail.three_b } W :${ requestScope.umaDetail.three_w } H :${ requestScope.umaDetail.three_h }</li>
 			<li class="medium">생일 : ${ requestScope.umaDetail.birth_day }</li>
-			<li><hr align="left" size="1" width="50%" color = "${ requestScope.umaDetail.color_tag }"></li>
+			<li><hr align="left" size="1" width="50%" color = "#3d414d"></li>
 			<li class="regular" style="font-size: 15px;"><span>${ requestScope.umaDetail.uma_content }</span></li>
 		 </ul>
 			
 
 			
-			<a href="${ pageContext.servletContext.contextPath }/database" class="medium" style='font-size:21px; text-decoration:none; color:#00B11C;'>목록으로 돌아가기</a>
+			<a href="${ pageContext.servletContext.contextPath }/database" class="medium" style='font-size:21px; text-decoration:none; color:#3d414d;'>목록으로 돌아가기</a>
 		</article>
 		<br>
 		<br>
