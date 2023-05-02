@@ -163,7 +163,7 @@ width: 1200px;
         <c:choose>
         <c:when test="${uma.pixiv_rank >3 }">
         <p class='sa1 sa1-up txt1 four'>
-        ${ uma.pixiv_rank }위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }' style='text-decoration:none; color:${ uma.color_tag };'>${ uma.uma_name }</a> (총 : ${ uma.pixiv_count }개)</p>
+        ${ uma.pixiv_rank }위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }' style='text-decoration:none; color:${ uma.color_tag };'>${ uma.uma_name }</a> (총 ${ uma.pixiv_count }개)</p>
         </c:when>
         </c:choose>
         </c:forEach>
@@ -193,6 +193,7 @@ width: 1200px;
 
 
 	</div>
+
 </body>
 <script type="text/javascript">
 const $topBtn = document.querySelector(".moveTop");
