@@ -117,13 +117,27 @@ width: 1200px;
         opacity: 1;
         transform: none;
       }
+.moveTop {
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/topButton.png");
+z-index: 1;
+position:fixed;
+width: 41px;
+height: 40px;
+bottom: 20px;
+right: 20px;
+cursor:pointer;
+}
+.moveTop:hover{
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/topButton_hover.png");
+}
 </style>
 
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
 
-	<img class="moveTop" style="z-index: 1; position:fixed; bottom: 20px; right: 20px; cursor:pointer;" src="${ pageContext.servletContext.contextPath }/resources/images/topButton.png"/>
+	<div class="moveTop">
+    </div>
 	<br>
 	<br>
 	<div class="scroll" align="center" style="overflow:hidden; width:1200px; height:auto;">
