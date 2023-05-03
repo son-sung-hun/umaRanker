@@ -124,6 +124,7 @@ width: 1200px;
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
 
+    <img class="moveTop" style="z-index: 1; position:fixed; bottom: 20px; right: 20px; cursor:pointer;" src="${ pageContext.servletContext.contextPath }/resources/images/topButton.png"/>
 	<br>
 	<br>
 	<div class="scroll" align="center" style="overflow:hidden; width:1200px; height:auto;">
@@ -173,7 +174,6 @@ width: 1200px;
         <br>
         <br>
         <br>
-        <a href="#" class="moveTop" style="font-family: 'Noto Sans KR', sans-serif; text-decoration:none; font-size: 16px; margin:0px; color: #3d414d; font-weight: bold;">🔼이 페이지의 맨 위로🔼</a>
         <br>
         <br>
         <br>
