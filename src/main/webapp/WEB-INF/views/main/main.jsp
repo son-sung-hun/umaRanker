@@ -59,8 +59,7 @@ nav ul {
 aside img {
 	width:500px;
 	height:auto;
-	border-width: 3px;
-  	border-style: solid;
+
 }
 
 article {
