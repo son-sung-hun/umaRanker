@@ -18,13 +18,14 @@ public class UmaDTO {
 	private String color_tag;
 
 	private String lastMonthRank;
+	private String yesterdayRank;
 
 	
 	public UmaDTO() {}
 
 
 	public UmaDTO(int uma_code, String uma_name, String height, String weight, String three_b, String three_w, String three_h,
-			String birth_day, String uma_voice, String uma_content, String uma_tag, String color_tag, String lastMonthRank) {
+			String birth_day, String uma_voice, String uma_content, String uma_tag, String color_tag, String lastMonthRank, String yesterdayRank) {
 		super();
 		this.uma_code = uma_code;
 		this.uma_name = uma_name;
@@ -39,6 +40,7 @@ public class UmaDTO {
 		this.uma_tag = uma_tag;
 		this.color_tag = color_tag;
 		this.lastMonthRank = lastMonthRank;
+		this.yesterdayRank = yesterdayRank;
 	}
 
 
@@ -164,6 +166,10 @@ public class UmaDTO {
 	public String getLastMonthRank() {return  lastMonthRank;}
 
 	public void setLastMonthRank(String lastMonthRank) { this.lastMonthRank = lastMonthRank; }
+
+	public String getYesterdayRank() {return yesterdayRank;}
+
+	public void setYesterdayRank(String yesterdayRank) { this.yesterdayRank = yesterdayRank; }
 
 	@Override
 	public String toString() {
