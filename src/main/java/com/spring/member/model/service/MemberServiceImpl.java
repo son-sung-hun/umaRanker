@@ -76,10 +76,8 @@ public class MemberServiceImpl implements MemberService {
 		List<UmaDTO> umaList = selectUma(); // 우마무스메 리스트를 DB에서 불러옴
 		for (UmaDTO key : umaList) {
 			uploadFail = false;
-			System.out.println("태그 : " + key.getUma_tag());
 			for (int cnt = 1; cnt < 11; cnt++) {
-				System.out.println("===============" + key.getUma_name() + " " + cnt + " 페이지===================");
-				
+
 				//데이터를 가져오기 위한 Request URL을 작성
 				UriComponents uriCom = UriComponentsBuilder.newInstance()
 						.path("www.pixiv.net/ajax/search/illustrations/" + key.getUma_tag())
@@ -89,7 +87,6 @@ public class MemberServiceImpl implements MemberService {
 
 				url = "https://" + uriCom.toString();
 				Thread.sleep(5000);
-				System.out.println("===url = " + url);
 				//해당 URL의 검색 결과를 크롤링해옴
 				Document doc = Jsoup.connect(url).ignoreContentType(true).get();
 				
@@ -103,7 +100,6 @@ public class MemberServiceImpl implements MemberService {
 				JSONArray data = (JSONArray) illustManga.get("data");
 
 				int count = 0;
-				System.out.println("==============데이터 사이즈 = " + data.size() + "================");
 				for (int i = 0; i < data.size(); i++) {
 					JSONObject personObject = (JSONObject) data.get(i);
 					//날짜 형식을 맞춰줌
@@ -118,16 +114,12 @@ public class MemberServiceImpl implements MemberService {
 					String userName = (String) personObject.get("userName");
 					//해당 일러스트의 정보 하나를 PixivDTO에 등록
 					PixivDTO pixiv = new PixivDTO(key.getUma_code(), createDate, userName, id);
-					System.out.println(pixiv);
 
-					System.out.println("id :" + id + " 제목 : " + title + " 작가명 : " + userName + " 업로드일자 : "
-							+ simpleDateFormat.format(createDate));
+
 					if (insertPixiv(pixiv) == true) {
 						//위의 정보를 토대로 DB에 INSERT를 시작함
-						System.out.println("업로드 성공");
 					} else {
 						//DB내에서는 UMA_CODE와 PIC_ID가 다중키로 제약조건이 걸려있으므로 이미 업로드 된 데이터는 업로드 되지 않음
-						System.out.println("업로드 실패");
 						//이미 업로드 되어 실패가 되어있을때는 uploadFail을 true로 바꿔둔다
 						uploadFail = true;
 					}
@@ -145,7 +137,6 @@ public class MemberServiceImpl implements MemberService {
 				if (uploadFail == true) {
 					//이번 반복에서 이미 업로드 된 일러스트가 있다면
 					//다음 페이지에 있는 검색결과는 크롤링을 안해도 되니 크롤링 시간 절약을 위해 반복을 끝낸다.
-					System.out.println("========스킵========");
 					cnt = 10;
 				}
 				if (cnt == 10) {
@@ -165,7 +156,21 @@ public class MemberServiceImpl implements MemberService {
 			param = new HashMap();
 			param.put("uma_code",pixivDTO.get(i).getUma_code());
 			param.put("rank",pixivDTO.get(i).getPixiv_rank());
-			updateUmaData(param);
+			updateLastMonthRank(param);
+			System.out.println("업데이트 완료! 이름 : "+pixivDTO.get(i).getUma_name()+" 랭킹 : "+pixivDTO.get(i).getPixiv_rank());
+		}
+	}
+	@Override
+	@Scheduled(cron = "0 0 0 * * *")
+	public void sampleScheduler4(){
+		List<PixivDTO> pixivDTO = selectPixivRank(1);
+		Map param;
+		System.out.println("==어제자 랭킹 업데이트 시작==");
+		for(int i=0; i<pixivDTO.size(); i++){
+			param = new HashMap();
+			param.put("uma_code",pixivDTO.get(i).getUma_code());
+			param.put("rank",pixivDTO.get(i).getPixiv_rank());
+			updateYesterdayRank(param);
 			System.out.println("업데이트 완료! 이름 : "+pixivDTO.get(i).getUma_name()+" 랭킹 : "+pixivDTO.get(i).getPixiv_rank());
 		}
 	}
@@ -194,8 +199,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void updateUmaData(Map param){
-		mapper.updateUmaData(param);
+	public void updateLastMonthRank(Map param){
+		mapper.updateLastMonthRank(param);
 	}
+
+	@Override
+	public void updateYesterdayRank(Map param){mapper.updateYesterdayRank(param);}
 
 }

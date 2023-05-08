@@ -20,5 +20,7 @@ public interface UmaMapper {
 	UmaDTO selectUmaDetail(int uma_code);
 	int selectPixivMonthRankFromUmaCode(Map param);
 
-	void updateUmaData(Map param);
+	void updateLastMonthRank(Map param);
+
+	void updateYesterdayRank(Map param);
 }

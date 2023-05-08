@@ -203,9 +203,15 @@
 		WHERE A.UMA_CODE = #{uma_code}
 	</select>
 
-	<update id="updateUmaData">
+	<update id="updateLastMonthRank">
 		UPDATE UMA_DATA
 		SET LAST_MONTH_RANK = #{rank}
+		WHERE UMA_CODE = #{uma_code}
+	</update>
+
+	<update id="updateYesterdayRank">
+		UPDATE UMA_DATA
+		SET YESTERDAY_RANK = #{rank}
 		WHERE UMA_CODE = #{uma_code}
 	</update>
 </mapper>

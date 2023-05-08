@@ -26,7 +26,11 @@ public interface MemberService {
 
 	void sampleScheduler3();
 
-	void updateUmaData(Map param);
+	void sampleScheduler4();
+
+	void updateLastMonthRank(Map param);
 	int selectPixivMonthRankFromUmaCode(Map param);
+
+	void updateYesterdayRank(Map param);
 
 }
