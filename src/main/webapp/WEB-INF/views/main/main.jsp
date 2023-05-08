@@ -127,6 +127,21 @@ section::after {
 				<c:if test="${requestScope.birth eq true}">
                 🎂
                 </c:if>
+                <c:if test="${requestScope.count == 0 }">
+				<c:choose>
+                    <c:when test="${ requestScope.rankResult eq 'increase' }">
+                    <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/increase.png"/> ${ requestScope.rankVariance }</span>
+                    </c:when>
+
+                    <c:when test="${ requestScope.rankResult eq 'decrease' }">
+                    <span style="font-size: 14px; color:#d31a45; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/decrease.png"/> ${ requestScope.rankVariance }</span>
+                    </c:when>
+
+                    <c:otherwise>
+                    <img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/noChange.png"/>
+                    </c:otherwise>
+                </c:choose>
+                </c:if>
 					<c:if test="${requestScope.size ne 1}">
 					외 
 					<c:out value="${requestScope.size-1}"/>

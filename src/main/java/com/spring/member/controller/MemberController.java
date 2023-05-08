@@ -97,12 +97,30 @@ public class MemberController {
 
 		}
 
+		String rankResult;
+		int rankVariance = 0;
+
+		int dailyRank = daily.get(0).getPixiv_rank();
+		int yesterDayRank = Integer.parseInt(memberService.selectUmaDetail(daily.get(0).getUma_code()).getYesterdayRank());
+
+		if(yesterDayRank>dailyRank){ //순위 상승
+			rankVariance = yesterDayRank-dailyRank;
+			rankResult = "increase";
+		}else if(yesterDayRank<dailyRank){ //순위 하락
+			rankVariance = dailyRank-yesterDayRank;
+			rankResult = "decrease";
+		}else{ //순위 유지
+			rankResult = "noChange";
+		}
+
 
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("daily", daily);
 		model.addAttribute("count", count);
 		model.addAttribute("birth", birth);
 		model.addAttribute("size", daily.size());
+		model.addAttribute("rankResult", rankResult);
+		model.addAttribute("rankVariance", rankVariance);
 
 		return "main/main";
 	}
