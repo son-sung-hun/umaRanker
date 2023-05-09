@@ -63,11 +63,26 @@ cursor:pointer;
 .moveTop:hover{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/topButton_hover.png");
 }
+.moveBot {
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/botButton.png");
+z-index: 1;
+position:fixed;
+width: 41px;
+height: 40px;
+bottom: 20px;
+right: 65px;
+cursor:pointer;
+}
+.moveBot:hover{
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/botButton_hover.png");
+}
 </style>
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
 	<div class="moveTop">
+    </div>
+    <div class="moveBot">
     </div>
 	<br>
 	<br>
@@ -111,9 +126,12 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 	</div>
 	<script type="text/javascript">
 	const $topBtn = document.querySelector(".moveTop");
-
+    const $botBtn = document.querySelector(".moveBot");
     $topBtn.onclick = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    $botBtn.onclick = () => {
+      window.scrollTo(0,document.body.scrollHeight);
     }
     const saTriggerMargin = 300;
     const saElementList = document.querySelectorAll('.sa');

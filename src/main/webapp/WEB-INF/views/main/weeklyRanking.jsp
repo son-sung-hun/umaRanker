@@ -130,6 +130,19 @@ cursor:pointer;
 .moveTop:hover{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/topButton_hover.png");
 }
+.moveBot {
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/botButton.png");
+z-index: 1;
+position:fixed;
+width: 41px;
+height: 40px;
+bottom: 20px;
+right: 65px;
+cursor:pointer;
+}
+.moveBot:hover{
+background-image:url("${ pageContext.servletContext.contextPath }/resources/images/botButton_hover.png");
+}
 </style>
 
 </head>
@@ -137,6 +150,8 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 	<jsp:include page="../common/menubar.jsp"/>
 
 	<div class="moveTop">
+    </div>
+    <div class="moveBot">
     </div>
 	<br>
 	<br>
@@ -207,9 +222,12 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 </body>
 <script type="text/javascript">
 const $topBtn = document.querySelector(".moveTop");
-
+const $botBtn = document.querySelector(".moveBot");
 $topBtn.onclick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+$botBtn.onclick = () => {
+  window.scrollTo(0,document.body.scrollHeight);
 }
 for(var i=0; i<count; i++){
 
