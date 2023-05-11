@@ -227,7 +227,7 @@ $topBtn.onclick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 $botBtn.onclick = () => {
-  window.scrollTo(0,document.body.scrollHeight);
+  window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
 }
 for(var i=0; i<count; i++){
 

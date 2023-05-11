@@ -131,7 +131,7 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
     $botBtn.onclick = () => {
-      window.scrollTo(0,document.body.scrollHeight);
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
     }
     const saTriggerMargin = 300;
     const saElementList = document.querySelectorAll('.sa');
