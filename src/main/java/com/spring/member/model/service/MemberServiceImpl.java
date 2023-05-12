@@ -161,7 +161,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	@Override
-	@Scheduled(cron = "0 0 0 * * *")
+	@Scheduled(cron = "0 */6 * * * ?")
 	public void sampleScheduler4(){
 		List<PixivDTO> pixivDTO = selectPixivRank(1);
 		Map param;
