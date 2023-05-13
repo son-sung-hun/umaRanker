@@ -140,7 +140,14 @@ public class MemberController {
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		for(int i=0; i< pixivRanking.size(); i++){
+			if(pixivRanking.get(i).getPixiv_count()==0){
+				pixivRanking.remove(i--);
+			}
 
+		}
+
+		System.out.println("pixivRanking.size() = "+pixivRanking.size());
 		if (count == 0) {
 			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
 			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
@@ -172,6 +179,12 @@ public class MemberController {
 		param.put("day_count", count);
 
 		List<PixivDTO> pixivRanking = memberService.selectPixivWeekRank(param);
+		for(int i=0; i< pixivRanking.size(); i++){
+			if(pixivRanking.get(i).getPixiv_count()==0){
+				pixivRanking.remove(i--);
+			}
+
+		}
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
@@ -210,6 +223,12 @@ public class MemberController {
 			count = Integer.parseInt(day_count);
 		}
 		List<PixivDTO> pixivRanking = memberService.selectPixivMonthRank(count);
+		for(int i=0; i< pixivRanking.size(); i++){
+			if(pixivRanking.get(i).getPixiv_count()==0){
+				pixivRanking.remove(i--);
+			}
+
+		}
 		updateDate = memberService.updateDate();
 		cal = Calendar.getInstance();
 		cal.setTime(updateDate);
