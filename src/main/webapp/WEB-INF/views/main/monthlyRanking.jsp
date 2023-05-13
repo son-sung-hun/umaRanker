@@ -233,28 +233,126 @@ for(var i=0; i<count; i++){
 
 	switch(list1[i].rank){
 	case '1':
-		$("#list").append("<div class='tr sa one'>"+
-				"<p class='td'>"+
-				"<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
-				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
-				"<p class='td txt sa one'>"
-		    	+list1[i].rank
-		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
-		    	+list1[i].code
-		    	+"' style='text-decoration:none; color:"
-		    	+list1[i].color
-		    	+";'>"
-		    	+list1[i].name
-		    	+"</a> (총 "
-		    	+list1[i].count
-		    	+"개)</p><br><br><br>");
+
+
+		if(i==0){
+		    if(list1[i+1].rank == '1'){
+		        $("#list").append("<div class='tr sa one'>"+
+				    "<p class='td'>"+
+				    "<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
+				    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
+				    "<p class='td txt sa one'>공동 "
+		    	    +list1[i].rank
+		    	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	    +list1[i].code
+		    	    +"' style='text-decoration:none; color:"
+		    	    +list1[i].color
+		    	    +";'>"
+		    	    +list1[i].name
+		    	    +"</a> (총 "
+		    	    +list1[i].count
+		    	    +"개)</p><br><br><br>");
+		    }
+		    else{
+		        $("#list").append("<div class='tr sa one'>"+
+				    "<p class='td'>"+
+				    "<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
+				    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
+				    "<p class='td txt sa one'>"
+		    	    +list1[i].rank
+		    	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	    +list1[i].code
+		    	    +"' style='text-decoration:none; color:"
+		    	    +list1[i].color
+		    	    +";'>"
+		    	    +list1[i].name
+		    	    +"</a> (총 "
+		    	    +list1[i].count
+		    	    +"개)</p><br><br><br>");
+		    }
+		}else{
+		    if(list1[i-1].rank == '1' ||list1[i+1].rank == '1'){
+		        $("#list").append("<div class='tr sa one'>"+
+				    "<p class='td'>"+
+				    "<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
+				    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
+				    "<p class='td txt sa one'>공동 "
+		    	    +list1[i].rank
+		    	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	    +list1[i].code
+		    	    +"' style='text-decoration:none; color:"
+		    	    +list1[i].color
+		    	    +";'>"
+		    	    +list1[i].name
+		    	    +"</a> (총 "
+		    	    +list1[i].count
+		    	    +"개)</p><br><br><br>");
+		    }
+		    else{
+		        $("#list").append("<div class='tr sa one'>"+
+				    "<p class='td'>"+
+				    "<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
+				    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
+				    "<p class='td txt sa one'>"
+		    	    +list1[i].rank
+		    	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	    +list1[i].code
+		    	    +"' style='text-decoration:none; color:"
+		    	    +list1[i].color
+		    	    +";'>"
+		    	    +list1[i].name
+		    	    +"</a> (총 "
+		    	    +list1[i].count
+		    	    +"개)</p><br><br><br>");
+		    }
+		}
 		break;
 	case '2':
-		$("#list").append("<div class='tr sa two'>"+
+
+        if(i!=0 && (list1[i-1].rank == '2' ||list1[i+1].rank == '2')){
+            $("#list").append("<div class='tr sa two'>"+
+           	    "<p class='td'>"+
+           	    "<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
+           	    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_은.jpg' style='width:220px; height:210px;'></p></a></div><br>"+
+           	    "<p class='td txt sa two'>공동 "
+           	    +list1[i].rank
+           	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+           	    +list1[i].code
+           	    +"' style='text-decoration:none; color:"
+           	    +list1[i].color
+           	    +";'>"
+           	    +list1[i].name
+           	    +"</a> (총 "
+           	    +list1[i].count
+           	    +"개)</p><br><br><br>");
+        }
+        else{
+            $("#list").append("<div class='tr sa two'>"+
+            	"<p class='td'>"+
+            	"<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
+            	"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_은.jpg' style='width:220px; height:210px;'></p></a></div><br>"+
+            	"<p class='td txt sa two'>"
+            	+list1[i].rank
+            	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+            	+list1[i].code
+            	+"' style='text-decoration:none; color:"
+            	+list1[i].color
+            	+";'>"
+            	+list1[i].name
+            	+"</a> (총 "
+            	+list1[i].count
+            	+"개)</p><br><br><br>");
+        }
+
+	    break;
+	case '3':
+
+        if(i!=0 && (list1[i-1].rank == '3' ||list1[i+1].rank == '3')){
+		    $("#list").append("<div class='tr sa three'>"+
 				"<p class='td'>"+
 				"<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
-				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_은.jpg' style='width:220px; height:210px;'></p></a></div><br>"+
-				"<p class='td txt sa two'>"
+				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_동.jpg' style='width:170px; height:160px;'></p></a></div><br>"+
+				"<p class='td txt sa three'>공동 "
 		    	+list1[i].rank
 		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	+list1[i].code
@@ -265,9 +363,9 @@ for(var i=0; i<count; i++){
 		    	+"</a> (총 "
 		    	+list1[i].count
 		    	+"개)</p><br><br><br>");
-		break;
-	case '3':
-		$("#list").append("<div class='tr sa three'>"+
+        }
+        else{
+		    $("#list").append("<div class='tr sa three'>"+
 				"<p class='td'>"+
 				"<a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="+list1[i].code+"' style='text-decoration:none;'>"+
 				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_동.jpg' style='width:170px; height:160px;'></p></a></div><br>"+
@@ -282,8 +380,9 @@ for(var i=0; i<count; i++){
 		    	+"</a> (총 "
 		    	+list1[i].count
 		    	+"개)</p><br><br><br>");
-		break;
+        }
 
+	    break;
 
 
 	}
