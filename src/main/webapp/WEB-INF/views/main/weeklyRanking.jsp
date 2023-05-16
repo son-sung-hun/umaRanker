@@ -185,14 +185,32 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 		
 		</div>
 
-		<c:forEach var="uma" items="${ requestScope.pixivRanking }" varStatus="s">
-        <c:choose>
-        <c:when test="${uma.pixiv_rank >3 }">
-        <p class='sa1 sa1-up txt1 four'>
-        ${ uma.pixiv_rank }위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }' style='text-decoration:none; color:${ uma.color_tag };'>${ uma.uma_name }</a> (총 ${ uma.pixiv_count }개)</p>
-        </c:when>
+		<c:choose>
+            <c:when test="${not empty requestScope.pixivRanking}">
+                <c:forEach var="uma" items="${ requestScope.pixivRanking }" varStatus="s">
+                <c:choose>
+                <c:when test="${uma.pixiv_rank >3 }">
+                <p class='sa1 sa1-up txt1 four'>
+                ${ uma.pixiv_rank }위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }' style='text-decoration:none; color:${ uma.color_tag };'>${ uma.uma_name }</a> (총 ${ uma.pixiv_count }개)</p>
+                </c:when>
+                </c:choose>
+                </c:forEach>
+            </c:when>
+
+            <c:otherwise>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p style="font-size: 30px; margin:6px; font-weight: bold;">현재 집계 중입니다.</p>
+            </c:otherwise>
         </c:choose>
-        </c:forEach>
         <br>
         <br>
         <br>
