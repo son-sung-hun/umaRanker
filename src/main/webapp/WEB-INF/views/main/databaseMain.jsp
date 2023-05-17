@@ -38,6 +38,7 @@ li {
 	margin-top:15px;
 }
 .sa {
+        position: relative;
 		opacity: 0;
         transition: all .5s ease;
     }
@@ -50,6 +51,9 @@ li {
         opacity: 1;
         transform: none;
       }
+.sa:hover{
+    top: -5px;
+}
 .moveTop {
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/topButton.png");
 z-index: 1;
@@ -101,7 +105,7 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 			</li>
 		</c:when>
 		<c:otherwise>
-			<li>
+			<li class="sa sa-up">
 			<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }"class=""><img src='${ pageContext.servletContext.contextPath }/resources/images/${ uma.uma_name }_썸네일.png'></a>
 			<br>
 			<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a>
