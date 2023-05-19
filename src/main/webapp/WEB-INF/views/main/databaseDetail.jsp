@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>우마랭커</title>
 <script>
@@ -63,7 +64,6 @@
     font-weight: normal;
     font-style: normal;
 }
-span{ font-family: 'Noto Sans KR', sans-serif; }
 body {
   margin-right: 200px;
   margin-left: 200px;
@@ -161,6 +161,7 @@ section::after {
 
 		 	<c:set var="name" value="${ requestScope.umaDetail.uma_tag }"/>
 		 	<c:set var="value" value="${fn:length(name)-5 }"/>
+
 		 	<li style="font-size: 15px; color:#3d414d; font-weight: bold;">
 		 	월간 랭킹 ${ requestScope.monthlyRank }위
                 <c:choose>
@@ -178,7 +179,7 @@ section::after {
                 </c:choose>
 		 	</li>
 		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };  font-weight: bold;">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 5px;"></a></li>
-			<li style="font-size: 15px; margin-top : 0px;">${fn:substring(name,0,value) }</li>
+			<li style="font-family: 'M PLUS Rounded 1c', sans-serif; color:${ requestScope.umaDetail.color_tag }; font-size: 15px; font-weight: bold; margin-top : 0px;">${fn:substring(name,0,value) }</li>
 			<li><hr align="left" size="1"  width="50%" color = "#3d414d"></li>
 			<li class="medium">성우 : ${ requestScope.umaDetail.uma_voice }</li>
 			<li class="medium">신장 : ${ requestScope.umaDetail.height }</li>
@@ -186,7 +187,7 @@ section::after {
 			<li class="medium">쓰리사이즈 : B :${ requestScope.umaDetail.three_b } W :${ requestScope.umaDetail.three_w } H :${ requestScope.umaDetail.three_h }</li>
 			<li class="medium">생일 : ${ requestScope.umaDetail.birth_day }</li>
 			<li><hr align="left" size="1" width="50%" color = "#3d414d"></li>
-			<li class="regular" style="font-size: 15px;"><span>${ requestScope.umaDetail.uma_content }</span></li>
+			<li class="regular" style="font-size: 15px;"><span style="font-family: 'Noto Sans KR', sans-serif;">${ requestScope.umaDetail.uma_content }</span></li>
 		 </ul>
 			
 
