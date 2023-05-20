@@ -68,7 +68,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	@Scheduled(fixedRate = 4800000) //90분마다 자동 반복되게 스케쥴링 함
+	@Scheduled(cron = "0 0 0/6 * * *")
 	public void sampleScheduler2() throws IOException, ParseException, java.text.ParseException, InterruptedException {
 		date = new Date();
 		boolean uploadFail = false;

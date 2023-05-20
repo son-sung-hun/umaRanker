@@ -92,7 +92,7 @@ section::after {
 	<div align="center">
 		<c:forEach var="daily" items="${ requestScope.daily }" varStatus="s">
 		
-		
+
 			<c:if test="${s.first}">
 				<section>
 				<aside align="center">
@@ -155,7 +155,7 @@ section::after {
 				</section>
 			</c:if>
 			
-			
+
 				
 		
 		
