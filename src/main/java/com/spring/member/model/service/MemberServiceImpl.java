@@ -28,7 +28,7 @@ import com.spring.member.model.dto.UmaDTO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-	public Date date;
+	public Date date = new Date();
 	private UmaMapper mapper;
 	private static String url = "";
 

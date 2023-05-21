@@ -96,7 +96,7 @@ section::after {
 			<c:if test="${s.first}">
 				<section>
 				<aside align="center">
-				<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }<img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px" style="border-color: #3d414d;"></a>
+				<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };"><img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px" style="border-color: #3d414d;"></a>
 				</aside>
 				<article>
 				<c:choose>
