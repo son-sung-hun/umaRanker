@@ -19,6 +19,7 @@
 		<result column="UMA_COLOR" property="color_tag" />
 		<result column="LAST_MONTH_RANK" property="lastMonthRank" />
 		<result column="YESTERDAY_RANK" property="yesterdayRank" />
+		<result column="ENG_NAME" property="engName" />
 	</resultMap>
 
 	<resultMap id="pixivResultSet" type="PixivDTO">
@@ -48,7 +49,8 @@
 		    UMA_TAG,
 		    UMA_COLOR,
 			LAST_MONTH_RANK,
-			YESTERDAY_RANK
+			YESTERDAY_RANK,
+			ENG_NAME
 			FROM UMA_DATA
 	</select>
 	
@@ -67,7 +69,8 @@
 		    UMA_TAG,
 		    UMA_COLOR,
 			LAST_MONTH_RANK,
-			YESTERDAY_RANK
+			YESTERDAY_RANK,
+			ENG_NAME
 			FROM UMA_DATA
 			WHERE UMA_CODE = #{uma_code}
 	</select>
