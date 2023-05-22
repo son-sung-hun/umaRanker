@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>우마랭커</title>
 <script>
@@ -180,6 +181,7 @@ section::after {
 		 	</li>
 		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };  font-weight: bold;">${ requestScope.umaDetail.uma_name } <a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 5px;"></a></li>
 			<li style="font-family: 'M PLUS Rounded 1c', sans-serif; color:${ requestScope.umaDetail.color_tag }; font-size: 15px; font-weight: bold; margin-top : 0px;">${fn:substring(name,0,value) }</li>
+			<li style="font-family: 'Josefin Sans', sans-serif; color:${ requestScope.umaDetail.color_tag }; font-size: 15px; margin-top : 0px;">${requestScope.umaDetail.engName }</li>
 			<li><hr align="left" size="1"  width="50%" color = "#3d414d"></li>
 			<li class="medium">성우 : ${ requestScope.umaDetail.uma_voice }</li>
 			<li class="medium">신장 : ${ requestScope.umaDetail.height }</li>
