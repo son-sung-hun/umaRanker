@@ -283,11 +283,14 @@ public class MemberController {
 			rankResult = "noChange";
 		}
 
+		String umaLink = umaDetail.getEngName().toLowerCase().replace(" ","").replace(".","");
+
 
 		model.addAttribute("umaDetail", umaDetail);
 		model.addAttribute("rankResult", rankResult);
 		model.addAttribute("rankVariance", rankVariance);
 		model.addAttribute("monthlyRank", monthlyRank);
+		model.addAttribute("umaLink", umaLink);
 
 		return "main/databaseDetail";
 	}
