@@ -209,7 +209,7 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
                 <br>
                 <br>
                 <br>
-                <p style="font-size: 30px; margin:6px; font-weight: bold;">현재 집계 중입니다.</p>
+                <p style="font-size: 30px; margin:6px; font-weight: bold;">현재 집계 중입니다. (6시간마다 갱신)</p>
             </c:otherwise>
         </c:choose>
         <br>
