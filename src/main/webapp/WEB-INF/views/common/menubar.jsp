@@ -29,6 +29,9 @@
 			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/week'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">주간랭킹</div>
 			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/month'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">월간랭킹</div>
 			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/database'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">데이터베이스</div>
+			<div class="" style="display:inline-block; width:170px; height:50px; text-align:center; line-height:50px;">
+              <input type="text" placeholder="검색어 입력">
+            </div>
 		</div>
 </body>
 </html>
