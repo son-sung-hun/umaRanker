@@ -113,7 +113,11 @@ public class MemberController {
 			rankResult = "noChange";
 		}
 
+		List<UmaDTO> searchQuery = memberService.selectUma();
 
+
+
+		model.addAttribute("searchQuery",searchQuery);
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("daily", daily);
 		model.addAttribute("count", count);
@@ -154,6 +158,12 @@ public class MemberController {
 		}
 		
 		cal.add(Calendar.DATE, -(count));
+
+		List<UmaDTO> searchQuery = memberService.selectUma();
+
+
+
+		model.addAttribute("searchQuery",searchQuery);
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
 		model.addAttribute("count", count);
@@ -205,7 +215,11 @@ public class MemberController {
 		}else{
 			cal.add(Calendar.DATE, 6);
 		}
+		List<UmaDTO> searchQuery = memberService.selectUma();
 
+
+
+		model.addAttribute("searchQuery",searchQuery);
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
 		model.addAttribute("count", count);
@@ -239,6 +253,11 @@ public class MemberController {
 		}
 		
 		cal.add(Calendar.MONTH, -(count));
+		List<UmaDTO> searchQuery = memberService.selectUma();
+
+
+
+		model.addAttribute("searchQuery",searchQuery);
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
 		model.addAttribute("count", count);
@@ -251,6 +270,8 @@ public class MemberController {
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
 		List<UmaDTO> umaData = memberService.selectUma();
+
+		model.addAttribute("searchQuery", umaData);
 		model.addAttribute("umaData", umaData);
 
 		return "main/databaseMain";
@@ -285,7 +306,11 @@ public class MemberController {
 
 		String umaLink = umaDetail.getEngName().toLowerCase().replace(" ","").replace(".","");
 
+		List<UmaDTO> searchQuery = memberService.selectUma();
 
+
+
+		model.addAttribute("searchQuery",searchQuery);
 		model.addAttribute("umaDetail", umaDetail);
 		model.addAttribute("rankResult", rankResult);
 		model.addAttribute("rankVariance", rankVariance);
