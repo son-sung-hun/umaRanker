@@ -319,4 +319,26 @@ public class MemberController {
 
 		return "main/databaseDetail";
 	}
+
+	@GetMapping("/search")
+	public String getSearchData(Model model, HttpServletRequest httpServletRequest)
+			throws IOException, ParseException, java.text.ParseException, InterruptedException {
+
+		String name = httpServletRequest.getParameter("uma_name");
+
+		int uma_code = 0;
+		List<UmaDTO> searchQuery = memberService.selectUma();
+		for(int i=0; i<searchQuery.size(); i++){
+			if(name.equals(searchQuery.get(i).getUma_name())){
+				uma_code = searchQuery.get(i).getUma_code();
+			}
+		}
+		if(uma_code!=0){
+			getDatabaseDetail(model,uma_code);
+			return "main/databaseDetail";
+		}
+		model.addAttribute("searchQuery",searchQuery);
+
+		return "error/searchError";
+	}
 }
