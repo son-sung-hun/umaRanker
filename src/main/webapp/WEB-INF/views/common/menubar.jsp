@@ -30,7 +30,26 @@ list.push({
     font-weight: normal;
     font-style: normal;
 }
-
+.input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #eeeeee;
+  color: #eeeeee;
+  box-sizing: border-box;
+  height: 15px;
+  padding: 10px 0px;
+  position: relative;
+  top: 50%;
+  width: 140px;
+  z-index: 1;
+  &:focus {
+    outline: none;
+  }
+}
+input::placeholder {
+  color: #eeeeee;
+  opacity: 0.9;
+}
 </style>
 </head>
 
@@ -44,13 +63,15 @@ list.push({
 			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/month'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">월간랭킹</div>
 			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/database'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">데이터베이스</div>
 
-			<div class="" style="display:inline-block; width:170px; height:50px; text-align:center; line-height:50px;">
-			<form method="get" name="search" style="width:270px" action='${ pageContext.servletContext.contextPath }/search'>
-              <input id="searchInput" name="uma_name" list="option" type="text" placeholder="우마무스메 검색">
+			<div class="" style="display:inline-block; width:40%;  height:50px; text-align:center; line-height:50px;">
+			<form method="get" name="search" style="text-align:right;" action='${ pageContext.servletContext.contextPath }/search'>
+			  <input type="image" src='${ pageContext.servletContext.contextPath }/resources/images/search.jpg' width="20px" height="20px" style="vertical-align:text-bottom;" alt="제출버튼">
+              <input class="input" id="searchInput" name="uma_name" list="option" type="text" placeholder="우마무스메 검색">
               <datalist id="option">
 
               </datalist>
-              <button type="submit" class="">검색</button>
+
+
             </form>
             </div>
 
