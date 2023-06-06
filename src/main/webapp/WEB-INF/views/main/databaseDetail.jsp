@@ -182,6 +182,10 @@ section::after {
 		 	<li style="font-size: 30px; color:${ requestScope.umaDetail.color_tag };  font-weight: bold;">${ requestScope.umaDetail.uma_name }
 		 	<a href="https://www.pixiv.net/tags/${requestScope.umaDetail.uma_tag }/illustrations"  title='픽시브 링크' target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 5px;"></a>
 		 	<a href="https://umamusume.jp/character/detail/?name=${requestScope.umaLink }" title='공식사이트 링크' target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/uma_link.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 5px;"></a>
+            <c:if test="${not empty requestScope.umaDetail.ytbLink}">
+		 	<a href="https://youtu.be/${requestScope.umaDetail.ytbLink }" title='소개영상 링크' target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/ytb_link.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 5px;"></a>
+            </c:if>
+
 		 	</li>
 			<li style="font-family: 'M PLUS Rounded 1c', sans-serif; color:${ requestScope.umaDetail.color_tag }; font-size: 15px; font-weight: bold; margin-top : 0px;">${fn:substring(name,0,value) }</li>
 			<li style="font-family: 'Josefin Sans', sans-serif; color:${ requestScope.umaDetail.color_tag }; font-size: 15px; margin-top : 0px;">${requestScope.umaDetail.engName }</li>

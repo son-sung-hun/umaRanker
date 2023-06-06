@@ -20,6 +20,7 @@
 		<result column="LAST_MONTH_RANK" property="lastMonthRank" />
 		<result column="YESTERDAY_RANK" property="yesterdayRank" />
 		<result column="ENG_NAME" property="engName" />
+		<result column="YTB_LINK" property="ytbLink" />
 	</resultMap>
 
 	<resultMap id="pixivResultSet" type="PixivDTO">
@@ -50,7 +51,8 @@
 		    UMA_COLOR,
 			LAST_MONTH_RANK,
 			YESTERDAY_RANK,
-			ENG_NAME
+			ENG_NAME,
+			YTB_LINK
 			FROM UMA_DATA
 	</select>
 	
@@ -70,7 +72,8 @@
 		    UMA_COLOR,
 			LAST_MONTH_RANK,
 			YESTERDAY_RANK,
-			ENG_NAME
+			ENG_NAME,
+			YTB_LINK
 			FROM UMA_DATA
 			WHERE UMA_CODE = #{uma_code}
 	</select>
