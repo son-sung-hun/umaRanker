@@ -327,7 +327,12 @@ public class MemberController {
 		String name = httpServletRequest.getParameter("uma_name");
 
 		int uma_code = 0;
+
 		List<UmaDTO> searchQuery = memberService.selectUma();
+		if(name.equals("")){
+			Random random = new Random();
+			uma_code = random.nextInt(searchQuery.size());
+		}
 		for(int i=0; i<searchQuery.size(); i++){
 			if(name.equals(searchQuery.get(i).getUma_name())){
 				uma_code = searchQuery.get(i).getUma_code();
