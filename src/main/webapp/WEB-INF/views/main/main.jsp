@@ -74,7 +74,7 @@ section {
 	background-color: rgba(255, 255, 255, 0.60);
 	height:970px;
 }
-/* Clear floats after the columns */
+
 section::after {
   content: "";
   display: table;
@@ -82,7 +82,61 @@ section::after {
 }
 
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s;
+}
+
+
+.modal-content {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: rgba(238, 238, 238, 0.7);
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+
+.modal-button {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 13px;
+    height: 30px;
+    background-color: #0000000d;
+    color: #0e0e10;
+    padding: 0 10px;
+
+}
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 </style>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
 </head>
 <body>
 
@@ -163,5 +217,37 @@ section::after {
 
 		</c:forEach>
 	</div>
+
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <img src='${ pageContext.servletContext.contextPath }/resources/images/intro.png' style='display : block; margin : auto;'>
+
+                <ul style="margin-left:90px; margin-right:90px; text-align:left;">
+                <hr align="left" size="1"  width="96%" color = "#3d414d">
+                <span style="font-size: 18px; font-weight: light; ">이 사이트는 현재 일본과 한국에서 서비스중인
+
+                <span style="font-size: 18px; font-weight: bold; color:#f4d600; ">'우마무스메 </span>
+
+                <span style="font-size: 18px; font-weight: bold; color:#ffad77;">프리티더비'</span>
+
+                 라는 게임에 나오는 캐릭터들의
+                언급 횟수를 일간, 주간, 월간으로 조회하여 그 당시 제일 인기 있는 캐릭터가 누구인지 알 수 있게 해주는 사이트 입니다.
+                <br>
+                언급 횟수는 일본 내에서 가장 큰 규모의 서브컬쳐 일러스트 투고 사이트인
+
+                <span style="font-size: 18px; font-weight: bold; color:#055AFF;">pixiv</span>
+
+                에서의 검색 결과를 모두 크롤링하여 계산 됩니다.
+                <br>
+                일러스트 한 장에 언급횟수 하나로 환산하여 계산하고 있습니다.
+
+
+                </span>
+                </ul>
+
+                <button class="modal-button"style='display : block; margin : auto;' onclick="closeModal()">창 닫기</button>
+            </div>
+        </div>
 </body>
 </html>

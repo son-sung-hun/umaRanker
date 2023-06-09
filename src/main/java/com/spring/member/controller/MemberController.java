@@ -347,12 +347,4 @@ public class MemberController {
 		return "error/searchError";
 	}
 
-	@GetMapping("/intro")
-	public String getIntro(Model model)
-			throws IOException, ParseException, java.text.ParseException, InterruptedException {
-
-
-
-		return "main/intro";
-	}
 }
