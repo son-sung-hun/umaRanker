@@ -127,14 +127,50 @@ section::after {
     }
 </style>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var modal = document.getElementById("myModal");
-        modal.style.display = "block";
-    });
+    window.onload = function() {
+      var isModalHidden = getCookie('hideModal');
+      if (!isModalHidden) {
+        showModal();
+      }
+    };
+    function showModal() {
+      var modal = document.getElementById('myModal');
+      modal.style.display = "block";
+    }
+
+
+
+    function setCookie(name, value) {
+      var date = new Date();
+      date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+      var expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') {
+          cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+          return cookie.substring(nameEQ.length, cookie.length);
+        }
+      }
+      return null;
+    }
 
     function closeModal() {
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById('myModal');
         modal.style.display = "none";
+
+
+        var hideModalCheckbox = document.getElementById('hideModalCheckbox');
+        if (hideModalCheckbox.checked) {
+          setCookie('hideModal', 'true');
+        }
     }
 </script>
 </head>
@@ -245,8 +281,11 @@ section::after {
 
                 </span>
                 </ul>
-
-                <button class="modal-button"style='display : block; margin : auto;' onclick="closeModal()">창 닫기</button>
+                <span style='display : block; margin : auto; width : 300px;'>
+                <input type="checkbox"  id="hideModalCheckbox" >
+                <span style="font-size:16px;">오늘 하루 보지 않기 &nbsp;</span>
+                <button class="modal-button" onclick="closeModal()">창 닫기</button>
+                </span>
             </div>
         </div>
 </body>
