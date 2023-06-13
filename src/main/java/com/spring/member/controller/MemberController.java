@@ -78,15 +78,19 @@ public class MemberController {
 		List<PixivDTO> daily = memberService.selectDailyBest(count);
 
 		List<UmaDTO> umaDTOS = memberService.selectUma();
-
 		if(daily.size() == umaDTOS.size()){
-			daily = memberService.selectDailyBest(count-=1);
+
+			daily = memberService.selectDailyBest(count+1);
+			cal.add(Calendar.DATE, -(count+1));
+		}else{
+			cal.add(Calendar.DATE, -(count));
+			if (count == 0) {
+				//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
+				df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+			}
 		}
-		cal.add(Calendar.DATE, -(count));
-		if (count == 0) {
-			//현재 랭킹일시엔 시 분 초까지 표기함(크롤링 한 시각을 확인 시켜주기 위함)
-			df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-		}
+
+
 
 		SimpleDateFormat birthFormat = new SimpleDateFormat("M월 d일");
 		UmaDTO umaDTO;
