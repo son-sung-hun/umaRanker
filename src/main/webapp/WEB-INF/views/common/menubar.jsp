@@ -72,8 +72,9 @@ input::placeholder {
 
 
             </form>
-            </div>
 
+            </div>
+        <a href="https://github.com/son-sung-hun/umaRanker" style="position: absolute; right: 20px;" title='깃허브' target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/git_logo.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 13px;"></a>
 
 
 		</div>
