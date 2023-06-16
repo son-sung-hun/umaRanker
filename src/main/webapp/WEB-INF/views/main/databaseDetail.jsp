@@ -102,8 +102,8 @@ aside ul {
 
 aside img {
 	width:500px;
-	height:auto;
-	border-width: 3px;
+	height:880px;
+	border-width: 2px;
   	border-style: solid;
 }
 
@@ -135,16 +135,17 @@ section::after {
 	<div align="center">
 	<br>
 	<br>
+
 		<section>
 		<aside id="side" align="center">
-		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" width="700px" style="border-color: #3d414d;">
+		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-color: #e1e4e6;">
 		<br>
 		<a href='#' id='img1' style='font-size: 21px; text-decoration:none; color:#3d414d;'>[ 교복 ]</a>
 		
 		</aside>
 		 <article>
 
-		 <ul style="border-color: #3d414d;">
+		 <ul style="border-color: #e1e4e6;">
 		 		<c:choose>
 					<c:when test="${ requestScope.umaDetail.uma_code eq 1 }">
 						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
