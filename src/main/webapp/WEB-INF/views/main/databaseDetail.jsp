@@ -33,7 +33,7 @@
 
 	
 	gameUniform.onload=function(){
-		$("#side").append("<a href='#' id='img2' style='font-size: 21px; text-decoration:none; color:#3d414d;'>[ 승부복 ]</a>");
+		$("#side").append("<button type='button' id='img2'>승부복</button> ");
 		$(function() {
 			$("#img2").on("click", function(){
 				$("#img").attr("src",gameUniform.src);
@@ -41,9 +41,9 @@
 			});
 		
 	};
-	
+
 	defaultArt.onload=function(){
-		$("#side").append("<a href='#' id='img3' style='font-size: 21px; text-decoration:none; color:#3d414d;'>[ 원안 ]</a>");
+		$("#side").append("<button type='button' id='img3'>원안</button> ");
 		$(function() {
 			$("#img3").on("click", function(){
 				$("#img").attr("src",defaultArt.src);
@@ -127,7 +127,47 @@ section::after {
   clear: both;
 }
 
+button {
+ appearance: none;
+ background-color: transparent;
+ border: 0.125em solid #1A1A1A;
+ border-radius: 0.9375em;
+ box-sizing: border-box;
+ color: #3B3B3B;
+ cursor: pointer;
+ display: inline-block;
+ font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+ font-size: 16px;
+ font-weight: 600;
+ line-height: normal;
+ margin: 0;
+ min-width: 0;
+ outline: none;
+ padding: 0.5em 1.3em;
+ text-align: center;
+ text-decoration: none;
+ transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ will-change: transform;
+}
 
+button:disabled {
+ pointer-events: none;
+}
+
+button:hover {
+ color: #fff;
+ background-color: #1A1A1A;
+ box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+ transform: translateY(-2px);
+}
+
+button:active {
+ box-shadow: none;
+ transform: translateY(0);
+}
 </style>
 </head>
 <body>
@@ -140,8 +180,8 @@ section::after {
 		<aside id="side" align="center">
 		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-color: #e1e4e6;">
 		<br>
-		<a href='#' id='img1' style='font-size: 21px; text-decoration:none; color:#3d414d;'>[ 교복 ]</a>
-		
+
+		<button type="button" id='img1'>교복</button>
 		</aside>
 		 <article>
 
@@ -210,8 +250,8 @@ section::after {
 		 </ul>
 			
 
-			
-			<a href="${ pageContext.servletContext.contextPath }/database" class="medium" style='font-size:21px; text-decoration:none; color:#3d414d;'>목록으로 돌아가기</a>
+
+			<button type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/database'">목록으로 돌아가기</button>
 		</article>
 		<br>
 		<br>
