@@ -147,7 +147,9 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
         <br>
         <br>
 		<img src='${ pageContext.servletContext.contextPath }/resources/images/error.png' style='width:270px; height:260px;'>
-		<p style="font-size: 30px; margin:6px; font-weight: bold;">검색 결과가 없습니다.</p
+		<p style="font-size: 30px; margin:6px; font-weight: bold; color:#3d414d;">검색어
+		<span style="color:#000000;">'${ requestScope.name }' </span>
+		에 대한 검색 결과가 없습니다.</p
 
 
 

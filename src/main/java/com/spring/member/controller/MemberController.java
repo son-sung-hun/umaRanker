@@ -353,6 +353,7 @@ public class MemberController {
 			getDatabaseDetail(model,uma_code);
 			return "main/databaseDetail";
 		}
+		model.addAttribute("name",name);
 		model.addAttribute("searchQuery",searchQuery);
 
 		return "error/searchError";
