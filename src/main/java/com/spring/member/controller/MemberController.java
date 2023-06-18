@@ -356,6 +356,18 @@ public class MemberController {
 		model.addAttribute("name",name);
 		model.addAttribute("searchQuery",searchQuery);
 
+		List<UmaDTO> almostResult = new ArrayList<>();
+		if(name.replaceAll(" ", "").isEmpty() == false){
+			for(int i=0; i<searchQuery.size(); i++){
+				if(searchQuery.get(i).getUma_name().contains(name)){
+					almostResult.add(searchQuery.get(i));
+				}
+			}
+		}
+
+
+		model.addAttribute("almostResult",almostResult);
+
 		return "error/searchError";
 	}
 

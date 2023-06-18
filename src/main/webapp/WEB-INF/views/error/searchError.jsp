@@ -149,9 +149,15 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 		<img src='${ pageContext.servletContext.contextPath }/resources/images/error.png' style='width:270px; height:260px;'>
 		<p style="font-size: 30px; margin:6px; font-weight: bold; color:#3d414d;">검색어
 		<span style="color:#000000;">'${ requestScope.name }' </span>
-		에 대한 검색 결과가 없습니다.</p
+		에 대한 검색 결과가 없습니다.</p>
 
-
+        <c:if test="${not empty requestScope.almostResult }">
+        <br>
+        <p style="font-size: 24px; margin:6px; font-weight: bold; color:#3d414d;">혹시 이 우마무스메를 찾으셨나요?</p>
+        <c:forEach var="uma" items="${ requestScope.almostResult }" varStatus="s">
+        <a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a> <br>
+        </c:forEach>
+        </c:if>
 
 
         <br>
