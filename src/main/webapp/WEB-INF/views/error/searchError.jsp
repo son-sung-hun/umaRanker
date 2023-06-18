@@ -20,7 +20,6 @@
     font-weight: normal;
     font-style: normal;
 }
-span{ font-family: 'Noto Sans KR', sans-serif; }
 body, table, div, p{ font-family: 'GyeonggiTitleM', sans-serif; }
 .test_box{display:table;width:800px;background:#c9eafa;padding:10px;}
 
@@ -122,8 +121,29 @@ cursor:pointer;
 .moveBot:hover{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/botButton_hover.png");
 }
-</style>
 
+.highlight {
+        background: linear-gradient(to top, #bfffa1 40%, transparent 40%);
+      }
+
+</style>
+    <script>
+      window.onload = function() {
+              <c:forEach var="uma" items="${ requestScope.almostResult }">
+                var text = '<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a> <br>';
+                var searchTerm = '${ requestScope.name }';
+                var regex = new RegExp(searchTerm, "gi");
+                var highlightedText = text.replace(
+                          regex,
+                          '<span class="highlight">$&</span>'
+                        );
+                 $("#list").append(highlightedText);
+
+              </c:forEach>
+            };
+
+
+    </script>
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
@@ -153,12 +173,10 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 
         <c:if test="${not empty requestScope.almostResult }">
         <br>
-        <p style="font-size: 24px; margin:6px; font-weight: bold; color:#3d414d;">혹시 이 우마무스메를 찾으셨나요?</p>
-        <c:forEach var="uma" items="${ requestScope.almostResult }" varStatus="s">
-        <a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }"class="" style="text-decoration:none; color:${ uma.color_tag }; font-weight: bold;">${ uma.uma_name }</a> <br>
-        </c:forEach>
-        </c:if>
+        <p id="list" style="font-size: 24px; margin:6px; font-weight: bold; color:#3d414d;">혹시 이 우마무스메를 찾으셨나요?<br>
 
+        </c:if>
+        </p>
 
         <br>
         <br>
