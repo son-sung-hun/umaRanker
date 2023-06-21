@@ -262,11 +262,11 @@ section::after {
                 <ul style="margin-left:90px; margin-right:90px; text-align:left;">
                 <hr align="left" size="1"  width="96%" color = "#3d414d">
                 <span style="font-size: 18px; font-weight: light; ">이 사이트는 현재 일본과 한국에서 서비스중인
-
-                <span style="font-size: 18px; font-weight: bold; color:#fcae19; ">'우마 </span>
-                <span style="font-size: 18px; font-weight: bold; color:#f35f8c; ">무스메 </span>
-                <span style="font-size: 18px; font-weight: bold; color:#f5effa;">프리티더비'</span>
-
+                <a href="https://umamusume.kakaogames.com/" style="text-decoration:none; font-size: 18px; font-weight: bold; " target='_blank'>
+                <span style="color:#fcae19; ">'우마 </span>
+                <span style="color:#f35f8c; ">무스메 </span>
+                <span style="color:#f5effa;">프리티더비'</span>
+                </a>
                  라는 게임에 나오는 캐릭터들의
                 언급 횟수를 일간, 주간, 월간으로 조회하여 그 당시 제일 인기 있는 캐릭터가 누구인지 알 수 있게 해주는 사이트 입니다.
                 <br>
