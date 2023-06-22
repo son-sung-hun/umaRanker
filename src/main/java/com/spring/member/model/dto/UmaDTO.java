@@ -24,12 +24,14 @@ public class UmaDTO {
 
 	private String ytbLink;
 
+	private int search_count;
+
 	
 	public UmaDTO() {}
 
 
 	public UmaDTO(int uma_code, String uma_name, String height, String weight, String three_b, String three_w, String three_h,
-			String birth_day, String uma_voice, String uma_content, String uma_tag, String color_tag, String lastMonthRank, String yesterdayRank, String engName, String ytbLink) {
+			String birth_day, String uma_voice, String uma_content, String uma_tag, String color_tag, String lastMonthRank, String yesterdayRank, String engName, String ytbLink, int search_count) {
 		super();
 		this.uma_code = uma_code;
 		this.uma_name = uma_name;
@@ -47,6 +49,7 @@ public class UmaDTO {
 		this.yesterdayRank = yesterdayRank;
 		this.engName = engName;
 		this.ytbLink = ytbLink;
+		this.search_count = search_count;
 	}
 
 
@@ -184,6 +187,10 @@ public class UmaDTO {
 	public String getYtbLink() {return ytbLink;}
 
 	public void setYtbLink(String ytbLink) { this.ytbLink = ytbLink; }
+
+	public int getSearch_count() {return search_count;}
+
+	public void setSearch_count(int search_count) { this.search_count = search_count; }
 
 	@Override
 	public String toString() {
