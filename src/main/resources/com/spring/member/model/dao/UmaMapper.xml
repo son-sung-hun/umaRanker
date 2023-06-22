@@ -223,4 +223,10 @@
 		SET YESTERDAY_RANK = #{rank}
 		WHERE UMA_CODE = #{uma_code}
 	</update>
+
+	<update id="updateSearchCount">
+		UPDATE UMA_DATA
+		SET SEARCH_COUNT = SEARCH_COUNT + 1
+		WHERE UMA_CODE = #{uma_code}
+	</update>
 </mapper>

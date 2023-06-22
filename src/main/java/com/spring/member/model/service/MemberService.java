@@ -33,4 +33,6 @@ public interface MemberService {
 
 	void updateYesterdayRank(Map param);
 
+	void updateSearchCount(int uma_code);
+
 }

@@ -23,4 +23,6 @@ public interface UmaMapper {
 	void updateLastMonthRank(Map param);
 
 	void updateYesterdayRank(Map param);
+
+	void updateSearchCount(int uma_code);
 }

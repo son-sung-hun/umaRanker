@@ -351,6 +351,7 @@ public class MemberController {
 		}
 		if(uma_code!=0){
 			getDatabaseDetail(model,uma_code);
+			memberService.updateSearchCount(uma_code);
 			return "main/databaseDetail";
 		}
 		model.addAttribute("name",name);

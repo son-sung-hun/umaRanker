@@ -206,4 +206,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updateYesterdayRank(Map param){mapper.updateYesterdayRank(param);}
 
+	@Override
+	public void updateSearchCount(int uma_code) {
+		mapper.updateSearchCount(uma_code);
+	}
+
 }
