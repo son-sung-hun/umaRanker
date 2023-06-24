@@ -281,8 +281,8 @@ section::after {
                 </span>
                 </ul>
                 <span style='display : block; margin : auto; width : 300px;'>
-                <input type="checkbox"  id="hideModalCheckbox" >
-                <span style="font-size:16px;">오늘 하루 보지 않기 &nbsp;</span>
+
+                <label for="hideModalCheckbox"><input type="checkbox"  id="hideModalCheckbox" > <span style="font-size:16px;">오늘 하루 보지 않기 &nbsp;</span></label>
                 <button class="modal-button" onclick="closeModal()">창 닫기</button>
                 </span>
             </div>
