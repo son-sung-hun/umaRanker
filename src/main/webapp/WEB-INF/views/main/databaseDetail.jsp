@@ -130,20 +130,19 @@ section::after {
 button {
  appearance: none;
  background-color: transparent;
- border: 0.125em solid #1A1A1A;
- border-radius: 0.9375em;
+ border: 0.125em solid #E1E4E6;
  box-sizing: border-box;
  color: #3B3B3B;
  cursor: pointer;
  display: inline-block;
- font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
- font-size: 16px;
- font-weight: 600;
+ font-family: 'GyeonggiTitleM', sans-serif;
+ font-size: 21px;
+ font-weight: 500;
  line-height: normal;
  margin: 0;
  min-width: 0;
  outline: none;
- padding: 0.5em 1.3em;
+ padding: 0.4em 1.0em;
  text-align: center;
  text-decoration: none;
  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
@@ -159,7 +158,7 @@ button:disabled {
 
 button:hover {
  color: #fff;
- background-color: #1A1A1A;
+ background-color:${ requestScope.umaDetail.color_tag };
  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
  transform: translateY(-2px);
 }
