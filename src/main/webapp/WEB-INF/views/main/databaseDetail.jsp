@@ -130,7 +130,7 @@ section::after {
 button {
  appearance: none;
  background-color: transparent;
- border: 0.125em solid #E1E4E6;
+ border: 0.125em solid ${ requestScope.umaDetail.color_tag };
  box-sizing: border-box;
  color: #3B3B3B;
  cursor: pointer;
@@ -177,14 +177,14 @@ button:active {
 
 		<section>
 		<aside id="side" align="center">
-		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-color: #e1e4e6;">
+		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-color: ${ requestScope.umaDetail.color_tag };">
 		<br>
 
 		<button type="button" id='img1'>교복</button>
 		</aside>
 		 <article>
 
-		 <ul style="border-color: #e1e4e6;">
+		 <ul style="border-color: ${ requestScope.umaDetail.color_tag }">
 		 		<c:choose>
 					<c:when test="${ requestScope.umaDetail.uma_code eq 1 }">
 						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
