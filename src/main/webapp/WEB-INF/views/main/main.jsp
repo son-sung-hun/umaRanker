@@ -220,7 +220,7 @@ section::after {
                 <c:if test="${requestScope.count == 0 }">
 				<c:choose>
                     <c:when test="${ requestScope.rankResult eq 'increase' }">
-                    <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/increase.png"/> ${ requestScope.rankVariance }</span>
+                    <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/increase.png"/> ${ requestScope.rankVariance } (전일 대비 상승량)</span>
                     </c:when>
 
                     <c:when test="${ requestScope.rankResult eq 'decrease' }">
@@ -238,9 +238,9 @@ section::after {
 					명
 					</c:if>
 				</h2>
-				<p style="font-size: 21px;">오늘의 언급횟수 (
-				<a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'>픽시브</a>
-				) : ${ daily.pixiv_count } 회</p>
+				<p style="font-size: 21px;">오늘의 언급횟수
+				<a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
+				 : ${ daily.pixiv_count } 회</p>
 				</article>
 				</section>
 			</c:if>
