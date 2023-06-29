@@ -223,12 +223,8 @@ section::after {
                     <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/increase.png"/> ${ requestScope.rankVariance } (전일 대비 상승량)</span>
                     </c:when>
 
-                    <c:when test="${ requestScope.rankResult eq 'decrease' }">
-                    <span style="font-size: 14px; color:#d31a45; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/decrease.png"/> ${ requestScope.rankVariance }</span>
-                    </c:when>
-
                     <c:otherwise>
-                    <img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/noChange.png"/>
+                    <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/noChange.png"/> (전일 대비 상승량)</span>
                     </c:otherwise>
                 </c:choose>
                 </c:if>

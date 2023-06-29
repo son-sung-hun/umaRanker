@@ -117,9 +117,6 @@ public class MemberController {
 		if(yesterDayRank>dailyRank){ //순위 상승
 			rankVariance = yesterDayRank-dailyRank;
 			rankResult = "increase";
-		}else if(yesterDayRank<dailyRank){ //순위 하락
-			rankVariance = dailyRank-yesterDayRank;
-			rankResult = "decrease";
 		}else{ //순위 유지
 			rankResult = "noChange";
 		}
