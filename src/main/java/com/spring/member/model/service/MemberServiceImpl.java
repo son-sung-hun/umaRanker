@@ -211,4 +211,9 @@ public class MemberServiceImpl implements MemberService {
 		mapper.updateSearchCount(uma_code);
 	}
 
+	@Override
+	public List<PixivDTO> selectPixivRankByUmaCode(int day_count) {
+		return mapper.selectPixivRankByUmaCode(day_count);
+	}
+
 }

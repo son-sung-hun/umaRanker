@@ -74,11 +74,8 @@ public class MemberController {
 
 
 
-
 		List<PixivDTO> daily = memberService.selectDailyBest(count);
-
-		List<UmaDTO> umaDTOS = memberService.selectUma();
-		if(daily.size() == umaDTOS.size()){
+		if(daily.get(0).getPixiv_count()==0){
 
 			daily = memberService.selectDailyBest(count+1);
 			cal.add(Calendar.DATE, -(count+1));
@@ -123,15 +120,12 @@ public class MemberController {
 				rankVariance = 1;
 				while(true){
 					boolean bool = false;
-					List<PixivDTO> pixivDTOS = memberService.selectDailyBest(rankVariance);
-					for(int i=0; i< pixivDTOS.size(); i++){
-						if(pixivDTOS.get(i).getUma_code() == daily.get(0).getUma_code()){
-							rankVariance++;
-							bool = true;
-						}
-
-
+					List<PixivDTO> pixivDTOS = memberService.selectPixivRankByUmaCode(rankVariance);
+					if(pixivDTOS.get(daily.get(0).getUma_code()-1).getPixiv_rank()==1){
+						rankVariance++;
+						bool = true;
 					}
+
 
 					if(bool==false){
 						break;
