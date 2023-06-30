@@ -108,17 +108,36 @@ public class MemberController {
 
 		}
 
-		String rankResult;
+		String rankResult = null;
 		int rankVariance = 0;
 
 		int dailyRank = daily.get(0).getPixiv_rank();
 		int yesterDayRank = Integer.parseInt(memberService.selectUmaDetail(daily.get(0).getUma_code()).getYesterdayRank());
 
-		if(yesterDayRank>dailyRank){ //순위 상승
-			rankVariance = yesterDayRank-dailyRank;
-			rankResult = "increase";
-		}else{ //순위 유지
-			rankResult = "noChange";
+		if(count == 0){
+			if(yesterDayRank>dailyRank){ //순위 상승
+				rankVariance = yesterDayRank-dailyRank;
+				rankResult = "increase";
+			}else{ //순위 유지
+				rankResult = "noChange";
+				rankVariance = 1;
+				while(true){
+					boolean bool = false;
+					List<PixivDTO> pixivDTOS = memberService.selectDailyBest(rankVariance);
+					for(int i=0; i< pixivDTOS.size(); i++){
+						if(pixivDTOS.get(i).getUma_code() == daily.get(0).getUma_code()){
+							rankVariance++;
+							bool = true;
+						}
+
+
+					}
+
+					if(bool==false){
+						break;
+					}
+				}
+			}
 		}
 
 		List<UmaDTO> searchQuery = memberService.selectUma();
