@@ -151,6 +151,20 @@
 	    GROUP by B.UMA_NAME, B.UMA_CODE, B.UMA_COLOR
 	    ORDER by RANKING
 	</select>
+
+	<select id="selectPixivRankByUmaCode" resultMap="pixivResultSet" parameterType="PixivDTO">
+		SELECT
+		B.UMA_CODE  ,
+		B.UMA_NAME  ,
+		B.UMA_COLOR ,
+		RANK() OVER(ORDER BY COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d')
+		= DATE_FORMAT(DATE_SUB(DATE_ADD(NOW() , INTERVAL 9 HOUR), INTERVAL #{day_count} DAY),'%y/%m/%d') THEN 1 END) DESC) AS RANKING,
+		COUNT(CASE WHEN DATE_FORMAT(UPLOAD_DATE,'%y/%m/%d') = DATE_FORMAT(DATE_SUB(DATE_ADD(NOW() , INTERVAL 9 HOUR), INTERVAL #{day_count} DAY),'%y/%m/%d') THEN 1 END) AS COUNT
+		FROM PIXIV_DATA A
+		JOIN UMA_DATA B ON( A.UMA_CODE = B.UMA_CODE )
+		GROUP by B.UMA_NAME, B.UMA_CODE, B.UMA_COLOR
+		ORDER by UMA_CODE
+	</select>
 	
 	<select id="selectPixivWeekRank" resultMap="pixivResultSet" parameterType="PixivDTO">
 		<choose>
