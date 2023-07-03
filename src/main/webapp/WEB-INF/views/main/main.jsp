@@ -276,7 +276,9 @@ section::after {
 
                 </span>
                 </ul>
-                <span style='display : block; margin : auto; width : 300px;'>
+
+                <span style='text-align:center; display : block; margin : auto; font-size: 14px; color:#767676;'>이 사이트는 1920x1080 해상도에 맞춰 제작되었습니다.</span>
+                <span style='display : block; margin : auto; width : 240px;'>
 
                 <label for="hideModalCheckbox"><input type="checkbox"  id="hideModalCheckbox" > <span style="font-size:16px;">오늘 하루 보지 않기 &nbsp;</span></label>
                 <button class="modal-button" onclick="closeModal()">창 닫기</button>
