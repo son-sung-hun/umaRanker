@@ -234,9 +234,31 @@ section::after {
 					명
 					</c:if>
 				</h2>
-				<p style="font-size: 21px;">오늘의 언급횟수
-				<a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
-				 : ${ daily.pixiv_count } 회</p>
+
+				<c:choose>
+                	<c:when test="${ empty requestScope.count }">
+                	    <p style="font-size: 21px;">오늘의 언급횟수
+                        <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
+                         : ${ daily.pixiv_count } 회</p>
+                	</c:when>
+
+                	<c:when test="${ requestScope.count eq 0 }">
+                	    <p style="font-size: 21px;">오늘의 언급횟수
+                        <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
+                         : ${ daily.pixiv_count } 회</p>
+                	</c:when>
+
+                    <c:when test="${ requestScope.count eq 1 }">
+                        <p style="font-size: 21px;">어제의 언급횟수
+                        <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
+                         : ${ daily.pixiv_count } 회</p>
+                    </c:when>
+                	<c:otherwise>
+                	    <p style="font-size: 21px;">${ requestScope.count }일 전의 언급횟수
+                        <a hre="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
+                         : ${ daily.pixiv_count } 회</p>
+                	</c:otherwise>
+                </c:choose>
 				</article>
 				</section>
 			</c:if>
