@@ -216,4 +216,9 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectPixivRankByUmaCode(day_count);
 	}
 
+	@Override
+	public List<UmaDTO> selectUmaDescSearchCount() {
+		return mapper.selectUmaDescSearchCount();
+	}
+
 }

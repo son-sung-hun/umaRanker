@@ -38,4 +38,7 @@ public interface MemberService {
 
 	List<PixivDTO> selectPixivRankByUmaCode(int day_count);
 
+	List<UmaDTO> selectUmaDescSearchCount();
+
+
 }

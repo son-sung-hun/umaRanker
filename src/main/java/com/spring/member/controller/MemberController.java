@@ -134,7 +134,7 @@ public class MemberController {
 			}
 		}
 
-		List<UmaDTO> searchQuery = memberService.selectUma();
+		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 
 
 
@@ -180,7 +180,7 @@ public class MemberController {
 		
 		cal.add(Calendar.DATE, -(count));
 
-		List<UmaDTO> searchQuery = memberService.selectUma();
+		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 
 
 
@@ -236,7 +236,7 @@ public class MemberController {
 		}else{
 			cal.add(Calendar.DATE, 6);
 		}
-		List<UmaDTO> searchQuery = memberService.selectUma();
+		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 
 
 
@@ -274,7 +274,7 @@ public class MemberController {
 		}
 		
 		cal.add(Calendar.MONTH, -(count));
-		List<UmaDTO> searchQuery = memberService.selectUma();
+		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 
 
 
@@ -290,7 +290,7 @@ public class MemberController {
 	public String getDatabase(Model model)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
-		List<UmaDTO> umaData = memberService.selectUma();
+		List<UmaDTO> umaData = memberService.selectUmaDescSearchCount();
 
 		model.addAttribute("searchQuery", umaData);
 		model.addAttribute("umaData", umaData);
@@ -327,7 +327,7 @@ public class MemberController {
 
 		String umaLink = umaDetail.getEngName().toLowerCase().replace(" ","").replace(".","");
 
-		List<UmaDTO> searchQuery = memberService.selectUma();
+		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 
 
 
@@ -349,7 +349,7 @@ public class MemberController {
 
 		int uma_code = 0;
 
-		List<UmaDTO> searchQuery = memberService.selectUma();
+		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 		if(name.equals("")){
 			Random random = new Random();
 			uma_code = random.nextInt(searchQuery.size());

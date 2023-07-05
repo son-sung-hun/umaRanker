@@ -27,4 +27,6 @@ public interface UmaMapper {
 	void updateSearchCount(int uma_code);
 
 	List<PixivDTO> selectPixivRankByUmaCode(int day_count);
+
+	List<UmaDTO> selectUmaDescSearchCount();
 }

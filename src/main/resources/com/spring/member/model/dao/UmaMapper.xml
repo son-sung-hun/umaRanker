@@ -80,6 +80,29 @@
 			FROM UMA_DATA
 			WHERE UMA_CODE = #{uma_code}
 	</select>
+
+	<select id="selectUmaDescSearchCount" resultMap="umaResultSet" parameterType="UmaDTO">
+		SELECT
+		UMA_CODE,
+		UMA_NAME,
+		UMA_HEIGHT,
+		UMA_WEIGHT,
+		THREE_B,
+		THREE_W,
+		THREE_H,
+		BIRTH_DAY,
+		UMA_VOICE,
+		UMA_CONTENT,
+		UMA_TAG,
+		UMA_COLOR,
+		LAST_MONTH_RANK,
+		YESTERDAY_RANK,
+		ENG_NAME,
+		YTB_LINK,
+		SEARCH_COUNT
+		FROM UMA_DATA
+		ORDER BY SEARCH_COUNT DESC
+	</select>
 	
 	<insert id="insertPixiv" parameterType="PixivDTO">
 		INSERT 
