@@ -290,9 +290,11 @@ public class MemberController {
 	public String getDatabase(Model model)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
-		List<UmaDTO> umaData = memberService.selectUmaDescSearchCount();
+		List<UmaDTO> umaDataSearch = memberService.selectUmaDescSearchCount();
+		List<UmaDTO> umaData = memberService.selectUma();
 
-		model.addAttribute("searchQuery", umaData);
+
+		model.addAttribute("searchQuery", umaDataSearch);
 		model.addAttribute("umaData", umaData);
 
 		return "main/databaseMain";
