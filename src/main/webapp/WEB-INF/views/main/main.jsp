@@ -209,7 +209,22 @@ section::after {
 				<br>	
 				
 				<br>
-				<p style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
+				<c:choose>
+                	<c:when test="${ empty requestScope.count }">
+                	    <p style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
+                	</c:when>
+
+                	<c:when test="${ requestScope.count eq 0 }">
+                	    <p style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
+                	</c:when>
+
+                    <c:when test="${ requestScope.count eq 1 }">
+                        <p style="font-size: 30px; margin:0px; font-weight: bold;">어제의 인기 우마무스메는??</p>
+                    </c:when>
+                	<c:otherwise>
+                        <p style="font-size: 30px; margin:0px; font-weight: bold;">${ requestScope.count }일 전의 인기 우마무스메는??</p>
+                	</c:otherwise>
+                </c:choose>
 				<h2 class="bold"><c:if test="${requestScope.birth eq true}">
 				🎂
 				</c:if>
