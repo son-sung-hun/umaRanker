@@ -177,7 +177,7 @@ button:active {
 
 		<section>
 		<aside id="side" align="center">
-		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-color: ${ requestScope.umaDetail.color_tag };">
+		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-width: 0px;">
 		<br>
 
 		<button type="button" id='img1'>교복</button>
@@ -242,7 +242,7 @@ button:active {
 			<li class="medium">성우 : ${ requestScope.umaDetail.uma_voice }</li>
 			<li class="medium">신장 : ${ requestScope.umaDetail.height }</li>
 			<li class="medium">체중 : ${ requestScope.umaDetail.weight }</li>
-			<li class="medium">쓰리사이즈 : B :${ requestScope.umaDetail.three_b } W :${ requestScope.umaDetail.three_w } H :${ requestScope.umaDetail.three_h }</li>
+			<li class="medium">쓰리사이즈 : B${ requestScope.umaDetail.three_b } · W${ requestScope.umaDetail.three_w } · H${ requestScope.umaDetail.three_h }</li>
 			<li class="medium">생일 : ${ requestScope.umaDetail.birth_day }</li>
 			<li><hr align="left" size="1" width="50%" color = "#3d414d"></li>
 			<li class="regular" style="font-size: 15px;"><span style="font-family: 'Noto Sans KR', sans-serif;">${ requestScope.umaDetail.uma_content }</span></li>
