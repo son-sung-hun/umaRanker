@@ -240,7 +240,7 @@ button:active {
 			<li style="font-family: 'Josefin Sans', sans-serif; color:${ requestScope.umaDetail.color_tag }; font-size: 15px; margin-top : 0px;">${requestScope.umaDetail.engName }</li>
 			<li><hr align="left" size="1"  width="50%" color = "#3d414d"></li>
 			<li class="medium">성우 : ${ requestScope.umaDetail.uma_voice }</li>
-			<li class="medium">신장 : ${ requestScope.umaDetail.height }</li>
+			<li class="medium">신장 : ${ requestScope.umaDetail.height }cm</li>
 			<li class="medium">체중 : ${ requestScope.umaDetail.weight }</li>
 			<li class="medium">쓰리사이즈 : B${ requestScope.umaDetail.three_b } · W${ requestScope.umaDetail.three_w } · H${ requestScope.umaDetail.three_h }</li>
 			<li class="medium">생일 : ${ requestScope.umaDetail.birth_day }</li>
