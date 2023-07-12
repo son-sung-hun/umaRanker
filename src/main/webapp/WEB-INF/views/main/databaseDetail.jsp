@@ -31,25 +31,21 @@
 	gameUniform.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }_승부복.png";
 	defaultArt.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }_원안.png";
 
-	
-	gameUniform.onload=function(){
-		$("#side").append("<button type='button' id='img2'>승부복</button> ");
-		$(function() {
-			$("#img2").on("click", function(){
-				$("#img").attr("src",gameUniform.src);
-			});
-			});
-		
-	};
 
-	defaultArt.onload=function(){
+
+	window.onload=function(){
 		$("#side").append("<button type='button' id='img3'>원안</button> ");
 		$(function() {
 			$("#img3").on("click", function(){
 				$("#img").attr("src",defaultArt.src);
 			});
 			});
-		
+		$("#side").append("<button type='button' id='img2'>승부복</button> ");
+        $(function() {
+        	$("#img2").on("click", function(){
+        		$("#img").attr("src",gameUniform.src);
+        	});
+        	});
 	};
 	
 	$(function() {
