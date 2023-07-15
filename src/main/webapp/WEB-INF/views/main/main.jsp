@@ -204,6 +204,7 @@ section::after {
 						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
 						<span class="regular"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
 						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/main?day_count=0" style="text-decoration:none; font-size: 21px; color:#3d414d;">≫</a>
 					</c:otherwise>
 				</c:choose>
 				<br>	

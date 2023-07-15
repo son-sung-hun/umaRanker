@@ -38,14 +38,6 @@
 
 
 	window.onload=function(){
-        $.get(defaultArt.src, function(){
-            $("#side").append("<button type='button' id='img3'>원안</button> ");
-            $(function() {
-                $("#img3").on("click", function(){
-                    $("#img").attr("src",defaultArt.src);
-                });
-                });
-           })
 	    $.get(gameUniform.src, function(){
             $("#side").append("<button type='button' id='img2'>승부복</button> ");
             $(function() {
@@ -54,6 +46,16 @@
                 });
                 });
 	       })
+
+        $.get(defaultArt.src, function(){
+            $("#side").append("<button type='button' id='img3'>원안</button> ");
+            $(function() {
+                $("#img3").on("click", function(){
+                    $("#img").attr("src",defaultArt.src);
+                });
+                });
+           })
+
 
 	};
 	
