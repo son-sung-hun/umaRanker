@@ -125,6 +125,49 @@ section::after {
         from { opacity: 0; }
         to { opacity: 1; }
     }
+
+
+
+button {
+ appearance: none;
+ background-color: transparent;
+ border: 0.125em solid ${ requestScope.umaDetail.color_tag };
+ box-sizing: border-box;
+ color: #3B3B3B;
+ cursor: pointer;
+ display: inline-block;
+ font-family: 'GyeonggiTitleM', sans-serif;
+ font-size: 21px;
+ font-weight: 500;
+ line-height: normal;
+ margin: 0;
+ min-width: 0;
+ outline: none;
+ padding: 0.4em 1.0em;
+ text-align: center;
+ text-decoration: none;
+ transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ will-change: transform;
+}
+
+button:disabled {
+ pointer-events: none;
+}
+
+button:hover {
+ color: #000;
+ background-color:${ requestScope.umaDetail.color_tag };
+ box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+ transform: translateY(-2px);
+}
+
+button:active {
+ box-shadow: none;
+ transform: translateY(0);
+}
 </style>
 <script>
     window.onload = function() {
@@ -172,6 +215,7 @@ section::after {
           setCookie('hideModal', 'true');
         }
     }
+
 </script>
 </head>
 <body>
