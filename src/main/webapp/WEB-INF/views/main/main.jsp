@@ -115,7 +115,7 @@ section::after {
     border-radius: 4px;
     font-size: 13px;
     height: 30px;
-    background-color: #0000000d;
+    background-color: #f8f8f8;
     color: #0e0e10;
     padding: 0 10px;
 
@@ -159,7 +159,7 @@ button:disabled {
 
 button:hover {
  color: #000;
- background-color:${ requestScope.umaDetail.color_tag };
+ background-color: #0000000d;
  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
  transform: translateY(-2px);
 }
@@ -362,8 +362,8 @@ button:active {
                 <span style='text-align:center; display : block; margin : auto; font-size: 14px; color:#767676;'>이 사이트는 1920x1080 해상도에 맞춰 제작되었습니다.</span>
                 <span style='display : block; margin : auto; width : 240px;'>
 
-                <label for="hideModalCheckbox"><input type="checkbox"  id="hideModalCheckbox" > <span style="font-size:16px;">오늘 하루 보지 않기 &nbsp;</span></label>
-                <button class="modal-button" onclick="closeModal()">창 닫기</button>
+                <label for="hideModalCheckbox" style="vertical-align:middle;"><input type="checkbox"  id="hideModalCheckbox" > <span style="font-size:16px;">오늘 하루 보지 않기 &nbsp;</span></label>
+                <button class="modal-button" onclick="closeModal()" >창 닫기</button>
                 </span>
             </div>
         </div>
