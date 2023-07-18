@@ -289,9 +289,13 @@ button:active {
                 </c:choose>
                 </c:if>
 					<c:if test="${requestScope.size ne 1}">
+					<span title='
+					<c:forEach items="${requestScope.daily}" var="scope" varStatus="status" begin="1" end="${requestScope.size}">${scope.uma_name}<c:if test="${status.last eq false}">, </c:if></c:forEach>'>
+
 					외 
 					<c:out value="${requestScope.size-1}"/>
 					명
+					</span>
 					</c:if>
 				</h2>
 
