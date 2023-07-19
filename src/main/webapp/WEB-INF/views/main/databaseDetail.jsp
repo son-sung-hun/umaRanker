@@ -246,7 +246,7 @@ button:active {
 			<li style="font-family: 'M PLUS Rounded 1c', sans-serif; color:${ requestScope.umaDetail.color_tag }; font-size: 15px; font-weight: bold; margin-top : 0px;">${fn:substring(name,0,value) }</li>
 			<li style="font-family: 'Josefin Sans', sans-serif; color:${ requestScope.umaDetail.color_tag }; font-size: 15px; margin-top : 0px;">${requestScope.umaDetail.engName }</li>
 			<li><hr align="left" size="1"  width="50%" color = "#3d414d"></li>
-			<li class="medium">성우 : ${ requestScope.umaDetail.uma_voice }</li>
+			<li class="medium">성우 : <a href="https://www.google.com/search?q=${ requestScope.umaDetail.uma_voice }" style='text-decoration:none; color:${ requestScope.umaDetail.color_tag }' title='${ requestScope.umaDetail.uma_voice } 검색결과' target='_blank'>${ requestScope.umaDetail.uma_voice }<img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/IOS_Google_icon.png" width="25px" height="25px" style="vertical-align:bottom; margin-top : 5px;"></a></li>
 			<li class="medium">신장 : ${ requestScope.umaDetail.height }cm</li>
 			<li class="medium">체중 : ${ requestScope.umaDetail.weight }</li>
 			<li class="medium">쓰리사이즈 : B${ requestScope.umaDetail.three_b } · W${ requestScope.umaDetail.three_w } · H${ requestScope.umaDetail.three_h }</li>
