@@ -327,12 +327,25 @@ public class MemberController {
 			rankResult = "noChange";
 		}
 
+		SimpleDateFormat birthFormat = new SimpleDateFormat("M월 d일");
+
+
+		boolean birth = false;
+
+		if(birthFormat.format(cal.getTime()).equals(umaDetail.getBirth_day())){
+			birth=true;
+
+		}
+
+
+
+
 		String umaLink = umaDetail.getEngName().toLowerCase().replace(" ","").replace(".","");
 
 		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 
 
-
+		model.addAttribute("birth", birth);
 		model.addAttribute("searchQuery",searchQuery);
 		model.addAttribute("umaDetail", umaDetail);
 		model.addAttribute("rankResult", rankResult);

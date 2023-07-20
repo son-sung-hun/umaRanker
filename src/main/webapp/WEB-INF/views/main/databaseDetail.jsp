@@ -250,7 +250,7 @@ button:active {
 			<li class="medium">신장 : ${ requestScope.umaDetail.height }cm</li>
 			<li class="medium">체중 : ${ requestScope.umaDetail.weight }</li>
 			<li class="medium">쓰리사이즈 : B${ requestScope.umaDetail.three_b } · W${ requestScope.umaDetail.three_w } · H${ requestScope.umaDetail.three_h }</li>
-			<li class="medium">생일 : ${ requestScope.umaDetail.birth_day }</li>
+			<li class="medium">생일 : <c:if test="${requestScope.birth eq true}">🎂</c:if>${ requestScope.umaDetail.birth_day }<c:if test="${requestScope.birth eq true}">🎂</c:if></li>
 			<li><hr align="left" size="1" width="50%" color = "#3d414d"></li>
 			<li class="regular" style="font-size: 15px;"><span style="font-family: 'Noto Sans KR', sans-serif;">${ requestScope.umaDetail.uma_content }</span></li>
 		 </ul>
