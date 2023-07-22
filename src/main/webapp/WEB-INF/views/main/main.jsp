@@ -284,7 +284,7 @@ button:active {
                     </c:when>
 
                     <c:otherwise>
-                    <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/noChange.png"/> (${ requestScope.rankVariance }일 연속 1위)</span>
+                    <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"> (${ requestScope.rankVariance }일 연속 1위)</span>
                     </c:otherwise>
                 </c:choose>
                 </c:if>

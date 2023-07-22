@@ -93,7 +93,7 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 	<br>
 	<div align="center">
 	<br>
-	<h1>우마무스메 목록</h1>
+	<h1 style="color:#3d414d">우마무스메 목록</h1>
 		<ul>
 		<c:forEach var="uma" items="${ requestScope.umaData }" varStatus="s">
 		<c:choose>
