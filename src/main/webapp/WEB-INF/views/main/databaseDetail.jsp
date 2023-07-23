@@ -174,6 +174,45 @@ button:active {
  box-shadow: none;
  transform: translateY(0);
 }
+
+.sa {
+
+  opacity: 0;
+  animation-name: sa;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.one {
+  animation-delay: 0.5s;
+}
+
+.two {
+  animation-delay: 1s;
+}
+
+.three {
+  animation-delay: 1.5s;
+}
+
+.four {
+  animation-delay: 2s;
+}
+
+@keyframes sa {
+  0% {
+    opacity: 0;
+  }
+  33.33% {
+    opacity: 1;
+  }
+  66.66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 </style>
 </head>
 <body>
@@ -183,7 +222,7 @@ button:active {
 	<br>
 
 		<section>
-		<aside id="side" align="center">
+		<aside id="side" align="center" class="sa three">
 		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-width: 0px;">
 		<br>
 
@@ -191,7 +230,7 @@ button:active {
 		</aside>
 		 <article>
 
-		 <ul style="border-color: ${ requestScope.umaDetail.color_tag }">
+		 <ul style="border-color: ${ requestScope.umaDetail.color_tag }" class="sa one">
 		 		<c:choose>
 					<c:when test="${ requestScope.umaDetail.uma_code eq 1 }">
 						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
@@ -257,7 +296,7 @@ button:active {
 			
 
 
-			<button type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/database'">목록으로 돌아가기</button>
+			<button class="sa two"type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/database'">목록으로 돌아가기</button>
 		</article>
 		<br>
 		<br>

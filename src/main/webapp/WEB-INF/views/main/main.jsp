@@ -168,6 +168,44 @@ button:active {
  box-shadow: none;
  transform: translateY(0);
 }
+.sa {
+
+  opacity: 0;
+  animation-name: sa;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.one {
+  animation-delay: 0.5s;
+}
+
+.two {
+  animation-delay: 1s;
+}
+
+.three {
+  animation-delay: 1.5s;
+}
+
+.four {
+  animation-delay: 2s;
+}
+
+@keyframes sa {
+  0% {
+    opacity: 0;
+  }
+  33.33% {
+    opacity: 1;
+  }
+  66.66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 </style>
 <script>
     window.onload = function() {
@@ -229,26 +267,26 @@ button:active {
 
 			<c:if test="${s.first}">
 				<section>
-				<aside align="center">
+				<aside align="center" class="sa three">
 				<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };"><img src="${ pageContext.servletContext.contextPath }/resources/images/${ daily.uma_name }.png" width="700px" style="border-color: #3d414d;"></a>
 				</aside>
 				<article>
 				<c:choose>
 					<c:when test="${ empty requestScope.count }">
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
-						<span class="regular" style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
+						<a class="sa one" href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
+						<span class="regular sa one" style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
 					</c:when>
 					
 					<c:when test="${ requestScope.count eq 0 }">
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
-						<span class="regular"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
+						<a class="sa one"  href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
+						<span class="regular sa one"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
 					</c:when>
 					
 					<c:otherwise>
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
-						<span class="regular"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">▶</a>
-						<a href="${ pageContext.servletContext.contextPath }/main?day_count=0" style="text-decoration:none; font-size: 21px; color:#3d414d;">≫</a>
+						<a class="sa one"  href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
+						<span class="regular sa one"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
+						<a class="sa one"  href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">▶</a>
+						<a class="sa one"  href="${ pageContext.servletContext.contextPath }/main?day_count=0" style="text-decoration:none; font-size: 21px; color:#3d414d;">≫</a>
 					</c:otherwise>
 				</c:choose>
 				<br>	
@@ -256,21 +294,21 @@ button:active {
 				<br>
 				<c:choose>
                 	<c:when test="${ empty requestScope.count }">
-                	    <p style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
+                	    <p class="sa one"  style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
                 	</c:when>
 
                 	<c:when test="${ requestScope.count eq 0 }">
-                	    <p style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
+                	    <p class="sa one"  style="font-size: 30px; margin:0px; font-weight: bold;">오늘의 인기 우마무스메는??</p>
                 	</c:when>
 
                     <c:when test="${ requestScope.count eq 1 }">
-                        <p style="font-size: 30px; margin:0px; font-weight: bold;">어제의 인기 우마무스메는??</p>
+                        <p class="sa one"  style="font-size: 30px; margin:0px; font-weight: bold;">어제의 인기 우마무스메는??</p>
                     </c:when>
                 	<c:otherwise>
-                        <p style="font-size: 30px; margin:0px; font-weight: bold;">${ requestScope.count }일 전의 인기 우마무스메는??</p>
+                        <p class="sa one"  style="font-size: 30px; margin:0px; font-weight: bold;">${ requestScope.count }일 전의 인기 우마무스메는??</p>
                 	</c:otherwise>
                 </c:choose>
-				<h2 class="bold"><c:if test="${requestScope.birth eq true}">
+				<h2 class="bold sa two"><c:if test="${requestScope.birth eq true}">
 				🎂
 				</c:if>
 				<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }</a>
@@ -301,24 +339,24 @@ button:active {
 
 				<c:choose>
                 	<c:when test="${ empty requestScope.count }">
-                	    <p style="font-size: 21px;">오늘의 언급횟수
+                	    <p class="sa two" style="font-size: 21px;">오늘의 언급횟수
                         <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" title='${daily.uma_name } 검색 결과' style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
                          : ${ daily.pixiv_count } 회</p>
                 	</c:when>
 
                 	<c:when test="${ requestScope.count eq 0 }">
-                	    <p style="font-size: 21px;">오늘의 언급횟수
+                	    <p class="sa two" style="font-size: 21px;">오늘의 언급횟수
                         <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" title='${daily.uma_name } 검색 결과'  style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
                          : ${ daily.pixiv_count } 회</p>
                 	</c:when>
 
                     <c:when test="${ requestScope.count eq 1 }">
-                        <p style="font-size: 21px;">어제의 언급횟수
+                        <p class="sa two" style="font-size: 21px;">어제의 언급횟수
                         <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" title='${daily.uma_name } 검색 결과'  style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
                          : ${ daily.pixiv_count } 회</p>
                     </c:when>
                 	<c:otherwise>
-                	    <p style="font-size: 21px;">${ requestScope.count }일 전의 언급횟수
+                	    <p class="sa two" style="font-size: 21px;">${ requestScope.count }일 전의 언급횟수
                         <a hre="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" title='${daily.uma_name } 검색 결과'  style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
                          : ${ daily.pixiv_count } 회</p>
                 	</c:otherwise>
