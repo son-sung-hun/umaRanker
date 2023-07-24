@@ -308,26 +308,26 @@ button:active {
                         <p class="sa one"  style="font-size: 30px; margin:0px; font-weight: bold;">${ requestScope.count }일 전의 인기 우마무스메는??</p>
                 	</c:otherwise>
                 </c:choose>
-				<h2 class="bold sa two"><c:if test="${requestScope.birth eq true}">
-				🎂
+				<h2><c:if test="${requestScope.birth eq true}">
+				<span class="bold sa two">🎂</span>
 				</c:if>
-				<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }</a>
+				<a class="bold sa two" href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }</a>
 				<c:if test="${requestScope.birth eq true}">
-                🎂
+                <span class="bold sa two">🎂</span>
                 </c:if>
                 <c:if test="${requestScope.count == 0 }">
 				<c:choose>
                     <c:when test="${ requestScope.rankResult eq 'increase' }">
-                    <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/increase.png"/> ${ requestScope.rankVariance } (전일 대비 상승량)</span>
+                    <span class="sa four" style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"><img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/increase.png"/> ${ requestScope.rankVariance } (전일 대비 상승량)</span>
                     </c:when>
 
                     <c:otherwise>
-                    <span style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"> (${ requestScope.rankVariance }일 연속 1위)</span>
+                    <span class="sa four"  style="font-size: 14px; color:#139020; font-weight: bold; vertical-align: middle;"> (${ requestScope.rankVariance }일 연속 1위)</span>
                     </c:otherwise>
                 </c:choose>
                 </c:if>
 					<c:if test="${requestScope.size ne 1}">
-					<span title='
+					<span class="sa four"  title='
 					<c:forEach items="${requestScope.daily}" var="scope" varStatus="status" begin="1" end="${requestScope.size}">${scope.uma_name}<c:if test="${status.last eq false}">, </c:if></c:forEach>'>
 
 					외 
