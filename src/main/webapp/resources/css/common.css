@@ -21,7 +21,11 @@
 	height:50px;
 	margin-left:20px;
 	margin-right:20px;
-	
+	transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
 }
 body { 
 	margin: 0 auto;
@@ -31,6 +35,7 @@ body, table, div, p{ font-family: 'GyeonggiTitleM', sans-serif; }
 	background:#72798f;
 	color:white;
 	cursor:pointer;
+	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
 }
 
 .light {
