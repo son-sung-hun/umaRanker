@@ -125,7 +125,13 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
 .highlight {
         background: linear-gradient(to top, #bfffa1 40%, transparent 40%);
       }
+a{
+transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
 
+}
+a:hover {
+	box-shadow: 0 8px 15px;
+}
 </style>
     <script>
       window.onload = function() {
