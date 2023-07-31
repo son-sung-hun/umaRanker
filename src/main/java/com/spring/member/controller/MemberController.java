@@ -302,7 +302,7 @@ public class MemberController {
 
 
 	@GetMapping("/database/detail")
-	public String getDatabaseDetail(Model model, @RequestParam(value = "uma_code", required = false) int uma_code)
+	public String getDatabaseDetail(Model model, @RequestParam(value = "uma_code", required = false) int uma_code, @RequestParam(value = "isNotSearch", required = false) boolean isNotSearch)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
 		UmaDTO umaDetail = memberService.selectUmaDetail(uma_code);
@@ -344,6 +344,13 @@ public class MemberController {
 
 		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 
+		if(isNotSearch == false){
+			memberService.updateSearchCount(uma_code);
+			System.out.println(uma_code+"번 우마무스메 카운트 상승");
+		}else{
+			System.out.println("검색으로 들어온 경로가 아님");
+		}
+
 
 		model.addAttribute("birth", birth);
 		model.addAttribute("searchQuery",searchQuery);
@@ -363,10 +370,11 @@ public class MemberController {
 		String name = httpServletRequest.getParameter("uma_name");
 
 		int uma_code = 0;
-
+		boolean isNotSearch = false;
 		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 		if(name.equals("")){
 			Random random = new Random();
+			isNotSearch = true;
 			uma_code = random.nextInt(searchQuery.size());
 		}
 		for(int i=0; i<searchQuery.size(); i++){
@@ -375,8 +383,7 @@ public class MemberController {
 			}
 		}
 		if(uma_code!=0){
-			getDatabaseDetail(model,uma_code);
-			memberService.updateSearchCount(uma_code);
+			getDatabaseDetail(model,uma_code,isNotSearch);
 			return "main/databaseDetail";
 		}
 		model.addAttribute("name",name);

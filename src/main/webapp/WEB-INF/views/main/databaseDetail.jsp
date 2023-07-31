@@ -233,16 +233,16 @@ button:active {
 		 <ul style="border-color: ${ requestScope.umaDetail.color_tag }" class="sa one">
 		 		<c:choose>
 					<c:when test="${ requestScope.umaDetail.uma_code eq 1 }">
-						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }&isNotSearch=true"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
 					</c:when>
 					
 					<c:when test="${ requestScope.umaDetail.uma_code eq 94 }">
-						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }&isNotSearch=true"  style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
 					</c:when>
 					
 					<c:otherwise>
-						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }" style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
-						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code-1 }&isNotSearch=true" style="text-decoration:none; font-size: 20px; color:#3d414d;">◀</a>
+						<a href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ requestScope.umaDetail.uma_code+1 }&isNotSearch=true"  style="text-decoration:none; font-size: 20px; color:#3d414d;">▶</a>
 					</c:otherwise>
 				</c:choose>
 
