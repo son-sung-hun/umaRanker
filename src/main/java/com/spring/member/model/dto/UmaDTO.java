@@ -26,12 +26,14 @@ public class UmaDTO {
 
 	private int search_count;
 
+	private String uma_quote;
+
 	
 	public UmaDTO() {}
 
 
 	public UmaDTO(int uma_code, String uma_name, String height, String weight, String three_b, String three_w, String three_h,
-			String birth_day, String uma_voice, String uma_content, String uma_tag, String color_tag, String lastMonthRank, String yesterdayRank, String engName, String ytbLink, int search_count) {
+			String birth_day, String uma_voice, String uma_content, String uma_tag, String color_tag, String lastMonthRank, String yesterdayRank, String engName, String ytbLink, int search_count, String uma_quote) {
 		super();
 		this.uma_code = uma_code;
 		this.uma_name = uma_name;
@@ -50,6 +52,7 @@ public class UmaDTO {
 		this.engName = engName;
 		this.ytbLink = ytbLink;
 		this.search_count = search_count;
+		this.uma_quote = uma_quote;
 	}
 
 
@@ -191,6 +194,10 @@ public class UmaDTO {
 	public int getSearch_count() {return search_count;}
 
 	public void setSearch_count(int search_count) { this.search_count = search_count; }
+
+	public String getUma_quote() {return uma_quote;}
+
+	public void setUma_quote(String uma_quote) { this.uma_quote = uma_quote; }
 
 	@Override
 	public String toString() {

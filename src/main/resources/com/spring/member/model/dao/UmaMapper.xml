@@ -22,6 +22,7 @@
 		<result column="ENG_NAME" property="engName" />
 		<result column="YTB_LINK" property="ytbLink" />
 		<result column="SEARCH_COUNT" property="search_count" />
+		<result column="UMA_QUOTE" property="uma_quote" />
 	</resultMap>
 
 	<resultMap id="pixivResultSet" type="PixivDTO">
@@ -54,7 +55,8 @@
 			YESTERDAY_RANK,
 			ENG_NAME,
 			YTB_LINK,
-			SEARCH_COUNT
+			SEARCH_COUNT,
+			UMA_QUOTE
 			FROM UMA_DATA
 	</select>
 	
@@ -76,7 +78,8 @@
 			YESTERDAY_RANK,
 			ENG_NAME,
 			YTB_LINK,
-			SEARCH_COUNT
+			SEARCH_COUNT,
+			UMA_QUOTE
 			FROM UMA_DATA
 			WHERE UMA_CODE = #{uma_code}
 	</select>
