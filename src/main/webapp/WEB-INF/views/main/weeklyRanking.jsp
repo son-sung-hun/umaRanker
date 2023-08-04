@@ -143,6 +143,17 @@ cursor:pointer;
 .moveBot:hover{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/botButton_hover.png");
 }
+.rankTxt{
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+}
+.rankTxt:hover {
+	cursor:pointer;
+	text-shadow: 3px 3px 1px DarkGray;
+}
 </style>
 
 </head>
@@ -191,7 +202,7 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
                 <c:choose>
                 <c:when test="${uma.pixiv_rank >3 }">
                 <p class='sa1 sa1-up txt1 four'>
-                ${ uma.pixiv_rank }위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }' style='text-decoration:none; color:${ uma.color_tag };'>${ uma.uma_name }</a> (총 ${ uma.pixiv_count }개)</p>
+                ${ uma.pixiv_rank }위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ uma.uma_code }' style='text-decoration:none; color:${ uma.color_tag };'>${ uma.uma_name }</a> (총 ${ uma.pixiv_count }개)</p>
                 </c:when>
                 </c:choose>
                 </c:forEach>
@@ -262,7 +273,7 @@ for(var i=0; i<count; i++){
 				    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
 				    "<p class='td txt sa one'>공동 "
 		    	    +list1[i].rank
-		    	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	    +"위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	    +list1[i].code
 		    	    +"' style='text-decoration:none; color:"
 		    	    +list1[i].color
@@ -279,7 +290,7 @@ for(var i=0; i<count; i++){
 				    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
 				    "<p class='td txt sa one'>"
 		    	    +list1[i].rank
-		    	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	    +"위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	    +list1[i].code
 		    	    +"' style='text-decoration:none; color:"
 		    	    +list1[i].color
@@ -297,7 +308,7 @@ for(var i=0; i<count; i++){
 				    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
 				    "<p class='td txt sa one'>공동 "
 		    	    +list1[i].rank
-		    	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	    +"위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	    +list1[i].code
 		    	    +"' style='text-decoration:none; color:"
 		    	    +list1[i].color
@@ -314,7 +325,7 @@ for(var i=0; i<count; i++){
 				    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_금.jpg' style='width:270px; height:260px;'></p></a></div><br>"+
 				    "<p class='td txt sa one'>"
 		    	    +list1[i].rank
-		    	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	    +"위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	    +list1[i].code
 		    	    +"' style='text-decoration:none; color:"
 		    	    +list1[i].color
@@ -335,7 +346,7 @@ for(var i=0; i<count; i++){
            	    "<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_은.jpg' style='width:220px; height:210px;'></p></a></div><br>"+
            	    "<p class='td txt sa two'>공동 "
            	    +list1[i].rank
-           	    +"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+           	    +"위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
            	    +list1[i].code
            	    +"' style='text-decoration:none; color:"
            	    +list1[i].color
@@ -352,7 +363,7 @@ for(var i=0; i<count; i++){
             	"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_은.jpg' style='width:220px; height:210px;'></p></a></div><br>"+
             	"<p class='td txt sa two'>"
             	+list1[i].rank
-            	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+            	+"위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
             	+list1[i].code
             	+"' style='text-decoration:none; color:"
             	+list1[i].color
@@ -373,7 +384,7 @@ for(var i=0; i<count; i++){
 				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_동.jpg' style='width:170px; height:160px;'></p></a></div><br>"+
 				"<p class='td txt sa three'>공동 "
 		    	+list1[i].rank
-		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	+"위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	+list1[i].code
 		    	+"' style='text-decoration:none; color:"
 		    	+list1[i].color
@@ -390,7 +401,7 @@ for(var i=0; i<count; i++){
 				"<img src='${ pageContext.servletContext.contextPath }/resources/images/"+list1[i].name+"_동.jpg' style='width:170px; height:160px;'></p></a></div><br>"+
 				"<p class='td txt sa three'>"
 		    	+list1[i].rank
-		    	+"위 : <a href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
+		    	+"위 : <a class='rankTxt' href='${ pageContext.servletContext.contextPath }/database/detail?uma_code="
 		    	+list1[i].code
 		    	+"' style='text-decoration:none; color:"
 		    	+list1[i].color
