@@ -44,15 +44,16 @@
     font-style: normal;
 }
 span{ font-family: 'Noto Sans KR', sans-serif; }
+body, table, div, p{ font-family: 'GyeonggiTitleM', sans-serif; }
 .test_box{display:table;width:800px;background:#c9eafa;padding:10px;}
 
 .tr{display:table-row;width:270px;}
 
-.td{display:table-cell; vertical-align:middle; padding-right:30px;}
+.td{display:table-cell; vertical-align:middle;}
 
-.txt{width:500px; font-size:30px; text-align:center; font-weight: bold;}
+.txt{width:500px; font-size:30px; text-align:center; font-weight: bold; position:relative;}
 
-.txt1{width:500px; font-size:28px; text-align:left; font-weight: bold; padding-left:110px;}
+.txt1{width:500px; font-size:28px; text-align:left; font-weight: bold; padding-left:160px; position:relative;}
 
 html{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");
@@ -144,16 +145,51 @@ cursor:pointer;
 .moveBot:hover{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/botButton_hover.png");
 }
-.rankTxt{
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    will-change: transform;
+
+
+.txt a::after {
+  content: '';
+  width: 0%;
+  left: 50%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid #3d414d;
+  transition:all .3s ease;
 }
-.rankTxt:hover {
-	cursor:pointer;
-	text-shadow: 3px 3px 1px DarkGray;
+.txt a:hover:after {
+  content: '';
+  width: 100%;
+  left: 0px;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid #3d414d;
+  transition:all .3s ease;
+}
+.txt1 a::after {
+  content: '';
+  width: 0%;
+  left: 50%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid #3d414d;
+  transition:all .3s ease;
+}
+.txt1 a:hover:after {
+  content: '';
+  width: 70%;
+  left: 10%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid #3d414d;
+  transition:all .3s ease;
 }
 </style>
 
