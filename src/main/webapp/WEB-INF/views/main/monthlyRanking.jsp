@@ -51,9 +51,9 @@ body, table, div, p{ font-family: 'GyeonggiTitleM', sans-serif; }
 
 .td{display:table-cell; vertical-align:middle;}
 
-.txt{width:500px; font-size:30px; text-align:center; font-weight: bold; position:relative;}
+.txt{width:500px; font-size:30px; text-align:center; font-weight: bold; }
 
-.txt1{width:500px; font-size:28px; text-align:left; font-weight: bold; padding-left:160px; position:relative;}
+.txt1{width:500px; font-size:28px; text-align:left; font-weight: bold; padding-left:160px; }
 
 html{
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/background.jpg");
@@ -146,8 +146,10 @@ cursor:pointer;
 background-image:url("${ pageContext.servletContext.contextPath }/resources/images/botButton_hover.png");
 }
 
-
-.txt a::after {
+.rankTxt{
+position: relative;
+}
+.rankTxt::after {
   content: '';
   width: 0%;
   left: 50%;
@@ -158,7 +160,7 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
   border-bottom: 2px solid #3d414d;
   transition:all .3s ease;
 }
-.txt a:hover:after {
+.rankTxt:hover::after {
   content: '';
   width: 100%;
   left: 0px;
@@ -169,28 +171,7 @@ background-image:url("${ pageContext.servletContext.contextPath }/resources/imag
   border-bottom: 2px solid #3d414d;
   transition:all .3s ease;
 }
-.txt1 a::after {
-  content: '';
-  width: 0%;
-  left: 50%;
-  height: 1px;
-  display: block;
-  position: absolute;
-  margin-top: 3px;
-  border-bottom: 2px solid #3d414d;
-  transition:all .3s ease;
-}
-.txt1 a:hover:after {
-  content: '';
-  width: 70%;
-  left: 10%;
-  height: 1px;
-  display: block;
-  position: absolute;
-  margin-top: 3px;
-  border-bottom: 2px solid #3d414d;
-  transition:all .3s ease;
-}
+
 </style>
 
 </head>
