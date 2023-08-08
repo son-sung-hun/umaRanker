@@ -36,6 +36,7 @@
 	
 
 </script>
+<style type="text/css">
 @font-face {
     font-family: 'GyeonggiTitleM';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
@@ -156,7 +157,7 @@ position: relative;
   display: block;
   position: absolute;
   margin-top: 3px;
-  border-bottom: 2px solid #3d414d;
+  border-bottom: 2px solid ${ uma.color_tag };
   transition:all .3s ease;
 }
 .rankTxt:hover::after {
@@ -167,11 +168,11 @@ position: relative;
   display: block;
   position: absolute;
   margin-top: 3px;
-  border-bottom: 2px solid #3d414d;
+  border-bottom: 2px solid ${ uma.color_tag };
   transition:all .3s ease;
 }
 
-
+</style>
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp"/>

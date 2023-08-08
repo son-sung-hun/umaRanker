@@ -160,7 +160,7 @@ position: relative;
   display: block;
   position: absolute;
   margin-top: 3px;
-  border-bottom: 2px solid #3d414d;
+  border-bottom: 2px solid ${ uma.color_tag };
   transition:all .3s ease;
 }
 .rankTxt:hover::after {
@@ -171,7 +171,7 @@ position: relative;
   display: block;
   position: absolute;
   margin-top: 3px;
-  border-bottom: 2px solid #3d414d;
+  border-bottom: 2px solid ${ uma.color_tag };
   transition:all .3s ease;
 }
 
