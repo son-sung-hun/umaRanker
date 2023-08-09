@@ -206,6 +206,32 @@ button:active {
     opacity: 1;
   }
 }
+
+.name{
+position: relative;
+}
+.name::after {
+  content: '';
+  width: 0%;
+  left: 50%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid ${ uma.color_tag };
+  transition:all .3s ease;
+}
+.name:hover::after {
+  content: '';
+  width: 100%;
+  left: 0px;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid ${ uma.color_tag };
+  transition:all .3s ease;
+}
 </style>
 <script>
     window.onload = function() {
@@ -311,7 +337,7 @@ button:active {
 				<h2><c:if test="${requestScope.birth eq true}">
 				<span class="bold sa two">🎂</span>
 				</c:if>
-				<a class="bold sa two" href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }</a>
+				<a class="name bold sa two" href="${ pageContext.servletContext.contextPath }/database/detail?uma_code=${ daily.uma_code }" style="text-decoration:none; color:${ daily.color_tag };">${ daily.uma_name }</a>
 				<c:if test="${requestScope.birth eq true}">
                 <span class="bold sa two">🎂</span>
                 </c:if>
@@ -339,24 +365,24 @@ button:active {
 
 				<c:choose>
                 	<c:when test="${ empty requestScope.count }">
-                	    <p class="sa two" style="font-size: 21px;">오늘의 언급횟수
+                	    <p class="sa two bold" style="font-size: 21px;">오늘의 언급횟수
                         <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" title='${daily.uma_name } 검색 결과' style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
                          : ${ daily.pixiv_count } 회</p>
                 	</c:when>
 
                 	<c:when test="${ requestScope.count eq 0 }">
-                	    <p class="sa two" style="font-size: 21px;">오늘의 언급횟수
+                	    <p class="sa two bold" style="font-size: 21px;">오늘의 언급횟수
                         <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" title='${daily.uma_name } 검색 결과'  style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
                          : ${ daily.pixiv_count } 회</p>
                 	</c:when>
 
                     <c:when test="${ requestScope.count eq 1 }">
-                        <p class="sa two" style="font-size: 21px;">어제의 언급횟수
+                        <p class="sa two bold" style="font-size: 21px;">어제의 언급횟수
                         <a href="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" title='${daily.uma_name } 검색 결과'  style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
                          : ${ daily.pixiv_count } 회</p>
                     </c:when>
                 	<c:otherwise>
-                	    <p class="sa two" style="font-size: 21px;">${ requestScope.count }일 전의 언급횟수
+                	    <p class="sa two bold" style="font-size: 21px;">${ requestScope.count }일 전의 언급횟수
                         <a hre="https://www.pixiv.net/tags/${daily.uma_tag }/illustrations" title='${daily.uma_name } 검색 결과'  style="color:#055AFF; text-decoration:none;" target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/pixiv_icon.png" width="25px" height="25px" style="vertical-align:sub; margin-top : 5px;"></a>
                          : ${ daily.pixiv_count } 회</p>
                 	</c:otherwise>
