@@ -27,6 +27,31 @@
     touch-action: manipulation;
     will-change: transform;
 }
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  height: auto;
+  position: absolute;
+  padding-left: 8px;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-container .hover-image {
+  opacity: 0; /* 호버 전에는 두 번째 이미지를 숨김 */
+}
+
+.image-container:hover .default-image {
+  opacity: 0; /* 호버 시 기본 이미지를 숨김 */
+}
+
+.image-container:hover .hover-image {
+  opacity: 1; /* 호버 시 두 번째 이미지를 보이게 함 */
+}
 body { 
 	margin: 0 auto;
 }
