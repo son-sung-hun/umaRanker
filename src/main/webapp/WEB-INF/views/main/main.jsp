@@ -408,16 +408,15 @@ position: relative;
                 <ul style="margin-left:90px; margin-right:90px; text-align:left;">
                 <hr align="left" size="1"  width="96%" color = "#3d414d">
                 <span style="font-size: 18px; font-weight: light; ">이 사이트는 현재 일본과 한국에서 서비스중인
-                <a href="https://umamusume.kakaogames.com/" style="text-decoration:none; font-size: 18px; font-weight: bold; " target='_blank'>
-                <span style="color:#fcae19; ">'우마 </span>
-                <span style="color:#f35f8c; ">무스메 </span>
+                <a class="name" href="https://umamusume.kakaogames.com/" style="text-decoration:none; font-size: 18px; font-weight: bold; color:#f35f8c; " target='_blank'>
+                <span style="color:#f35f8c; ">'우마무스메 </span>
                 <span style="color:#f5effa;">프리티더비'</span>
                 </a>
                  라는 게임에 나오는 캐릭터들의
                 언급 횟수를 일간, 주간, 월간으로 조회하여 그 당시 제일 인기 있는 캐릭터가 누구인지 알 수 있게 해주는 사이트 입니다.
                 <br>
                 언급 횟수는 일본 내에서 가장 큰 규모의 서브컬쳐 일러스트 투고 사이트인
-                <a href="https://www.pixiv.net/" style="color:#055AFF; text-decoration:none; font-size: 18px; font-weight: bold; " target='_blank'>pixiv</a>
+                <a class="name" href="https://www.pixiv.net/" style="color:#055AFF; text-decoration:none; font-size: 18px; font-weight: bold; " target='_blank'>pixiv</a>
 
                 에서의 검색 결과를 모두 크롤링하여 계산 됩니다.
                 <br>
