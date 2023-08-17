@@ -188,7 +188,7 @@ public class MemberController {
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
 		model.addAttribute("count", count);
-
+		model.addAttribute("nowPage","dailyRanking");
 		return "main/dailyRanking";
 	}
 
@@ -244,7 +244,7 @@ public class MemberController {
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
 		model.addAttribute("count", count);
-
+		model.addAttribute("nowPage","weeklyRanking");
 		return "main/weeklyRanking";
 	}
 
@@ -282,7 +282,7 @@ public class MemberController {
 		model.addAttribute("updateDate", df.format(cal.getTime()));
 		model.addAttribute("pixivRanking", pixivRanking);
 		model.addAttribute("count", count);
-
+		model.addAttribute("nowPage","monthlyRanking");
 		return "main/monthlyRanking";
 	}
 
@@ -296,7 +296,7 @@ public class MemberController {
 
 		model.addAttribute("searchQuery", umaDataSearch);
 		model.addAttribute("umaData", umaData);
-
+		model.addAttribute("nowPage","databaseMain");
 		return "main/databaseMain";
 	}
 
@@ -359,6 +359,7 @@ public class MemberController {
 		model.addAttribute("rankVariance", rankVariance);
 		model.addAttribute("monthlyRank", monthlyRank);
 		model.addAttribute("umaLink", umaLink);
+		model.addAttribute("nowPage","databaseMain");
 
 		return "main/databaseDetail";
 	}

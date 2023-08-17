@@ -50,6 +50,9 @@ input::placeholder {
   color: #eeeeee;
   opacity: 0.9;
 }
+.active-menu {
+    color:#ffdd00;
+}
 </style>
 </head>
 
@@ -60,10 +63,10 @@ input::placeholder {
 			<img class="hover-image" src="${ pageContext.servletContext.contextPath }/resources/images/logo_hover.png" width="30px" height="46px" style="vertical-align:top;">
 			<b class="light" style="color:#ffdd00; font-size: 24px;">우마</b><b class="light" style="color:#ffd0b0; font-size: 24px;">랭커</b>
 			</div>
-			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/day'" style="margin-left:10px; margin-right:20px;"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">일간랭킹</div>
-			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/week'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">주간랭킹</div>
-			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/month'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">월간랭킹</div>
-			<div class="menu light" style="font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='${ pageContext.servletContext.contextPath }/database'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">데이터베이스</div>
+			<div class="menu ${'dailyRanking'.equals(requestScope.nowPage) ? 'active-menu' : ''}" style="font-family: 'Noto Sans KR', sans-serif; font-weight: normal;" onclick="location.href='${ pageContext.servletContext.contextPath }/day'" style="margin-left:10px; margin-right:20px;"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">일간랭킹</div>
+			<div class="menu ${'weeklyRanking'.equals(requestScope.nowPage) ? 'active-menu' : ''}" style="font-family: 'Noto Sans KR', sans-serif; font-weight: normal;" onclick="location.href='${ pageContext.servletContext.contextPath }/week'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">주간랭킹</div>
+			<div class="menu ${'monthlyRanking'.equals(requestScope.nowPage) ? 'active-menu' : ''}" style="font-family: 'Noto Sans KR', sans-serif; font-weight: normal;" onclick="location.href='${ pageContext.servletContext.contextPath }/month'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">월간랭킹</div>
+			<div class="menu ${'databaseMain'.equals(requestScope.nowPage) ? 'active-menu' : ''}" style="font-family: 'Noto Sans KR', sans-serif; font-weight: normal;" onclick="location.href='${ pageContext.servletContext.contextPath }/database'"><img src="${ pageContext.servletContext.contextPath }/resources/images/uma_icon.png" width="23px" height="23px" style="vertical-align:text-bottom;">데이터베이스</div>
 			<div class="" style="display:inline-block; width:20%;  height:50px; text-align:center; line-height:50px;">
 			<form method="get" name="search" style="text-align:right;" action='${ pageContext.servletContext.contextPath }/search'>
 			  <input type="image" src='${ pageContext.servletContext.contextPath }/resources/images/search.jpg' width="20px" height="20px" style="vertical-align:text-bottom;" alt="제출버튼">

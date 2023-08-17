@@ -26,6 +26,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     will-change: transform;
+    font-weight: normal;
 }
 .image-container {
   position: relative;
