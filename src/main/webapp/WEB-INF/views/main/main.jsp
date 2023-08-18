@@ -300,17 +300,17 @@ position: relative;
 				<c:choose>
 					<c:when test="${ empty requestScope.count }">
 						<a class="sa one" href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
-						<span class="regular sa one" style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
+						<span class="regular sa one" style="font-size: 21px;">기준 날짜 : ${ updateDate }<span style="font-size: 14px; margin:0px;  font-weight: bold;"> (6시간마다 갱신)</span></span>
 					</c:when>
 					
 					<c:when test="${ requestScope.count eq 0 }">
 						<a class="sa one"  href="${ pageContext.servletContext.contextPath }/main?day_count=1" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
-						<span class="regular sa one"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
+						<span class="regular sa one"  style="font-size: 21px;">기준 날짜 : ${ updateDate }<span style="font-size: 14px; margin:0px;  font-weight: bold;"> (6시간마다 갱신)</span></span>
 					</c:when>
 					
 					<c:otherwise>
 						<a class="sa one"  href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count+1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">◀</a>
-						<span class="regular sa one"  style="font-size: 21px;">기준 날짜 : ${ updateDate }</span>
+						<span class="regular sa one"  style="font-size: 21px;">기준 날짜 : ${ updateDate }<span style="font-size: 14px; margin:0px;  font-weight: bold;"> (6시간마다 갱신)</span></span>
 						<a class="sa one"  href="${ pageContext.servletContext.contextPath }/main?day_count=${ requestScope.count-1 }" style="text-decoration:none; font-size: 21px; color:#3d414d;">▶</a>
 						<a class="sa one"  href="${ pageContext.servletContext.contextPath }/main?day_count=0" style="text-decoration:none; font-size: 21px; color:#3d414d;">≫</a>
 					</c:otherwise>
