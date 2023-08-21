@@ -404,7 +404,7 @@ position: relative;
         <div id="myModal" class="modal">
             <div class="modal-content">
 
-                <a href="https://umamusume.kakaogames.com/"><img src='${ pageContext.servletContext.contextPath }/resources/images/intro.png' style='display : block; margin : auto;'></a>
+                <a href="https://umamusume.kakaogames.com/" target='_blank'><img src='${ pageContext.servletContext.contextPath }/resources/images/intro.png' style='display : block; margin : auto;'></a>
                 <ul style="margin-left:90px; margin-right:90px; text-align:left;">
                 <hr align="left" size="1"  width="96%" color = "#3d414d">
                 <span style="font-size: 18px; font-weight: light; ">이 사이트는 현재 일본과 한국에서 서비스중인
