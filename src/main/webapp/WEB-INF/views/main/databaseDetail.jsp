@@ -31,18 +31,13 @@
 	gameUniform.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }_승부복.png";
 	defaultArt.src = "${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }_원안.png";
 
-
-
-
-
-
-
 	window.onload=function(){
 	    $.get(gameUniform.src, function(){
             $("#side").append("<button type='button' id='img2'>승부복</button> ");
             $(function() {
                 $("#img2").on("click", function(){
-                    $("#img").attr("src",gameUniform.src);
+                    $("#modal-image").attr("src",gameUniform.src);
+                    $("#modal-content").attr("src",gameUniform.src);
                 });
                 });
 	       })
@@ -51,7 +46,8 @@
             $("#side").append("<button type='button' id='img3'>원안</button> ");
             $(function() {
                 $("#img3").on("click", function(){
-                    $("#img").attr("src",defaultArt.src);
+                    $("#modal-image").attr("src",defaultArt.src);
+                    $("#modal-content").attr("src",gameUniform.src);
                 });
                 });
            })
@@ -62,8 +58,10 @@
 	$(function() {
 		$("#img1").on("click", function(){
 			$("#img").attr("src",mainUniform.src);
+			$("#modal-content").attr("src",gameUniform.src);
 		});
 	});
+
 </script>
 <style>
 @font-face {
@@ -107,7 +105,7 @@ aside ul {
   padding: 0;
 }
 
-aside img {
+aside modal-image {
 	width:500px;
 	height:880px;
 	border-width: 2px;
@@ -238,6 +236,41 @@ position: relative;
   border-bottom: 2px solid ${ uma.color_tag };
   transition:all .3s ease;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.close:hover {
+    color: #bbb;
+}
+
+
 </style>
 </head>
 <body>
@@ -248,7 +281,7 @@ position: relative;
 
 		<section>
 		<aside id="side" align="center" class="sa three">
-		<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-width: 0px;">
+		<img alt="Image" class="modal-image" id="modal-image" src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" style="border-width: 0px;">
 		<br>
 
 		<button type="button" id='img1'>교복</button>
@@ -329,5 +362,30 @@ position: relative;
 		</section>
 		
 	</div>
+
+	    <div class="modal" id="image-modal">
+            <span class="close" id="modal-close">&times;</span>
+            <img src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" alt="Image" class="modal-content" id="modal-content">
+        </div>
 </body>
+<script>
+
+	const modal = document.getElementById("image-modal");
+    const modalImage = document.getElementById("modal-image");
+    const modalClose = document.getElementById("modal-close");
+
+    modalImage.addEventListener("click", function() {
+        modal.style.display = "block";
+    });
+
+    modalClose.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+</script>
 </html>
