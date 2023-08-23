@@ -47,7 +47,7 @@
             $(function() {
                 $("#img3").on("click", function(){
                     $("#modal-image").attr("src",defaultArt.src);
-                    $("#modal-content").attr("src",gameUniform.src);
+                    $("#modal-content").attr("src",defaultArt.src);
                 });
                 });
            })
@@ -57,8 +57,8 @@
 	
 	$(function() {
 		$("#img1").on("click", function(){
-			$("#img").attr("src",mainUniform.src);
-			$("#modal-content").attr("src",gameUniform.src);
+			$("#modal-image").attr("src",mainUniform.src);
+			$("#modal-content").attr("src",mainUniform.src);
 		});
 	});
 
@@ -247,7 +247,7 @@ position: relative;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
