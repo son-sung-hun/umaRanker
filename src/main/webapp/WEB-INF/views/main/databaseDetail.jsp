@@ -270,6 +270,24 @@ position: relative;
     color: #bbb;
 }
 
+.youtube-close-button {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.youtube-close-button:hover {
+    color: #bbb;
+}
+
+.youtube-frame {
+  width: 1280px;
+  height: 720px;
+  border: none;
+}
 
 </style>
 </head>
@@ -329,7 +347,7 @@ position: relative;
 
             <c:choose>
                 <c:when test="${not empty requestScope.umaDetail.ytbLink}">
-		 	        <a href="https://youtu.be/${requestScope.umaDetail.ytbLink }" title='소개영상 링크' target='_blank'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/ytb_link.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 5px;"></a>
+		 	        <a href='#' class="modal-button" title='소개영상 링크'><img id="logo" src="${ pageContext.servletContext.contextPath }/resources/images/ytb_link.png" width="25px" height="25px" style="vertical-align:unset; margin-top : 5px;"></a>
                 </c:when>
 
                 <c:otherwise>
@@ -367,6 +385,13 @@ position: relative;
             <span class="close" id="modal-close">&times;</span>
             <img src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" alt="Image" class="modal-content" id="modal-content">
         </div>
+
+        <div class="modal" id="youtube-modal" >
+          <div class="modal-content">
+            <span class="youtube-close-button">&times;</span>
+            <iframe class="youtube-frame" src='' allow='autoplay;'></iframe>
+          </div>
+        </div>
 </body>
 <script>
 
@@ -374,18 +399,43 @@ position: relative;
     const modalImage = document.getElementById("modal-image");
     const modalClose = document.getElementById("modal-close");
 
+    const modalOverlay  = document.getElementById("youtube-modal");
+    const modalButton = document.querySelector('.modal-button');
+    const youtubeFrame = document.querySelector('.youtube-frame');
+    const closeButton = document.querySelector('.youtube-close-button');
+
     modalImage.addEventListener("click", function() {
         modal.style.display = "block";
     });
 
     modalClose.addEventListener("click", function() {
         modal.style.display = "none";
+
     });
 
     window.addEventListener("click", function(event) {
         if (event.target === modal) {
             modal.style.display = "none";
         }
+    });
+
+    modalButton.addEventListener('click', () => {
+      const videoUrl = 'https://youtube.com/embed/${requestScope.umaDetail.ytbLink}';
+      youtubeFrame.src = videoUrl;
+      modalOverlay.style.display = 'flex';
+    });
+
+    function closeModal() {
+      modalOverlay.style.display = 'none';
+      youtubeFrame.src = '';
+    }
+
+    closeButton.addEventListener('click', closeModal);
+
+    modalOverlay.addEventListener('click', (event) => {
+      if (event.target === modalOverlay) {
+        closeModal();
+      }
     });
 </script>
 </html>
