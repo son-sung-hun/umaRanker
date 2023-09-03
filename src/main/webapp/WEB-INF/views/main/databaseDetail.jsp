@@ -253,8 +253,8 @@ position: relative;
 .modal-content {
     margin: auto;
     display: block;
-    max-width: 90%;
-    max-height: 80%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .close {
