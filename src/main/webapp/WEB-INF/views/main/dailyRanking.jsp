@@ -35,6 +35,33 @@
 	
 	</c:forEach>
 </script>
+<style>
+.rankTxt{
+position: relative;
+}
+.rankTxt::after {
+  content: '';
+  width: 0%;
+  left: 50%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid ${ uma.color_tag };
+  transition:all .3s ease;
+}
+.rankTxt:hover::after {
+  content: '';
+  width: 100%;
+  left: 0px;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid ${ uma.color_tag };
+  transition:all .3s ease;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp"/>
