@@ -326,7 +326,22 @@ position: relative;
 		 	<c:set var="value" value="${fn:length(name)-5 }"/>
 
 		 	<li style="font-size: 15px; color:#3d414d; font-weight: bold;">
-		 	월간 랭킹 ${ requestScope.monthlyRank }위
+
+            <c:choose>
+                 <c:when test="${ requestScope.monthlyRank eq 1 }">
+                 월간 랭킹 <span style="color:#f1dd86;">${ requestScope.monthlyRank }</span>위
+                 </c:when>
+                 <c:when test="${ requestScope.monthlyRank eq 2 }">
+                 월간 랭킹 <span style="color:#b6b8b7;">${ requestScope.monthlyRank }</span>위
+                 </c:when>
+                 <c:when test="${ requestScope.monthlyRank eq 3 }">
+                 월간 랭킹 <span style="color:#c79345;">${ requestScope.monthlyRank }</span>위
+                 </c:when>
+                 <c:otherwise>
+                 월간 랭킹 ${ requestScope.monthlyRank }위
+                 </c:otherwise>
+            </c:choose>
+
                 <c:choose>
                      <c:when test="${ requestScope.rankResult eq 'increase' }">
                      <img id="result" src="${ pageContext.servletContext.contextPath }/resources/images/increase.png"/><span style="font-size: 12px; color:#139020; font-weight: bold;"> ${ requestScope.rankVariance }</span>
