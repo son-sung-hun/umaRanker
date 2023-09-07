@@ -8,6 +8,7 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -302,7 +303,7 @@ public class MemberController {
 
 
 	@GetMapping("/database/detail")
-	public String getDatabaseDetail(Model model, @RequestParam(value = "uma_code", required = false) int uma_code, @RequestParam(value = "isNotSearch", required = false) boolean isNotSearch)
+	public String getDatabaseDetail(Model model, HttpSession session , @RequestParam(value = "uma_code", required = false) int uma_code, @RequestParam(value = "isNotSearch", required = false) boolean isNotSearch)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
 		UmaDTO umaDetail = memberService.selectUmaDetail(uma_code);
@@ -344,12 +345,19 @@ public class MemberController {
 
 		List<UmaDTO> searchQuery = memberService.selectUmaDescSearchCount();
 
-		if(isNotSearch == false){
-			memberService.updateSearchCount(uma_code);
-			System.out.println(uma_code+"번 우마무스메 카운트 상승");
-		}else{
-			System.out.println("검색으로 들어온 경로가 아님");
+		Boolean hasVisited = (Boolean) session.getAttribute("hasVisited");
+
+		if (hasVisited == null || !hasVisited) {
+			if(isNotSearch == false){
+				memberService.updateSearchCount(uma_code);
+				System.out.println(uma_code+"번 우마무스메 카운트 상승");
+			}else{
+				System.out.println("검색으로 들어온 경로가 아님");
+			}
+
+			session.setAttribute("hasVisited", true);
 		}
+
 
 
 		model.addAttribute("birth", birth);
@@ -365,7 +373,7 @@ public class MemberController {
 	}
 
 	@GetMapping("/search")
-	public String getSearchData(Model model, HttpServletRequest httpServletRequest)
+	public String getSearchData(Model model, HttpServletRequest httpServletRequest,HttpSession session)
 			throws IOException, ParseException, java.text.ParseException, InterruptedException {
 
 		String name = httpServletRequest.getParameter("uma_name");
@@ -384,7 +392,8 @@ public class MemberController {
 			}
 		}
 		if(uma_code!=0){
-			getDatabaseDetail(model,uma_code,isNotSearch);
+			session.setAttribute("hasVisited", false);
+			getDatabaseDetail(model,session,uma_code,isNotSearch);
 			return "main/databaseDetail";
 		}
 		model.addAttribute("name",name);
