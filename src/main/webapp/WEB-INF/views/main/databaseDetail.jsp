@@ -22,7 +22,6 @@
 	if(message != null && message !== '') {
 		alert(message);
 	}
-
 	var mainUniform = new Image;
 	var gameUniform = new Image;
 	var defaultArt = new Image;
@@ -402,6 +401,13 @@ position: relative;
 	    <div class="modal" id="image-modal">
             <span class="close" id="modal-close">&times;</span>
             <img src="${ pageContext.servletContext.contextPath }/resources/images/${ requestScope.umaDetail.uma_name }.png" alt="Image" class="modal-content" id="modal-content">
+                <div class="zoom-buttons" style="width:163px; position: fixed; top:50%; left:85%; text-align: center;">
+                    <span style="font-size: 24px; color:#f8f8f8;">이미지 크기 조정</span>
+                    <br>
+                    <br>
+                    <button style="border: 0.125em solid #f8f8f8; color:#f8f8f8;" id="zoom-in">+</button>
+                    <button style="border: 0.125em solid #f8f8f8; color:#f8f8f8;" id="zoom-out">-</button>
+                </div>
         </div>
 
         <div class="modal" id="youtube-modal" >
@@ -416,24 +422,49 @@ position: relative;
 	const modal = document.getElementById("image-modal");
     const modalImage = document.getElementById("modal-image");
     const modalClose = document.getElementById("modal-close");
+    const modalContent = document.getElementById("modal-content");
 
     const modalOverlay  = document.getElementById("youtube-modal");
     const modalButton = document.querySelector('.modal-button');
     const youtubeFrame = document.querySelector('.youtube-frame');
     const closeButton = document.querySelector('.youtube-close-button');
 
+
+    let zoom = 100;
+
     modalImage.addEventListener("click", function() {
+
         modal.style.display = "block";
+        modalContent.src = modalImage.src;
+
+        modalContent.style.transform = 'scale('+(zoom / 100)+')';
+    });
+
+    document.getElementById("zoom-in").addEventListener("click", function() {
+        if (zoom < 300) {
+        zoom += 10;
+        modalContent.style.transform = 'scale('+(zoom / 100)+')';
+        }
+    });
+
+    document.getElementById("zoom-out").addEventListener("click", function() {
+        if (zoom > 10) {
+            zoom -= 10;
+            modalContent.style.transform = 'scale('+(zoom / 100)+')';
+        }
     });
 
     modalClose.addEventListener("click", function() {
-        modal.style.display = "none";
 
+        modal.style.display = "none";
+        zoom = 100;
     });
 
     window.addEventListener("click", function(event) {
         if (event.target === modal) {
+
             modal.style.display = "none";
+            zoom = 100;
         }
     });
 
